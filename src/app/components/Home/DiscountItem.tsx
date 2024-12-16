@@ -16,7 +16,8 @@ const DiscountItem = () => {
 
   const slides = [
     {
-     imageSrc: '/ishanco on eBay.jpeg',
+      // ishanco on eBay.jpeg
+     imageSrc: '/sh02.png',
       imageAlt: 'Wood Chair',
       heading: '20% discount of all products',
       subHeading: 'Eams Sofa Compact',
@@ -26,7 +27,7 @@ const DiscountItem = () => {
       id: 1,
     },
     {
-      imageSrc: '/s4.jpeg',
+      imageSrc: '/s16.jpeg',
       imageAlt: 'Plastic Chair',
       heading: '30% discount of all products',
       subHeading: 'Plastic Chair',
@@ -36,7 +37,7 @@ const DiscountItem = () => {
       id: 2,
     },
     {
-      imageSrc: '/s14.jpeg',
+      imageSrc: '/secondhero.png',
       imageAlt: 'Sofa Collection',
       heading: '40% discount of all products',
       subHeading: 'Sofa Collection',
@@ -67,9 +68,7 @@ const DiscountItem = () => {
           >
             {index === 0 ? 'Wood Chair' : index === 1 ? 'Plastic Chair' : 'Sofa Collection'}
             {activeSlide === index && (
-              <span className="absolute w-2 md:mt-3 ml-1 h-2 rounded-full bg-[#FB2E86] z-[999] text-lg sm:text-xl">
-                
-              </span>
+              <span className="absolute w-2 md:mt-3 ml-1 h-2 rounded-full bg-[#FB2E86] z-[999] text-lg sm:text-xl" />
             )}
           </button>
         ))}
@@ -90,49 +89,44 @@ const DiscountItem = () => {
         interval={5000}
       >
         {slides.map((slide, index) => (
-        <div
-        key={index}
-        className="flex flex-col items-center md:items-start text-center md:text-left mt-16"
-      >
-        <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#151875] mb-2 capitalize">
-          {slide.heading}
-        </h3>
-        <p className="text-[#FB2E86] text-lg sm:text-xl md:text-2xl font-semibold py-2 mb-4">
-          {slide.subHeading}
-        </p>
-        <p className="mb-6 text-gray-400 text-base sm:text-lg md:text-xl">
-          {slide.description}
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 ">
-          {slide.features.map((feature, index) => (
-            <div key={index} className="flex items-center">
-              <FiCheck className="mr-2 text-gray-700 text-2xl" />
-              <span className="text-gray-400 text-base sm:text-lg md:text-xl">{feature}</span>
+          <div key={index} className="flex flex-col items-center md:items-start text-center md:text-left mt-16">
+            <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#151875] mb-2 capitalize">
+              {slide.heading}
+            </h3>
+            <p className="text-[#FB2E86] text-lg sm:text-xl md:text-2xl font-semibold py-2 mb-4">
+              {slide.subHeading}
+            </p>
+            <p className="mb-6 text-gray-400 text-base sm:text-lg md:text-xl">{slide.description}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              {slide.features.map((feature, index) => (
+                <div key={index} className="flex items-center">
+                  <FiCheck className="mr-2 text-gray-700 text-2xl" />
+                  <span className="text-gray-400 text-base sm:text-lg md:text-xl">{feature}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <Link href={`/discountItem/${slide.id}`}>
-        <button className="bg-[#FB2E86] text-white text-sm sm:text-base md:text-lg px-4 py-2 rounded-md">
-          Shop Now
-        </button>
-        </Link>
-      </div>
-      
+            <Link href={`/discountItem/${slide.id}`}>
+              <button className="bg-[#FB2E86] text-white text-sm sm:text-base md:text-lg px-4 py-2 rounded-md">
+                Shop Now
+              </button>
+            </Link>
+          </div>
         ))}
       </Carousel>
     </div>
   
     {/* Image Section */}
-    <div className="md:w-1/2 p-4 mt-11 md:mt-48 ">
+    <div className="md:w-1/2 p-4 mt-11 md:mt-48">
       <Image
         src={slides[activeSlide].imageSrc}
         alt={slides[activeSlide].imageAlt}
         width={700}
         height={597}
-        className="w-auto h-auto object-cover rounded-lg"
+        className="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out"
       />
     </div>
   </div>
+  
   
   );
 };
