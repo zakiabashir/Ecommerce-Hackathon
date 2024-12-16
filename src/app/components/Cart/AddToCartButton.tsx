@@ -18,9 +18,10 @@ interface AddToCartButtonProps {
     // title?: string;
   };
   selectedColor?: string; // Ensure this is included
+  products?: any;
 }
 
-const AddToCartButton = ({showText , product, selectedColor }: AddToCartButtonProps) => {
+const AddToCartButton = ({showText , product, selectedColor, products }: AddToCartButtonProps) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -49,7 +50,7 @@ const AddToCartButton = ({showText , product, selectedColor }: AddToCartButtonPr
           <div>
             <h4 className="font-semibold text-lg text-green-500">Success! 🎉</h4>
             <p className="text-sm text-gray-200">
-              Yay! You added <strong>{product.title}</strong> to your cart. <span className="text-[#FB2E86]">🛒</span>
+              Yay! You added <strong>{product.title || products.title}</strong> to your cart. <span className="text-[#FB2E86]">🛒</span>
             </p>
             <p className="text-xs text-gray-300">Keep shopping and grab more amazing deals! 💥</p>
           </div>

@@ -13,7 +13,7 @@ export type Product = {
 const products: Product[] = [
       {
         id: 1,
-        title: 'Product 1',
+        title: 'Chair Modern',
         code: '123456',
         image: '/t1.png',
         price: 150,
@@ -27,7 +27,7 @@ const products: Product[] = [
       },
       {
         id: 2,
-        title: 'Product 2',
+        title: 'Chair Light',
         code: '123457',
         image: '/t2.png',
         price: 120,
@@ -41,7 +41,7 @@ const products: Product[] = [
         },
       {
         id: 3,
-        title: 'Product 3',
+        title: 'Chair Office',
         code: '123458',
         image: '/t3.png',
         price: 200,
@@ -55,7 +55,7 @@ const products: Product[] = [
       },
       {
         id: 4,
-        title: 'Product 4',
+        title: 'Chair Sofa',
         code: '123459',
         image: '/t4.png',
         price: 180,

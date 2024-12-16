@@ -12,8 +12,8 @@ const CartIcon = () => {
         <span
         style={{
             position: 'absolute',
-            top: '-5px',
-            right: '-5px',
+            top: '-10px',
+            right: '-10px',
             background: 'red',
             color: 'white',
             borderRadius: '50%',

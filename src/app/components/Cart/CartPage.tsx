@@ -8,6 +8,9 @@ import { IoCartOutline } from 'react-icons/io5';
 import CartItem from './cartItem';
 import router from 'next/router';
 import { GiSofa } from 'react-icons/gi';
+import { clearCart } from '@/app/redux/cartSlice';
+import { toast } from 'react-toastify';
+
 // Example of CartItem type definition
 interface CartItem {
     id: string;
@@ -22,9 +25,25 @@ interface CartItem {
 
   }
 const CartPage = () => {
+  const handleClick = () => {
+    // Show toast notification
+    toast.success('Your cart is up to date, Sir!', {
+      position: "bottom-left", // Position of the toast
+      autoClose: 3000, // Duration before the toast closes
+      hideProgressBar: true, // Hide progress bar
+      closeOnClick: true, // Close on click
+      pauseOnHover: true, // Pause on hover
+      draggable: true, // Allow drag
+    });
+  };
+  // 
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-
+  // const handleUpdate = (id: string, quantity: number) => {
+  //   const newQuantity = prompt("Enter new quantity:", quantity.toString());
+  //   if (newQuantity && !isNaN(Number(newQuantity)) && Number(newQuantity) > 0) {
+  //     dispatch(updateQuantity({ id, quantity: parseInt(newQuantity) }));
+  //   }
   // Total price calculation
   const totalAmount = cart.items.reduce((acc: any, item: any) => acc + item.price * item.quantity, 0);
 
@@ -100,10 +119,10 @@ const CartPage = () => {
                         <h3 className="text-[17px] text-[#151875] font-semibold">{item.name}</h3>
                       )}
                       {item.size && (
-                        <p className="text-sm text-gray-600">Size: {item.size}</p>
+                        <p className="text-sm text-[#151875]">Size: {item.size}</p>
                       )}
                       {item.colors && item.colors.length > 0 && (
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-[#151875]">
                           Colors: {item.colors.join(", ")}
                         </p>
                       )}
@@ -141,20 +160,24 @@ const CartPage = () => {
   
               {/* Cart Actions */}
               <div className="flex justify-between mt-4">
-                <Link
-                  href="/pages/checkout"
-                  className="bg-pink-500 text-white px-4 py-2 rounded-lg"
-                >
-                  Update Cart
-                </Link>
+                  {/* <p>{product.name}</p> */}
+      {/* <p>Quantity: {product.quantity}</p> */}
+  <button className='bg-pink-500 text-white px-4 py-2 rounded-lg'
+     onClick={handleClick} // Handle click to show toast
+    
+  >
+    Update Cart
+    </button>
+
                 <button
-                  onClick={() => dispatch({ type: "cart/clearCart" })}
+                  onClick={() => dispatch(clearCart())}
                   className="bg-pink-500 text-white px-4 py-2 rounded-lg"
-                >
+                  >
                   Clear Cart
                 </button>
+                  </div>
               </div>
-            </div>
+            {/* </div> */}
           </>
         )}
       </div>

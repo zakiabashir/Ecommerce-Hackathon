@@ -13,43 +13,43 @@ export type Product = {
 const products: Product[] = [
       {
         id: 1,
-        title: 'Product 1',
+        title: 'Wood Chair',
         code: '123456',
-        image: '/t1.png',
+        image: '/sh02.png',
         price: 150,
         colors: ['red', 'blue', 'green'],
         images: {
-            'red': '/t1.png',
-            'blue': '/t2.png',
-            'green': '/t3.png'
+            'red': '/sh02.png',
+            'blue': '/secondhero.png',
+            'green': '/s17.jpeg'
         },
         slug: '1',
       },
       {
         id: 2,
-        title: 'Product 2',
+        title: 'Plastic Chair',
         code: '123457',
-        image: '/t2.png',
+        image: '/s16.jpeg',
         price: 120,
         colors: ['red', 'blue', 'green'],
         images: {
-            'red': '/t2.png',
-            'blue': '/t1.png',
-            'green': '/t3.png'
+            'red': '/s16.jpeg',
+            'blue': '/secondhero.png',
+            'green': '/s17.jpeg'
         },
         slug: '2',
         },
       {
         id: 3,
-        title: 'Product 3',
+        title: 'Sofa Collection',
         code: '123458',
-        image: '/t3.png',
+        image: '/secondhero.png',
         price: 200,
         colors: ['red', 'blue', 'green'],
         images: {
-            'red': '/t3.png',
-            'blue': '/t2.png',
-            'green': '/t4.png'
+            'red': '/s17.jpeg',
+            'blue': '/s16.jpeg',
+            'green': '/secondhero.png'
         },
         slug: '3',
       },
@@ -57,13 +57,13 @@ const products: Product[] = [
         id: 4,
         title: 'Product 4',
         code: '123459',
-        image: '/t4.png',
+        image: '/s17.jpeg',
         price: 180,
         colors: ['red', 'blue', 'green'],
         images: {   
-            'red': '/t4.png',
-            'blue': '/t3.png',
-            'green': '/t2.png'
+              'red': '/s17.jpeg',
+            'blue': '/s16.jpeg',
+            'green': '/secondhero.png'
         },
         slug: '4',
       },

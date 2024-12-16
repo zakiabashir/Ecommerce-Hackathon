@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineHeart, AiOutlineZoomIn } from "react-icons/ai";
 import { BsCartPlus } from "react-icons/bs";
+import AddToCartButton from "../Cart/AddToCartButton";
 const ZoomModal = ({ product, onClose }: { product: any; onClose: () => void }) => {
 
     const [selectedImage, setSelectedImage] = useState(product.image); // Use the image passed from 
@@ -75,9 +76,24 @@ const ZoomModal = ({ product, onClose }: { product: any; onClose: () => void }) 
 
   {/* Buttons */}
   <div className="flex items-center gap-6">
-    <button className="p-4 flex items-center gap-2 bg-[#2F1AC4] text-white font-medium rounded-lg shadow-md hover:bg-[#1A0E9A] transition-all transform hover:scale-105">
+  <button className="p-4 flex items-center gap-2 bg-[#2F1AC4] text-white font-medium rounded-lg shadow-md hover:bg-[#1A0E9A] transition-all transform hover:scale-105">
       <BsCartPlus size={20} />
-      Add to Cart
+      {/* 
+      Add to Cart */}
+      <AddToCartButton  
+        key={product.id}  
+        product={{ 
+          ...product, 
+          id: product.id.toString(), 
+          name: product.title, 
+          price: product.price, 
+          imageUrl: selectedImage, // Use selectedImage directly
+          colors: product.colors, 
+          // size: product.size 
+        }} 
+        showText={true}
+        selectedColor={selectedColor} // Pass the selected color directly
+      />
     </button>
     <button className="p-4 bg-gray-200 text-gray-700 font-medium rounded-lg shadow-md hover:bg-red-500 hover:text-white transition-all transform hover:scale-105">
       <AiOutlineHeart size={20} />

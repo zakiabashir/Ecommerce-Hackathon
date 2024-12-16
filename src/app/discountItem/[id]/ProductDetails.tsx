@@ -5,27 +5,41 @@ import { faArrowRight, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Link from "next/link";
+import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
+import AddToCartButton from "@/app/components/Cart/AddToCartButton";
 
 interface ProductDetailsProps {
   product: {
-    title: string;
-    price: number;
-    colors: string[];
-    images: Record<string, string>;
+    id: number;
+  title: string;
+  code: string;
+  price: number;
+  discountedPrice?: number;
+  colors: string[];
+  images: { [key: string]: string };
+  slug: string;
+  size?: string; // Add size if it's optional
   };
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const { title, price, colors, images } = product;
-  const [mainImage, setMainImage] = useState(colors[0]);
-  const [hoverStyle, setHoverStyle] = useState({ backgroundPosition: "center" });
-  const [activeLink, setActiveLink] = useState("description");
+  const [hoverStyle, setHoverStyle] = useState<{ backgroundPosition: string; backgroundSize?: string }>({ backgroundPosition: "center" });
+
+  const [selectedColor, setSelectedColor] = useState(colors.length > 0 ? colors[0] : ""); // Default to the first color
+const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default size if provided
+
+    const [mainImage, setMainImage] = useState(colors.length > 0 ? colors[0] : ''); // Initialize with the first color if available
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
-    setHoverStyle({ backgroundPosition: `${x}% ${y}%` });
+    setHoverStyle({
+      backgroundSize: '200%', // Adjust the zoom level as needed
+      backgroundPosition: `${x}% ${y}%`,
+    });
   };
 
   return (
@@ -120,7 +134,23 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
     {/* Add to Cart */}
     <div className="flex space-x-4 items-center">
-      <button className="text-[#0d0f43] font-[600] px-4 py-2 rounded-md">Add to Cart</button>
+      {/* <button className="text-[#0d0f43] font-[600] px-4 py-2 rounded-md">Add to Cart</button> */}
+ 
+      <AddToCartButton
+      key={product.id}
+      product={{
+        ...product,
+        id: product.id.toString(),
+        name: product.title,
+        price: product.price,
+        imageUrl: product.images[selectedColor],
+        colors: product.colors,
+        size: selectedSize, // Pass selected size
+      }}
+      showText={true}
+      selectedColor={selectedColor} // Pass selected color
+    
+    />
       <button className="p-2 rounded-full">
         <FontAwesomeIcon icon={faHeart} className="text-[#151875]" />
       </button>
@@ -155,193 +185,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 </div>
 
      
-      {/* Content for Each Section */}
-<div className="max-w-[1100px] mx-auto mt-16">
-  <div className="flex gap-8 mb-6">
-    {/* Navigation Links */}
-    <button
-      onClick={() => setActiveLink("description")}
-      className={`text-xl font-semibold ${activeLink === "description" ? "text-[#222585] underline underline-offset-4" : "text-[#0d0f43]"}`}
-    >
-      Description
-    </button>
-    <button
-      onClick={() => setActiveLink("additionalInfo")}
-      className={`text-xl font-semibold ${activeLink === "additionalInfo" ? "text-[#222585] underline underline-offset-4" : "text-[#0d0f43]"}`}
-    >
-      Additional Info
-    </button>
-    <button
-      onClick={() => setActiveLink("reviews")}
-      className={`text-xl font-semibold ${activeLink === "reviews" ? "text-[#222585] underline underline-offset-4" : "text-[#0d0f43]"}`}
-    >
-      Reviews
-    </button>
-    <button
-      onClick={() => setActiveLink("video")}
-      className={`text-xl font-semibold ${activeLink === "video" ? "text-[#222585] underline underline-offset-4" : "text-[#0d0f43]"}`}
-    >
-      Video
-    </button>
-    </div>
-
-  {activeLink === "description" && (
-    <div>
-      <h2 className="text-2xl font-bold text-[#151859] mt-6">Product Description</h2>
-      <p className="mt-4 text-base text-[#5155e2]">
-        This chair is perfect for modern interiors and provides unmatched comfort. It is made with high-quality materials and is designed to last for many years. Whether you place it in your living room or office, it will add a touch of elegance and comfort.
-      </p>
-      <h3 className="mt-6 text-2xl font-semibold text-[#151875]">More Details</h3>
-      <p className="mt-2 text-base text-[#5155e2]">
-        <FontAwesomeIcon icon={faArrowRight} /> The product is designed for maximum comfort and support.
-      </p>
-      <p className="mt-2 text-base text-[#5155e2]">
-        <FontAwesomeIcon icon={faArrowRight} /> It is crafted from durable materials for long-lasting use.
-      </p>
-      <p className="mt-2 text-base text-[#5155e2]">
-        <FontAwesomeIcon icon={faArrowRight} /> This chair features an ergonomic design to reduce strain on the body.
-      </p>
-      <p className="mt-2 text-base text-[#5155e2]">
-        <FontAwesomeIcon icon={faArrowRight} /> Available in multiple colors to match your interior decor.
-      </p>
-      <p className="mt-2 text-base text-[#5155e2]">
-        <FontAwesomeIcon icon={faArrowRight} /> Easy to assemble with included instructions.
-      </p>
-    </div>
-  )}
-
-  {activeLink === "additionalInfo" && (
-    <div>
-      <h2 className="text-2xl font-bold text-[#151875]">Additional Information</h2>
-        <p className="mt-4 text-base text-[#5155e2]">
-        This product comes with a 1-year warranty. The warranty covers any manufacturing defects and malfunctions.
-      </p>
-    </div>
-  )}
-
-  {activeLink === "reviews" && (
-    <div>
-      <h2 className="text-2xl font-bold text-[#151875]">Customer Reviews</h2>
-      <p className="mt-4 text-base text-[#5155e2]">Coming soon...</p>
-    </div>
-  )}
-
-  {activeLink === "video" && (
-    <div>
-      <h2 className="text-2xl font-bold text-[#151875]">Product Video</h2>
-        <p className="mt-4 text-base text-[#5155e2]">
-        Watch the product video to learn more about how this chair can elevate your space.
-      </p>
-    </div>
-  )}
-</div>
-
-      {/* Related Product Section */}
-      <div className="mt-16 bg-[#F6F5FF] p-8 rounded-lg max-w-[1250px] mx-auto shadow-lg shadow-gray-300">
-  <h3 className="text-3xl font-semibold text-[#151875] mb-6">Related Products</h3>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-[1100px] mx-auto">
-    {/* Related Product Item */}
-    <div className="flex flex-col items-center text-center">
-      <div
-        className="w-[270px] h-[340px] bg-cover bg-center rounded-md"
-        style={{ backgroundImage: `url('/rp1.png')` }}
-      ></div>
-      <div className="flex items-center justify-center mt-3">
-        <h4 className="text-lg font-semibold">Men Fashion</h4>
-        {/* Rating */}
-        <div className="flex items-center ml-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className="text-yellow-500">
-              &#9733;
-            </span>
-          ))}
-          <span className="text-gray-500 text-sm ml-2">(50)</span>
-        </div>
-      </div>
-      {/* Price */}
-      <div className="mt-2">
-        <span className="text-lg font-bold text-[#151875]">$199.99</span>
-        <span className="text-sm line-through text-[#F24E1E] ml-2">$229.99</span>
-      </div>
-    </div>
-
-    {/* Another Related Product Item */}
-    <div className="flex flex-col items-center text-center">
-      <div
-        className="w-[270px] h-[340px] bg-cover bg-center rounded-md"
-        style={{ backgroundImage: `url('/rp4.png')` }}
-      ></div>
-      <div className="flex items-center justify-center gap-2 mt-3">
-        <h4 className="text-lg font-semibold">Women Fashion</h4>
-        {/* Rating */}
-        <div className="flex items-center justify-center mt-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className="text-yellow-500">
-              &#9733;
-            </span>
-          ))}
-          <span className="text-gray-500 text-sm ml-2">(32)</span>
-        </div>
-      </div>
-      {/* Price */}
-      <div className="mt-2">
-        <span className="text-lg font-bold text-[#151875]">$499.99</span>
-        <span className="text-sm line-through text-[#F24E1E] ml-2">$599.99</span>
-      </div>
-    </div>
-
-    {/* Related Product Item */}
-    <div className="flex flex-col items-center text-center">
-      <div
-        className="w-[270px] h-[340px] bg-cover bg-center rounded-md"
-        style={{ backgroundImage: `url('/rp3.png')` }}
-      ></div>
-      <div className="flex items-center justify-center gap-2 mt-3">
-        <h4 className="text-lg font-semibold">Wolx Dummy Fashion</h4>
-        {/* Rating */}
-        <div className="flex items-center justify-center mt-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className="text-yellow-500">
-              &#9733;
-            </span>
-          ))}
-          <span className="text-gray-500 text-sm ml-2">(50)</span>
-        </div>
-      </div>
-      {/* Price */}
-      <div className="mt-2">
-        <span className="text-lg font-bold text-[#151875]">$19.99</span>
-        <span className="text-sm line-through text-[#F24E1E] ml-2">$22.99</span>
-      </div>
-    </div>
-
-    {/* Related Product Item */}
-    <div className="flex flex-col items-center text-center">
-      <div
-        className="w-[270px] h-[340px] bg-cover bg-center rounded-md"
-        style={{ backgroundImage: `url('/rp2.png')` }}
-      ></div>
-      <div className="flex items-center justify-center gap-2 mt-3">
-        <h4 className="text-lg font-semibold">Top Wall Digital Clock</h4>
-        {/* Rating */}
-        <div className="flex items-center justify-center mt-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} className="text-yellow-500">
-              &#9733;
-            </span>
-          ))}
-          <span className="text-gray-500 text-sm ml-2">(50)</span>
-        </div>
-      </div>
-      {/* Price */}
-      <div className="mt-2">
-        <span className="text-lg font-bold text-[#151875]">$19.99</span>
-        <span className="text-sm line-through text-[#F24E1E] ml-2">$22.99</span>
-      </div>
-    </div>
-  </div>
-</div>
+    <NavigationLinksForDynamicPages/>
 
     </div>
   );

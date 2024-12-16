@@ -1,5 +1,5 @@
 'use client';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../redux/cartSlice';
 
 interface CartItemProps {
@@ -26,7 +26,7 @@ const CartItem = ({ item }: CartItemProps) => {
     const quantity = parseInt(e.target.value, 10);
     dispatch(updateQuantity({ id: item.id, quantity }));
   };
-
+  
   return (
     <div>
       <img src={item.imageUrl} alt={item.name} className="w-20 h-20 mr-4" /> {/* Ensure image is displayed */}
@@ -42,6 +42,7 @@ const CartItem = ({ item }: CartItemProps) => {
       />
       <button onClick={handleRemove}>Remove</button>
     </div>
+    
   );
 };
 
