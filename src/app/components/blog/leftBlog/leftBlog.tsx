@@ -6,6 +6,7 @@ import RightBlog from "../rightBlog/rightBlog"
 
 const blogPostData = [
     {
+        id: 1,
         img: "/bp1.png",
         title: "Mauris at orci non vulputate diam tincidunt nec.",
         href: "/singlepost",
@@ -13,12 +14,14 @@ const blogPostData = [
         footer: "Read More "
     },
     {
+        id: 2,
         img: "/bp2.png",
         title: "Aenean vitae in aliquam ultrices lectus. Etiam.",
         des: "this is a test blog post for testing lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
         footer: "Read More "
     },
     {
+        id: 3,
         img: "/bp3.png",
          title: "Sit nam congue feugiat nisl, mauris amet nisi. ",
         des: "this is a test blog post for testing lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.",
@@ -89,7 +92,10 @@ const BlogPage = () => {
                         <a className='font-semibold text-[#151875] font-josefin text-[30px] ' href={item.href}>{item.title}</a>
                         <p className='text-gray-500 lg:w-[78%] mt-5 '>{item.des}</p>
                         <div className="flex items-center gap-2">
-                        <h6 className='font-semibold text-[#151875] mt-7 mb-6'>{item.footer}</h6>
+                        <h6 className='font-semibold text-[#151875] mt-7 mb-6'>
+                        <Link href={`/singleblog/${item.id}`}>      {item.footer}
+                          </Link>
+                           </h6>
                         <span className="h-2 w-2 rounded-full bg-[#920f0f]"></span>
                         </div>
                     </div>
@@ -98,7 +104,7 @@ const BlogPage = () => {
         })}
       </div>
 
-      <div className='flex items-center justify-center '>
+      <div className='flex items-center justify-center py-5 lg:ml-72'>
         <h4 className='bg-pink-600 px-3 rounded-sm text-black font-lato'>1</h4>
         <h4 className='border-2 px-3  rounded-sm text-black font-lato mx-10'>2</h4>
         <h4 className='border-2 px-3  rounded-sm text-black font-lato '>3</h4>

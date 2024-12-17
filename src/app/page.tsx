@@ -19,7 +19,7 @@ import store from "./redux/store"
 
 export default function Home({Component, pageProps , products}:any) {
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <main>
         <HeroCarousel />
         <FeaturedProducts product={products} />
@@ -35,6 +35,6 @@ export default function Home({Component, pageProps , products}:any) {
         <BlogComponent />
         <ScrollToTop />
       </main>
-    </Provider>
+    // </Provider>
   );
 }

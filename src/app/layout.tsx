@@ -1,21 +1,18 @@
-"use client"
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import TopAnnouncement from '@/app/components/Navbar/TopAnnoucement'
+import TopAnnouncement from "@/app/components/Navbar/TopAnnoucement";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'; // Ensure this is added
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import Providers from "./redux/Providers"; // Import the client wrapper
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const metadata: Metadata = {
-//   title: "Hackathon Ecommerce",
-//   description: "hackathon ecommerce website",
-// };
+export const metadata: Metadata = {
+  title: "Hackathon Ecommerce",
+  description: "hackathon ecommerce website",
+};
 
 export default function RootLayout({
   children,
@@ -25,15 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={store}>
-        <TopAnnouncement/>
-        <Navbar/>
-        {children}
-        <Footer/>
-        
-<ToastContainer position="bottom-right" />
-        </Provider>
-        </body>
+        {/* Wrap children with a Providers component */}
+        <Providers>
+          <TopAnnouncement />
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }

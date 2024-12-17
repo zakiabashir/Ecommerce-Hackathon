@@ -75,30 +75,30 @@ const RightBlog = () => {
 
   return (
     <div className='xl:-ml-20 lg:ml-10  xl:mr-36'>
-      <h3 className='text-[22px] text-[#151875] font-josefin lg:mt-0  mt-12'>Search</h3>
+      <h3 className='text-[22px] text-[#151875] lg:mt-0  mt-12'>Search</h3>
       <div  className='relative mt-4'>
         <div>
-            <input placeholder='Search For Posts' className='w-full py-3 border-gray-200 text-gray-200' type="search" name="" id="" />
-            <div className='absolute top-2 right-5'>
-                <BiSearch className='text-black text-2xl' />
+            <input placeholder='Search For Posts' className='w-full py-3 border-[1px] rounded-md border-[#5b5eac] text-[#5b5eac]' type="search" name="" id="" />
+            <div className='absolute top-3 right-5'>
+                <BiSearch className='text-black/40 text-2xl' />
             </div>
         </div>
       </div>
 
       <div>
-          <h3 className='text-[22px] text-[#151875] mt-12 font-josefin'>Categories</h3>
+          <h3 className='text-[22px]  text-[#151875] mt-12'>Categories</h3>
 
-          <div className='grid grid-cols-2 items-center justify-between  mt-6'>
+          <div className='grid grid-cols-2 items-center justify-center  mt-6'>
             <div className=''>
                 <button className='text-[14px] bg-pink-500 text-white px-4 py-2 '>Hobbies (14) </button>
-                <h6 className='text-[14px] text-[#2c308b] font-semibold my-4'>Womer (21)</h6>
-                <h6 className='text-[14px] text-[#2c308b] font-semibold'>Womer (21)</h6>
+                <h6 className='text-[14px] text-[#3F509E] font-semibold my-4'>Womer (21)</h6>
+                <h6 className='text-[14px] text-[#3F509E] font-semibold'>Womer (21)</h6>
             </div>
 
-            <div className='text-center'>
-              <h6 className='text-[14px] text-[#2c308b] font-semibold'>Womer (21)</h6>
-              <h6 className='text-[14px] text-[#2c308b] font-semibold my-4'>Womer (21)</h6>
-              <h6 className='text-[14px] text-[#2c308b] font-semibold'>Womer (21)</h6>
+            <div className='text-center lg:mr-28'>
+              <h6 className='text-[14px] text-[#3F509E] font-semibold'>Womer (21)</h6>
+              <h6 className='text-[14px] text-[#3F509E] font-semibold my-4'>Womer (21)</h6>
+              <h6 className='text-[14px] text-[#3F509E] font-semibold'>Womer (21)</h6>
             </div>
           </div>
       </div>
@@ -112,8 +112,8 @@ const RightBlog = () => {
                   <img src={item.img} alt="" />
                 </div>
                 <div>
-                  <h5 className='text-[#151875] font-semibold'>{item.title}</h5>
-                  <h5 className='text-[11px] text-[#2c308b]'>{item.des}</h5>
+                  <h5 className='text-[#3F509E] font-semibold'>{item.title}</h5>
+                  <h5 className='text-[11px] text-[#3F509E]'>{item.des}</h5>
                 </div>
 
               </div>
@@ -122,7 +122,7 @@ const RightBlog = () => {
       </div>
 
       <div>
-          <h3 className='text-[22px] text-[#151875] mt-12 font-josefin'>Sale Product</h3>
+          <h3 className='text-[22px] text-[#151875] mt-12 font-semibold'>Sale Product</h3>
           <div>
             {saleProductData.map((item , index) => {
               return <div key={index} className='flex items-center gap-3 my-6'>
@@ -130,8 +130,8 @@ const RightBlog = () => {
                       <img src={item.img} alt="" />
                     </div>
                     <div>
-                      <h5 className='text-[#151875] font-semibold'>{item.title}</h5>
-                      <h5 className='text-[11px] text-[#2c308b]'>{item.des}</h5>
+                      <h5 className='text-[#3F509E] font-semibold'>{item.title}</h5>
+                      <h5 className='text-[11px] text-[#3F509E]'>{item.des}</h5>
                     </div>
 
             </div>
@@ -148,7 +148,7 @@ const RightBlog = () => {
                 <div className='flex justify-between  text-center'>
                   <div>
                     <img src={item.img} alt="" />
-                    <h5 className='font-semibold text-[#151875]'>{item.title}</h5>
+                    <h5 className='font-medium text-[#151875]'>{item.title}</h5>
                     <h6 className='text-xs text-[#55555c]'>{item.price}</h6>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ const RightBlog = () => {
 
       <div>
           <h3 className='text-[22px] text-[#151875] mt-12 font-semibold'>Tags</h3>
-          <div className='grid grid-cols-3 my-3 text-[#2c308b] font-medium underline'>
+          <div className='grid grid-cols-3 my-3 text-[#3F509E]  font-medium underline'>
             <Link className='mb-3' href="">General</Link>
             <Link  href="" className='!text-pink-500'>Atsanil</Link>
             <Link href="">Insas.</Link>

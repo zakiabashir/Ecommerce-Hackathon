@@ -6,28 +6,28 @@ import React from 'react';
 const BlogComponent = () => {
   const blogPosts = [
     {
-      id: 1,
+      id: 4,
       image: '/b1.png',
       author: 'Saber Ali',
       date: '20 Aug 2020',
-      title: 'Exciting New Technologies in Web Development',
-      paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod magna eu...',
+      title: 'Top Essential trends in 2020',
+      paragraph: 'Top Essential trends in 2020 are a great way to stay ahead of the curve and make sure.',
     },
     {
-      id: 2,
+      id: 5,
       image: '/b2.png',
       author: 'Sara Ali',
       date: '15 Sept 2020',
-      title: 'How to Master Frontend Development in 2020',
-      paragraph: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Integer ac...',
+      title: 'Top Essential trends in 2021',
+      paragraph: 'Top Essential trends in 2021 are a great way to stay ahead of the curve and make sure always on the cutting edge of 2021:',
     },
     {
-      id: 3,
+      id: 6,
       image: '/b3.png',
       author: 'Ali Hassan',
       date: '5 Oct 2020',
-      title: 'The Future of AI and Machine Learning',
-      paragraph: 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius. Nam...',
+      title: 'Top Essential trends in 2022',
+      paragraph: 'Top Essential trends in 2022 are a great way to stay ahead of the curve and make sure you are always on the cutting edge of'
     },
   ];
 
@@ -63,11 +63,11 @@ const BlogComponent = () => {
               <h3 className="text-xl font-semibold text-[#151875] group-hover:text-[#FB2E86] mb-2">{post.title}</h3>
               
               {/* Paragraph */}
-              <p className="text-gray-600 mb-4">{post.paragraph}</p>
+              <p className="text-[#4448a2] mb-4">{post.paragraph}</p>
               
               {/* Read More Link */}
               <Link
-                href="/blog"
+                href={`/singleblog/${post.id}`}
                 className="text-[#151875] hover:text-[#FB2E86] font-semibold underline group-hover:text-[#FB2E86]"
               >
                 Read More

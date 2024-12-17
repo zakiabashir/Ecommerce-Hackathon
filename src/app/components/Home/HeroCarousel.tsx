@@ -28,7 +28,7 @@ const carouselData: CarouselSlide[] = [
   },
   {
     id: 2,
-    mainImage: '/s15r.png',
+    mainImage: '/s20bgr.png',
     lampImage: '/lamp21.png',
     miniHeading: 'Exclusive Furniture Offers',
     mainHeading: 'Modern Design Collection 2024',
