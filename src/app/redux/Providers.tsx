@@ -1,5 +1,5 @@
-// app/redux/Providers.tsx
 "use client"; // Mark this file as a client component
+// app/redux/Providers.tsx
 
 import { Provider } from "react-redux";
 import store from "./store";

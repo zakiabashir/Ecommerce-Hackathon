@@ -10,6 +10,8 @@ import router from 'next/router';
 import { GiSofa } from 'react-icons/gi';
 import { clearCart } from '@/app/redux/cartSlice';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 // Example of CartItem type definition
 interface CartItem {
@@ -25,27 +27,52 @@ interface CartItem {
 
   }
 const CartPage = () => {
-  const handleClick = () => {
-    // Show toast notification
-    toast.success('Your cart is up to date, Sir!', {
-      position: "bottom-left", // Position of the toast
-      autoClose: 3000, // Duration before the toast closes
-      hideProgressBar: true, // Hide progress bar
-      closeOnClick: true, // Close on click
-      pauseOnHover: true, // Pause on hover
-      draggable: true, // Allow drag
-    });
-  };
+
+  const [cartItems, setCartItems] = useState<any[]>([]); // Default to an empty array
+  const [hydrated, setHydrated] = useState(false);
+
   // 
   const cart = useSelector((state: RootState) => state.cart);
-  const dispatch = useDispatch();
-  // const handleUpdate = (id: string, quantity: number) => {
-  //   const newQuantity = prompt("Enter new quantity:", quantity.toString());
-  //   if (newQuantity && !isNaN(Number(newQuantity)) && Number(newQuantity) > 0) {
-  //     dispatch(updateQuantity({ id, quantity: parseInt(newQuantity) }));
-  //   }
-  // Total price calculation
   const totalAmount = cart.items.reduce((acc: any, item: any) => acc + item.price * item.quantity, 0);
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    setHydrated(true); // Ensure component is hydrated
+  }, []);
+
+  useEffect(() => {
+    // Access localStorage ONLY on client side
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cartItems");
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
+      }
+    }
+  }, []);
+
+  const handleAddToCart = (item: any) => {
+    const updatedCart = [...cartItems, item];
+    setCartItems(updatedCart);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  if (!hydrated) {
+    // Prevent rendering until hydration is complete
+    return null;
+  }
+
+const handleClick = () => {
+  // Show toast notification
+  toast.success('Your cart is up to date, Sir!', {
+    position: "top-left", // Position of the toast
+    autoClose: 3000, // Duration before the toast closes
+    hideProgressBar: true, // Hide progress bar
+    closeOnClick: true, // Close on click
+    pauseOnHover: true, // Pause on hover
+    draggable: true, // Allow drag
+  });
+};
 
   return (
     <div className="bg-[#F6F5FF] max-w-[1750px] mx-auto p-9  pt-16">
@@ -183,7 +210,7 @@ const CartPage = () => {
       </div>
   
       {/* Right Section - Cart Summary */}
-      {cart.items.length > 0 && (
+      { hydrated && cart.items.length > 0 && (
         <div className="flex flex-col lg:w-1/3 p-4 mt-10 lg:mt-0 py-10 lg:py-8 gap-16">
           {/* Cart Total */}
           <h2 className="text-2xl text-center font-semibold text-[#242896]">Cart Total</h2>

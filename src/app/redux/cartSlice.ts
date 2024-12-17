@@ -1,5 +1,6 @@
 'use client';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { saveCartToLocalStorage, loadCartFromLocalStorage } from './localStorage'; // Import helper functions
 
 interface CartItem {
   id: string;
@@ -7,20 +8,20 @@ interface CartItem {
   price: number;
   quantity: number;
   imageUrl: string;
-  items: any[]; // Define your item type
+  items: any[];
   totalQuantity: number;
   size: string;
   name: string;
   colors: string[];
 }
 
-
 interface CartState {
   items: CartItem[];
   totalQuantity: number;
 }
 
-const initialState: CartState = {
+// Load cart from localStorage if it exists, otherwise use the default state
+const initialState: CartState = loadCartFromLocalStorage() || {
   items: [],
   totalQuantity: 0,
 };
@@ -30,68 +31,63 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     increaseQuantity(state, action: PayloadAction<string>) {
-        const id = action.payload;
-        const existingItem = state.items.find(item => item.id === id);
-  
-        if (existingItem) {
-          existingItem.quantity += 1;
-          state.totalQuantity += 1; // Update total quantity
-        }
+      const id = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+        state.totalQuantity += 1;
+      }
     },
-     // Decrement quantity
-     decreaseQuantity(state, action: PayloadAction<string>) {
-        const id = action.payload;
-        const existingItem = state.items.find(item => item.id === id);
-  
-        if (existingItem && existingItem.quantity > 1) {
-          existingItem.quantity -= 1;
-          state.totalQuantity -= 1; // Update total quantity
-        } else {
-          // Optional: Remove item if quantity becomes zero
-          state.items = state.items.filter(item => item.id !== id);
-          state.totalQuantity -= 1;
-        }
+    decreaseQuantity(state, action: PayloadAction<string>) {
+      const id = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem && existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+        state.totalQuantity -= 1;
+      } else {
+        state.items = state.items.filter((item) => item.id !== id);
+        state.totalQuantity -= 1;
+      }
     },
     addToCart(state, action: PayloadAction<CartItem>) {
-        const newItem = action.payload;
-        const existingItem = state.items.find(item => item.id === newItem.id);
-        
-        if (existingItem) {
-            // If the item already exists, do not increase totalQuantity
-            existingItem.quantity += 1; // Just increase the quantity of the existing item
-        } else {
-            // If it's a new item, add it to the cart and increase totalQuantity
-            state.items.push({ ...newItem, quantity: 1 });
-            state.totalQuantity += 1; // Increase totalQuantity only for new items
-            
-        }
+      const newItem = action.payload;
+      const existingItem = state.items.find((item) => item.id === newItem.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.items.push({ ...newItem, quantity: 1 });
+        state.totalQuantity += 1;
+      }
     },
     removeFromCart(state, action: PayloadAction<string>) {
       const id = action.payload;
-      const existingItem = state.items.find(item => item.id === id);
+      const existingItem = state.items.find((item) => item.id === id);
       if (existingItem) {
         state.totalQuantity -= existingItem.quantity;
-        state.items = state.items.filter(item => item.id !== id);
+        state.items = state.items.filter((item) => item.id !== id);
       }
     },
-    updateQuantity(
-      state,
-      action: PayloadAction<{ id: string; quantity: number }>
-    ) {
+    clearCart(state) {
+      state.items = [];
+      state.totalQuantity = 0;
+    },
+    updateQuantity(state, action: PayloadAction<{ id: string; quantity: number }>) {
       const { id, quantity } = action.payload;
-      const existingItem = state.items.find(item => item.id === id);
+      const existingItem = state.items.find((item) => item.id === id);
       if (existingItem) {
-        state.totalQuantity += quantity - existingItem.quantity;
         existingItem.quantity = quantity;
       }
     },
-    clearCart: (state) => {
-      state.items = [];
-      state.totalQuantity = 0; // Reset total quantity
-    },
   },
 });
-export const { addToCart, removeFromCart, updateQuantity, increaseQuantity, decreaseQuantity, clearCart } = cartSlice.actions;
 
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+  updateQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

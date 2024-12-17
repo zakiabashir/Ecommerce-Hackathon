@@ -78,7 +78,7 @@ const RightBlog = () => {
       <h3 className='text-[22px] text-[#151875] lg:mt-0  mt-12'>Search</h3>
       <div  className='relative mt-4'>
         <div>
-            <input placeholder='Search For Posts' className='w-full py-3 border-[1px] rounded-md border-[#5b5eac] text-[#5b5eac]' type="search" name="" id="" />
+            <input placeholder='Search For Posts' className='w-full p-4 py-3 border-[1px] rounded-md border-[#5b5eac] text-[#5b5eac]' type="search" name="" id="" />
             <div className='absolute top-3 right-5'>
                 <BiSearch className='text-black/40 text-2xl' />
             </div>
