@@ -27,6 +27,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 6. **Discount Sections**: Products with discount prices and overlay effects and when you click on the product you can see the details of the product which has multiple images and colors and sizes and you can add to cart and checkout.
 7. **Discount Items**: Displays the top three discounted products. On the left, it shows the title, features, and a 'Shop Now' button, which leads to the product details page with multiple images, colors, sizes, and options to add to cart and checkout. On the right, it displays the product image. At the top, there are three navigation buttons to navigate through the carousel."
 8. **Blog Post Grid**: Displays blog posts with an image, author, date, title, paragraph, and a 'Read More' button. Clicking 'Read More' navigates to the blog details page, featuring multiple images and the full blog content.
+9. **Scroll To Top**: A button that scrolls to the top of the page when clicked.
 
 ### Pages Overview
 - **Contact Page**: Includes a background image, heading, paragraph, and a subscription button.
@@ -44,6 +45,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 - `tailwindcss`
 - `@reduxjs/toolkit react-redux`
 - `react-toastify`
+- `locomotive-scroll`
 
 ## How to Run Locally
 
