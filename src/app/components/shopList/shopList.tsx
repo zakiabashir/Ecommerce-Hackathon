@@ -4,6 +4,7 @@ import { FaListUl, FaRegHeart, FaSearchPlus  } from 'react-icons/fa'
 import { BsFillGridFill } from 'react-icons/bs'
 import { CgShoppingCart } from 'react-icons/cg'
 import Link from 'next/link'
+import Breadcrumb from '../BreadCrumb'
 
 const shopListData = [
     {
@@ -89,23 +90,11 @@ const ShopList = () => {
   return (
     <>
     <div className='max-w-[1540px] mx-auto'>
-      
-    <div className="bg-[#fbfbff] h-[286px] max-w-[1750px] mx-auto p-9 md:pl-52 pt-16 ">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-         Shop List
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <span className="text-[#F24E1E] font-semibold">Shop List</span>
-        </nav>
-      </div>
+    
+    <Breadcrumb
+        mainHeading="Shop List"
+        miniHeadings={['Home', 'pages', 'Shop List']}
+      />
 
         <div className="md:container md:px-[1.3rem] px-[.8rem] pt-12 md:pt-[98px] flex items-center justify-between mx-auto  ">
           <div className=''>

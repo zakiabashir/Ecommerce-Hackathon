@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
+import { FaCalendarAlt, FaPenNib } from 'react-icons/fa';
 
 const BlogComponent = () => {
   const blogPosts = [
@@ -49,21 +50,27 @@ const BlogComponent = () => {
             
             {/* Bottom Section (Author, Date, Title, Paragraph, Read More) */}
             <div className="p-4">
-              {/* Author and Date */}
-              <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4">
-                <span className="flex items-center">
-                  <i className="fa fa-pencil-alt text-xs mr-1"></i> {post.author}
-                </span>
-                <span className="flex items-center">
-                  <i className="fa fa-calendar-alt text-xs mr-1"></i> {post.date}
-                </span>
-              </div>
+          {/* Author and Date */}
+<div className="flex items-center space-x-4 text-sm text-[#151875] mb-4">
+  {/* Author */}
+  <span className="flex items-center space-x-1">
+    <FaPenNib  className="text-red-600" /> {/* Red pen nib icon */}
+    <span>{post.author}</span>
+  </span>
+  
+  {/* Date */}
+  <span className="flex items-center space-x-1 text-[#151875]">
+    <FaCalendarAlt className="text-yellow-500" /> {/* Yellow calendar icon */}
+    <span>{post.date}</span>
+  </span>
+</div>
+
               
               {/* Blog Title */}
               <h3 className="text-xl font-semibold text-[#151875] group-hover:text-[#FB2E86] mb-2">{post.title}</h3>
               
               {/* Paragraph */}
-              <p className="text-[#4448a2] mb-4">{post.paragraph}</p>
+              <p className="text-gray-600 mb-4">{post.paragraph}</p>
               
               {/* Read More Link */}
               <Link

@@ -167,7 +167,7 @@ const FeaturedProduct = ({ product }: { product: { id: number; title: string; pr
                 const containerWidth = scrollContainerRef.current.clientWidth;
                 const maxScroll = scrollWidth - containerWidth;
                 const scrollPosition = (maxScroll * dot) / 3;
-                scrollContainerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                scrollContainerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' , });
               }
               setActiveSlide(dot);
             }}

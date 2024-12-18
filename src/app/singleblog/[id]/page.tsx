@@ -17,6 +17,7 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import Brands from '@/app/components/Home/brands';
 import Link from 'next/link';
+import Breadcrumb from '@/app/components/BreadCrumb';
 
 interface SingleBlogProps {
   params: { id: string };
@@ -151,23 +152,11 @@ export default function SingleBlog({ params }: SingleBlogProps) {
   return (
  
     <div className="container max-w-[1920px] mx-auto p- sm:p-0 sm:pl-11 md:pl-20  sm:py-8 ">
-
-   <div className='w-auto pt-16 left-0 -ml-20 pl-32 md:pl-40  bg-[#F6F5FF] h-[280px] py-auto'>
-     <h2 className="text-left text-[#151875] text-4xl md:text-5xl font-bold mb-8">Single Blog</h2>
-  
-  {/* Cart Navigation */}
-  <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500 lg:pl-32">
-    <Link href="/" className="hover:text-gray-900 font-semibold">
-      Home
-    </Link>
-    <span>.</span>
-    <Link href="/pages" className="hover:text-gray-900 font-semibold">
-      Pages
-    </Link>
-    <span>.</span>
-    <span className="text-[#F24E1E] font-semibold">Single Blog</span>
-  </nav>
-   </div>
+{/* Breadcrumb */}
+<Breadcrumb
+        mainHeading="Single Blog"
+        miniHeadings={['Home', 'pages', 'Single Blog']}
+      />
 
       <div className="lg:flex gap-8 w-full">
         {/* Left Section - Main Content */}

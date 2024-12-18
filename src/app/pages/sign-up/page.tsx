@@ -1,25 +1,15 @@
+import Breadcrumb from "@/app/components/BreadCrumb";
 import Link from "next/link";
 import React from "react";
 
 const SignUpPage: React.FC = () => {
   return (
     <>
-    <div className="bg-[#fbfbff] h-[286px] max-w-[1750px] mx-auto p-9 sm:pl-12 lg:pl-52 pt-16">
-  <h2 className="text-left text-[#151875] text-3xl sm:text-4xl md:text-5xl font-bold mb-8">
-    Create an Account
-  </h2>
-  <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-    <Link href="/" className="hover:text-gray-900 font-semibold">
-      Home
-    </Link>
-    <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-    <Link href="/pages" className="hover:text-gray-900 font-semibold">
-      Pages
-    </Link>
-    <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-    <span className="text-[#F24E1E] font-semibold">Create an Account</span>
-  </nav>
-</div>
+  
+  <Breadcrumb
+        mainHeading="Create an Account"
+        miniHeadings={['Home', 'pages', 'Create an Account']}
+      />
 
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-6 rounded-lg shadow-md shadow-black">

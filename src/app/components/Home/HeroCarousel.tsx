@@ -18,7 +18,7 @@ interface CarouselSlide {
 const carouselData: CarouselSlide[] = [
   {
     id: 1,
-    mainImage: '/sofareal.png',
+    mainImage: '/sofarealenhance.png',
     lampImage: '/lampreal.png',
     miniHeading: 'Best Furniture For Your Castle....',
     mainHeading: 'New Furniture Collection Trends in 2024',
@@ -29,7 +29,7 @@ const carouselData: CarouselSlide[] = [
   {
     id: 2,
     mainImage: '/s20bgr.png',
-    lampImage: '/lamp21.png',
+    lampImage: '/newlamp.png',
     miniHeading: 'Exclusive Furniture Offers',
     mainHeading: 'Modern Design Collection 2024',
     description: 'Discover our unique collection that brings comfort and style to your home.',
@@ -61,12 +61,12 @@ const HeroCarousel = () => {
 
   return (
     <>
-    <div className="bg-[#f2f0ff] h-[103vh] lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
+    <div className="bg-[#F2F0FF] h-auto lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
     <div className="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center px-4 lg:px-8 contrast-125">
       {/* Left Section */}
       <div className="w-full lg:w-[60%] relative z-10 space-y-3 space-x-16 text-center lg:text-left lg:ml-11">
         {/* Lamp Image */}
-        <div className="absolute -top-11 md:-top-20 lg:-top-[150px] -left-32 w-72 h-72 hidden lg:block">
+        <div className="absolute -top-11 md:-top-20 lg:-top-[200px] -left-32 w-72 h-72 hidden lg:block">
           <Image
             src={carouselData[currentSlide].lampImage}
             alt="Lamp decoration"
@@ -98,7 +98,7 @@ const HeroCarousel = () => {
       </div>
   
       {/* Right Section */}
-      <div className="w-full lg:w-1/2 relative h-full flex items-center justify-center">
+      <div className="w-full lg:w-1/2 relative h-full flex items-center justify-center py-11">
         <div className="relative w-full h-[400px] lg:h-[600px]">
           {/* Image Container with Custom Shadow */}
           <div className="absolute inset-0 custom-shadow z-10 lg:h-[500px] lg:mt-10 rounded-lg">
@@ -114,7 +114,7 @@ const HeroCarousel = () => {
     </div>
   
     {/* Carousel Navigation */}
-    <div className="absolute bottom-10 left-1/2  -mb-6  pt-7 transform -translate-x-1/2 flex gap-4 z-[999]">
+    <div className="absolute bottom-10 left-1/2  -mb-6  pt-7 transform -translate-x-1/2 flex gap-4 lg:p-5 z-[999]">
       {carouselData.map((_, index) => (
         <button
           key={index}

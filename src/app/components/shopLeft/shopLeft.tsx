@@ -7,6 +7,7 @@ import { BsFillGridFill } from 'react-icons/bs'
 import { CgShoppingCart } from 'react-icons/cg'
 import { HiCheck } from 'react-icons/hi'
 import { BiSearch } from 'react-icons/bi'
+import Breadcrumb from '../BreadCrumb'
 
 
 const shopLeftData = [
@@ -206,22 +207,11 @@ const ShopLeft = () => {
   return (
     <div className='max-w-[1650px] mx-auto'>
     <div className='bg-shade2'>
-      <div className="bg-[#fbfbff] h-[286px] max-w-[1750px] mx-auto p-9 pl-8 pt-16 md:pl-16">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-          Shop Left Sidebar
-        </h2>
-        <nav className="flex flex-wrap pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <span className="text-[#F24E1E] font-semibold">Shop Left Sidebar</span>
-        </nav>
-      </div>
+    
+    <Breadcrumb
+        mainHeading="Shop Left Sidebar"
+        miniHeadings={['Home', 'pages', 'Shop Left Sidebar']}
+      />
     </div>
   
     <div className='max-w-[1650px] mx-auto px-4 lg:px-8 gap-11 lg:gap-16'>

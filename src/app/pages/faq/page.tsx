@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import React, { useState } from 'react';
-
+import Breadcrumb from '@/app/components/BreadCrumb';
 const FaqPage = () => {
   const [openAccordion, setOpenAccordion] = useState<number[]>([]);
 
@@ -36,22 +36,11 @@ const FaqPage = () => {
   return (
     <>
         {/* Breadcrumb Section */}
-        <div className="bg-[#F6F5FF] h-[186px] w-full p-9 max-w-[1500px] pl-20 mx-auto">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-         FAQ
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <Link href="/pages/shop-grid-default" className="hover:text-gray-900 font-semibold">
-            Pages Grid Default
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <span className="text-[#F24E1E] font-semibold capitalize">faq</span>
-        </nav>
-      </div>
+      
+        <Breadcrumb
+        mainHeading="FAQ"
+        miniHeadings={['Home', 'pages', 'FAQ']}
+      />
       <div className="flex flex-col md:flex-row p-4 max-w-6xl mx-auto mt-20 gap-10 py-11 h-auto">
 
 {/* General Information Section */}

@@ -7,6 +7,7 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 import Link from "next/link";
 import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
 import AddToCartButton from "@/app/components/Cart/AddToCartButton";
+import Breadcrumb from "@/app/components/BreadCrumb";
 
 interface ProductDetailsProps {
   product: {
@@ -46,22 +47,10 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
   return (
     <div className="max-w-[1700px] mx-auto p-4">
       {/* Breadcrumb Navbar */}
-      <div className="bg-[#F6F5FF] h-[286px] w-full p-9 pl-40 pt-16 ">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-          Product Details
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span>.</span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span>.</span>
-          <span className="text-[#F24E1E] font-semibold">Product Details</span>
-        </nav>
-      </div>
+      <Breadcrumb
+        mainHeading="Product Details"
+        miniHeadings={['Home', 'pages', 'Product Details']}
+      />
 
       {/* Product Details Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 py-11 max-w-6xl mx-auto shadow-lg shadow-gray-300 rounded-lg bg-[#F6F5FF]">

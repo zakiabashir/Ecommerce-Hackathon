@@ -74,7 +74,7 @@ export const offerProductData = [
 const RightBlog = () => {
 
   return (
-    <div className='xl:-ml-20 lg:ml-10  xl:mr-36'>
+    <div className='xl:-ml-2 lg:ml-10  xl:mr-24 '>
       <h3 className='text-[22px] text-[#151875] lg:mt-0  mt-12'>Search</h3>
       <div  className='relative mt-4'>
         <div>

@@ -3,6 +3,7 @@ import { FaRegCalendarAlt } from "react-icons/fa"
 
 import { FaPencilAlt } from "react-icons/fa"
 import RightBlog from "../rightBlog/rightBlog"
+import Breadcrumb from "../../BreadCrumb"
 
 const blogPostData = [
     {
@@ -34,24 +35,13 @@ const BlogPage = () => {
   return (
     <>
  
-      <div className="bg-[#f5f5f8] h-[286px] max-w-[1750px] mx-auto p-9 pl-52 pt-16 mb-7">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-        Blog Page
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-          <span className="text-[#F24E1E] font-semibold">Blog Page</span>
-        </nav>
-      </div>  
+     
+ <Breadcrumb
+        mainHeading="Blog Page"
+        miniHeadings={['Home', 'pages', 'Blog Page']}
+      />
 
-      <div className="lg:flex ">
+      <div className="lg:flex mt-11">
     <div className='max-w-[1200px] mx-auto w-[60%]'>
       <div>
         {blogPostData.map((item , index) => {

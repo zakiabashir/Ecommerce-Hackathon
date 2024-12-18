@@ -22,9 +22,9 @@ export default function Home({Component, pageProps , products}:any) {
     // <Provider store={store}>
       <main>
         <HeroCarousel />
-        <FeaturedProducts product={products} />
-        <LatestProduct />
-        <ShopexOffers />
+           <FeaturedProducts product={products} />
+          <LatestProduct />
+         <ShopexOffers />
         <SecondHero />
         <TrendingProduct />
         <PreDiscount />

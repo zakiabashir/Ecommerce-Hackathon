@@ -12,6 +12,7 @@ import { clearCart } from '@/app/redux/cartSlice';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Breadcrumb from '../BreadCrumb';
 
 // Example of CartItem type definition
 interface CartItem {
@@ -75,25 +76,14 @@ const handleClick = () => {
 };
 
   return (
-    <div className="bg-[#F6F5FF] max-w-[1750px] mx-auto p-9  pt-16">
-    {/* Header Section */}
-    <h2 className="text-left text-[#151875] text-4xl lg:text-5xl font-bold mb-8">Shopping Cart</h2>
-  
-    {/* Cart Navigation */}
-    <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500 lg:pl-32">
-      <Link href="/" className="hover:text-gray-900 font-semibold">
-        Home
-      </Link>
-      <span>.</span>
-      <Link href="/pages" className="hover:text-gray-900 font-semibold">
-        Pages
-      </Link>
-      <span>.</span>
-      <span className="text-[#F24E1E] font-semibold">Shopping Cart</span>
-    </nav>
-  
+    <>
+    <Breadcrumb
+    mainHeading="Shopping Cart"
+    miniHeadings={['Home', 'pages', 'Shopping Cart']}
+  />
+    <div className="max-w-[1750px] mx-auto p-9 pb-9">
     {/* Main Content */}
-    <div className="flex flex-col lg:flex-row max-w-full mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+    <div className="flex flex-col lg:flex-row max-w-full mx-auto px-4 sm:px-6 lg:px-8 mt-5">
   
       {/* Left Section - Cart Items */}
       <div className="w-full">
@@ -211,10 +201,10 @@ const handleClick = () => {
   
       {/* Right Section - Cart Summary */}
       { hydrated && cart.items.length > 0 && (
-        <div className="flex flex-col lg:w-1/3 p-4 mt-10 lg:mt-0 py-10 lg:py-8 gap-16">
+        <div className="flex flex-col lg:w-1/3 p-4 mt-10 lg:mt-0 py-10 lg:py-8 gap-16 ">
           {/* Cart Total */}
-          <h2 className="text-2xl text-center font-semibold text-[#242896]">Cart Total</h2>
-          <div className="border p-4 flex flex-col gap-4 bg-[#FFF] rounded-lg w-full">
+          <h2 className="text-2xl text-center font-semibold text-[#242896] -mb-9 mt-8 ">Cart Total</h2>
+          <div className="border p-4 flex flex-col gap-4 rounded-lg w-full -mb-5 bg-[#E8E6F1]">
             <div className="flex justify-between">
               <span>Subtotal:</span>
               <span>${totalAmount.toFixed(2)}</span>
@@ -235,18 +225,18 @@ const handleClick = () => {
           </div>
   
           {/* Shipping Info */}
-          <div className="border p-4 flex flex-col gap-4 bg-gray-100 rounded-lg w-full">
-            <h2 className="text-xl text-center font-semibold text-[#1A0B5B]">Calculate Shipping </h2>
+            <h2 className="text-xl text-center font-semibold text-[#1A0B5B] -mb-10">Calculate Shipping </h2>
+          <div className="border p-4 flex flex-col gap-4 bg-[#E8E6F1] rounded-lg w-full">
             <div className="flex justify-between">
-              <input type="text" placeholder='Country' className='bg-gray-100 p-2 w-full' />
+              <input type="text" placeholder='Country' className='bg-[#E8E6F1] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex justify-between">
-              <input type="text" placeholder='Address' className='bg-gray-100 p-2 w-full' />
+              <input type="text" placeholder='Address' className='bg-[#E8E6F1] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex justify-between">
-              <input type="text" placeholder='Postal Code' className='bg-gray-100 p-2 w-full' />
+              <input type="text" placeholder='Postal Code' className='bg-[#E8E6F1] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex items-center">
@@ -257,6 +247,7 @@ const handleClick = () => {
       )}
     </div>
   </div>
+    </>
   
   
   );

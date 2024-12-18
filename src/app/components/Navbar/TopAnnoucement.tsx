@@ -77,7 +77,7 @@ const TopAnnouncement = () => {
           </Link>
   
           {/* Cart Link */}
-          <Link href="/pages/cart/cartPage" className="flex items-center gap-1 hover:text-gray-200 ml-2">
+          <Link href="/pages/cart" className="flex items-center gap-1 hover:text-gray-200 ml-2">
             <CartIcon />
           </Link>
         </div>

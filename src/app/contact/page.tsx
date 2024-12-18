@@ -1,26 +1,17 @@
 import Link from 'next/link';
 import React from 'react';
+import Breadcrumb from '../components/BreadCrumb';
 
 const Contact = () => {
   return (
-    <div className="container mx-auto ">
+    <>
           {/* Breadcrumb Section */}
-      <div className="bg-[#F6F5FF] h-[186px] w-full p-9 max-w-[1500px] pl-20 mx-auto">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-          Contact us
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span>.</span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            pages
-          </Link>
-          <span>.</span>
-          <span className="text-[#F24E1E] font-semibold capitalize">Contact us</span>
-        </nav>
-      </div>
+      
+        <Breadcrumb
+        mainHeading="Contact us"
+        miniHeadings={['Home', 'pages', 'Contact us']}
+      />
+        <div className="container mx-auto ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-20">
 
         {/* Left Section */}
@@ -87,6 +78,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

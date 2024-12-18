@@ -57,7 +57,7 @@ const TopCategories = () => {
               className="relative mx-4 flex-shrink-0 w-[50%] sm:w-[50%] md:w-[22%] md:pl-8 lg:w-[22%] group"
             >
               {/* Product Image */}
-              <div className="bg-white rounded-full p-6 hover:shadow-2xl hover:shadow-indigo-600 shadow-[9px_9px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
+              <div className="bg-[#F6F7FB] rounded-full p-6 hover:shadow-7xl hover:shadow-indigo-500 shadow-[-19px_26px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
                 <Link href={`/topCategories/${product.slug}`}>
                 <img
                   src={product.image}

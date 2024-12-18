@@ -5,6 +5,7 @@ import { Heart, Search, ShoppingCart, ChevronRight } from 'lucide-react'
 import Link from "next/link"
 import Image from "next/image"
 import Brands from "@/app/components/Home/brands"
+import Breadcrumb from "@/app/components/BreadCrumb"
 
 interface Product {
   id: number
@@ -198,28 +199,11 @@ export default function ShopGrid() {
     <div className="min-h-screen ">
       {/* Header Section */}
    
-     <div className="bg-[#F6F5FF] px-4 py-8 md:px-6 lg:px-8 h-[286px] flex items-center max-w-[1550px] mx-auto">
-        <div className="container mx-auto ml-20">
-          <h1 className="mb-4 text-4xl font-bold text-[#151875]">Shop Grid Default</h1>
-          <div className="flex items-center space-x-2 text-sm">
-            <Link href="/" className="text-[#151875] hover:text-[#fb2e86]">
-              Home
-            </Link>
-             <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-             <Link href="/pages/shop-grid-default" className="text-[#151875] hover:text-[#fb2e86]">
-              Pages
-            </Link> 
-            <span className="h-1 w-1 rounded-full bg-gray-400"></span> 
-            
-            {/* <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-            <Link href="/faq" className="text-[#151875] hover:text-[#fb2e86]">
-              Faq
-            </Link> */}
-            {/* <span className="h-1 w-1 rounded-full bg-gray-400"></span> */}
-            <span className="text-red-600">Shop Grid Default</span>
-          </div>
-        </div>
-      </div>
+   
+      <Breadcrumb
+        mainHeading="Shop Grid Default"
+        miniHeadings={['Home', 'pages', 'Shop Grid Default']}
+      />
 
 
       {/* Filter Section */}
@@ -316,6 +300,7 @@ export default function ShopGrid() {
           ))}
         </div>
       </div>
+      <Brands/>
     </div>
   )
 }

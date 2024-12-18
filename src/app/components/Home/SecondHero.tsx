@@ -5,7 +5,7 @@ import AddToCartButton from '../Cart/AddToCartButton';
 
 const SecondHero = () => {
   return (
-    <div className="bg-[#f2f1f9] max-w-[1920px] mx-auto py-20 w-full">
+    <div className="bg-[#F1F0FF] max-w-[1920px] mx-auto py-20 w-full">
   <div className="max-w-[1050px] mx-auto flex flex-col md:flex-row lg:flex-row items-center justify-between space-y-10 md:space-y-0 lg:space-y-0 md:space-x-10 lg:space-x-28 ">
     {/* Left Side (Image and Text) */}
     <div className="w-full max-w-[500px] h-[500px] md:h-[400px] lg:h-[500px]">

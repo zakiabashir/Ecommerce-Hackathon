@@ -1,25 +1,14 @@
 import Link from 'next/link';
+import Breadcrumb from './components/BreadCrumb';
 
 export default function NotFoundPage() {
   return (
     <div>
       {/* Breadcrumb Section */}
-      <div className="bg-[#F6F5FF] h-[186px] w-full p-9 max-w-[1500px] pl-20 mx-auto">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-          404 Error
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span>.</span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            pages
-          </Link>
-          <span>.</span>
-          <span className="text-[#F24E1E] font-semibold capitalize">404 Error</span>
-        </nav>
-      </div>
+    <Breadcrumb
+    mainHeading="404 Error"
+    miniHeadings={['Home', 'pages', '404 Error']}
+    />
 
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center max-w-[1500px] mx-auto py-16 space-y-2">

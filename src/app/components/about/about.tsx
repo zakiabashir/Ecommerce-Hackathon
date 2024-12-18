@@ -1,29 +1,19 @@
 'use client'
 import Link from 'next/link'; 
 import { useState } from 'react';
+import Breadcrumb from '../BreadCrumb';
 
 const About = ({ offers }: { offers: any }) => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
     <div>
-      {/* Breadcrumb Navbar */}
-      <div className="bg-[#F6F5FF] h-[286px] w-full p-9 max-w-[1500px] pl-20 mx-auto">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-         About Us
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span>.</span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span>.</span>
-          <span className="text-[#F24E1E] font-semibold">About Us</span>
-        </nav>
-      </div>
+    
+      {/* Breadcrumb */}
+      <Breadcrumb
+        mainHeading="About us"
+        miniHeadings={['Home', 'pages', 'About us']}
+      />
 
       {/* Main Content Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start py-11 max-w-[1200px] mx-auto px-4 lg:px-0">

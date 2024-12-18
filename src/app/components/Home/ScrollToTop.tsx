@@ -11,7 +11,7 @@ const ScrollToTop = () => {
     // If we're already at the top, no need to continue
     if (c > 0) {
       window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, c - c / 29);
+      window.scrollTo(0, c - c / 19);
     }
   };
 
