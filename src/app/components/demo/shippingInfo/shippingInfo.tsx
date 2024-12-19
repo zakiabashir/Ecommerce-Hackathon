@@ -27,13 +27,13 @@ const ShippingInfo = () => {
         </nav>
       </div>
 
-      <div className='mt-11 p-4 pb-16 bg-[#F6F5FF] py-11 lg:ml-20 mr-9'>
+      <div className='mt-11 p-4 pb-16 bg-[#F6F5FF] py-11 lg:ml-20 sm:mr-9'>
         {/* Contact Information Section */}
         <div className='lg:flex justify-between items-center'>
           <h3 className='text-[#151875] mt-6 md:mt-9 text-lg md:text-xl font-semibold'>
             Contact Information
           </h3>
-          <div className='flex mt-4 md:mt-0'>
+          <div className='flex mt-4 md:mt-0 '>
             <h6 className='text-[14px] text-gray-400 pr-2'>Already have an account?</h6>
             <h6 className='text-[14px] text-gray-400 pr-2'>Log in</h6>
           </div>

@@ -8,7 +8,7 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ mainHeading, miniHeadings = [] }) => {
   return (
-    <div className="max-w-[1920px] mx-auto h-[286px] bg-[#F6F5FF] flex flex-col justify-center pl-16 sm:pl-24 md:pl-36 lg:pl-48">
+    <div className="max-w-[1920px] mx-auto h-[286px] bg-[#F6F5FF] flex flex-col justify-center pl-9 sm:pl-24 md:pl-36 lg:pl-48">
       <h1 className="text-[#101750] text-[36px] lg:text-[42px] font-bold leading-[42.19px] mb-3">
         {mainHeading}
       </h1>

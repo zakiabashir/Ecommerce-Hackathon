@@ -8,23 +8,48 @@ import Link from 'next/link';
 import ZoomModal from './ZoomModal';
 import products from './DataFeatureProduct';
 import AddToCartButton from '../Cart/AddToCartButton';
+import { useDispatch } from 'react-redux';
+import { addToWishlist } from '../../wishlistRedux/wishlistSlice';
+import WishlistButton from '../wishlist/wishListButton';
 
 
-const FeaturedProduct = ({ product }: { product: { id: number; title: string; price: number } }) => {
-  
+const FeaturedProduct = ({ product }: { 
+  product: { 
+    id: any;
+    title: string; 
+    price: number;
+    images: { [key: string]: string };
+    colors: string[];
+  } 
+}) => {
+  // wishlist
+  const dispatch = useDispatch();
+
+  const handleAddToWishlist = (product: any) => {
+    if (!product) return;
+    
+    console.log('Adding to wishlist:', product);
+    dispatch(addToWishlist({ 
+      id: product.id.toString(), 
+      title: product.title, 
+      price: product.price, 
+      imageUrl: product.images[selectedColors[product.id]] 
+    }));
+  };
+// zoom
   const [zoomedProduct, setZoomedProduct] = useState<any>(null); // New state for zoomed product
   const handleZoomClick = (product: any) => {
     const selectedColor = selectedColors[product.id]; // Get the currently selected color
     const imageToZoom = product.images[selectedColor]; // Get the corresponding image for that color
     setZoomedProduct({ ...product, image: imageToZoom, selectedColor }); // Set the product with the correct image and selected color
   };
-  
+  // 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>(
     products.reduce((acc, product) => ({ ...acc, [product.id]: product.colors[0] }), {})
   );
-
+// color
   const handleColorSelect = (productId: number, color: string) => {
     setSelectedColors((prev) => ({ ...prev, [productId]: color }));
   };
@@ -110,12 +135,24 @@ const FeaturedProduct = ({ product }: { product: { id: number; title: string; pr
     </div>
 
   {/* </button> */}
-  <button
-    className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white transition-colors duration-100 ease-linear"
-  >
-    <IoHeartOutline size={20} className="text-[#2F1AC4] hover:text-white" />
-  </button>
-  <button
+  <div className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white text-[#2F1AC4] transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
+  {/* WishlistButton Component */}
+  <WishlistButton
+    showText={false}
+    product={{
+      id: product.id.toString(),
+      title: product.title,
+      price: product.price,
+      imageUrl: product.images[selectedColors[product.id]],
+      name: product.title,
+      colors: product.colors,
+      size: product.size,
+    }}
+    selectedColor={selectedColors[product.id]}
+  />
+</div>
+
+<button
     className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white transition-colors duration-100 ease-linear"
     onClick={() => handleZoomClick(product)} // Set the product for zoom
   >

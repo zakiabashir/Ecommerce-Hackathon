@@ -48,8 +48,8 @@ const ShopexOffers = () => {
     const deltaX = (clientX - centerX) / (width / 2); // Adjusted for better sensitivity
     const deltaY = (clientY - centerY) / (height / 2); // Adjusted for better sensitivity
 
-    const rotateX = deltaY * -30; // Adjust the value for tilt sensitivity
-    const rotateY = deltaX * 30; // Adjust the value for tilt sensitivity
+    const rotateX = deltaY * -40; // Adjust the value for tilt sensitivity
+    const rotateY = deltaX * 40; // Adjust the value for tilt sensitivity
 
     // Update the tilt style for the specific card
     setTiltStyles((prevStyles) => ({

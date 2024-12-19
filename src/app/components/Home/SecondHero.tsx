@@ -17,7 +17,7 @@ const SecondHero = () => {
     </div>
     
     {/* Right Side (Text) */}
-    <div className="flex flex-col items-start ml-0 md:ml-10 lg:ml-16 p-4">
+    <div className="flex flex-col items-start ml-0 md:ml-10 lg:ml-16 p-7 sm:p-4">
       <h2 className="text-[#151875] text-2xl md:text-3xl lg:text-5xl -mt-16 font-bold mb-6">
         Unique Features of Latest & Trending Products
       </h2>

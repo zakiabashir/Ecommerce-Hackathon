@@ -205,14 +205,12 @@ const ShopLeft = () => {
 
 
   return (
-    <div className='max-w-[1650px] mx-auto'>
-    <div className='bg-shade2'>
-    
+    <>
     <Breadcrumb
         mainHeading="Shop Left Sidebar"
         miniHeadings={['Home', 'pages', 'Shop Left Sidebar']}
-      />
-    </div>
+        />
+        
   
     <div className='max-w-[1650px] mx-auto px-4 lg:px-8 gap-11 lg:gap-16'>
       <div className="md:container md:px-[1.3rem] px-[.8rem] md:pt-[98px] pt-12 flex items-center justify-between flex-wrap">
@@ -375,11 +373,13 @@ const ShopLeft = () => {
                   <div className='flex items-center gap-3'>
                     <h4 className='text-[#151875]'>{item.discountPrice}</h4>
                     <h4 className='text-pink-500 line-through'>{item.originalPrice}</h4>
-                    <div className='flex gap-1'>
-                      {[...Array(5)].map((_, i) => (
-                        <FaStar key={i} className="text-yellow-500" />
-                      ))}
-                    </div>
+                    <div className='hidden sm:flex   gap-1'>
+  {[...Array(5)].map((_, i) => (
+    <FaStar key={i} className="text-yellow-500" />
+  ))}
+</div>
+
+
                   </div>
                   <p className='mt-3 md:w-[70%] text-gray-500'>{item.des}</p>
                   <div className='flex items-center gap-4'>
@@ -402,7 +402,7 @@ const ShopLeft = () => {
         <img src="/brand1.png" alt="" />
       </div>
     </div>
-  </div>
+  </>
   )
 }
 

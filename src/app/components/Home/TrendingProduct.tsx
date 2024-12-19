@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ZoomModal from './ZoomModal';
 import AddToCartButton from '../Cart/AddToCartButton';
+import WishlistButton from '../wishlist/wishListButton';
 
 const TrendingProduct = () => {
   const products = [
@@ -73,10 +74,22 @@ const TrendingProduct = () => {
                 showText={false}
               />
             </div>
-            <div className="w-10 h-10 text-indigo-500 rounded-full flex justify-center items-center group-hover:text-indigo-700 transition-colors duration-300">
-              <FaHeart className="text-xl cursor-pointer" />
-            </div>
-            <div className="w-7 h-7 text-indigo-500 rounded-full flex justify-center items-center border-2 border-indigo-500 group-hover:border-indigo-700 group-hover:text-indigo-700 hover:scale-110 transition-all duration-300">
+            <div className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white text-[#2F1AC4] transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
+  {/* WishlistButton Component */}
+  <WishlistButton
+    showText={false}
+    product={{
+      id: product.id.toString(),
+      title: product.title,
+      price: product.price,
+      imageUrl: product.image,
+      name: product.title,
+      // colors: product.colors,
+      // size: product.size,
+    }}
+      // selectedColor={product.id}
+  />
+</div>            <div className="w-7 h-7 text-indigo-500 rounded-full flex justify-center items-center border-2 border-indigo-500 group-hover:border-indigo-700 group-hover:text-indigo-700 hover:scale-110 transition-all duration-300">
               <FaSearchPlus
                 className="text-lg cursor-pointer"
                 onClick={() => setZoomedProduct(product)}

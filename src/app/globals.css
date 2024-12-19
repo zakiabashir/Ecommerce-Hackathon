@@ -204,3 +204,23 @@
     background: linear-gradient(90deg, #2F1AC4, #FB2E86);
   }
 }
+
+/* for wishlist */
+.wishlist-page {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.wishlist-page h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #151875;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+

@@ -50,7 +50,7 @@ const BlogPage = () => {
                     <div>
                         <img src={item.img} alt="" />
                     </div>
-    <div className="flex gap-6 mt-7">
+    <div className="flex flex-col sm:flex-row gap-6 mt-7">
       {/* Red Pencil Icon with Text */}
       <div className="flex items-center gap-2">
         {/* Pencil Icon */}

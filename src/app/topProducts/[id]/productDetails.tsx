@@ -8,6 +8,7 @@ import Link from "next/link";
 import AddToCartButton from "@/app/components/Cart/AddToCartButton";
 import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
 import Breadcrumb from "@/app/components/BreadCrumb";
+import WishlistButton from "@/app/components/wishlist/wishListButton";
 
 interface ProductDetailsProps {
   product: {
@@ -146,9 +147,22 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     
     />
    
-      <button className="p-2 rounded-full">
-        <FontAwesomeIcon icon={faHeart} className="text-[#151875]" />
-      </button>
+   <div className="p-1 hover:scale-110  text-[#181575] transition-colors duration-300 ease-linear w-10 h-10 flex justify-center items-center">
+  {/* WishlistButton Component */}
+  <WishlistButton
+    showText={true}
+    product={{
+      id: product.id.toString(),
+      title: product.title,
+      price: product.price,
+      imageUrl: product.images[selectedColor],
+      name: product.title,
+      colors: product.colors,
+      size: product.size,
+    }}
+      selectedColor={product.id.toString()}
+  />
+</div>
     </div>
 
     {/* Categories */}

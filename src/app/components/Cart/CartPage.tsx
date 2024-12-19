@@ -13,6 +13,8 @@ import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Breadcrumb from '../BreadCrumb';
+import { useMediaQuery } from 'react-responsive';
+
 
 // Example of CartItem type definition
 interface CartItem {
@@ -28,6 +30,7 @@ interface CartItem {
 
   }
 const CartPage = () => {
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 640px)' });
 
   const [cartItems, setCartItems] = useState<any[]>([]); // Default to an empty array
   const [hydrated, setHydrated] = useState(false);
@@ -107,93 +110,84 @@ const handleClick = () => {
           </div>
         ) : (
           <>
-            <div className="lg:w- p-4 mt-10 lg:mt-0 py-10 lg:py-20">
-              {/* Headings */}
-              <div className="grid grid-cols-4 gap-4 mb-4 text-center sm:text-left">
-                <h2 className="text-xl font-bold text-[#151875]">Product</h2>
-                <h4 className="text-lg font-semibold text-[#151875]">Price</h4>
-                <h4 className="text-lg font-semibold text-[#151875]">Quantity</h4>
-                <h4 className="text-lg font-semibold text-[#151875]">Total</h4>
-              </div>
-  
-              {/* Cart Items */}
-              {cart.items.map((item: any) => (
-                <div
-                  key={item.id}
-                  className="border p-4 mb-4 grid grid-cols-4 gap-4 items-center text-center sm:text-left"
-                >
-                  {/* Product Info */}
-                  <div className="flex items-center">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.name}
-                      className="w-20 h-20 mr-4"
-                    />
-                    <div>
-                    {item.title ? (
-                        <h3 className="text-[17px] text-[#151875] font-semibold">{item.title}</h3>
-                      ) : (
-                        <h3 className="text-[17px] text-[#151875] font-semibold">{item.name}</h3>
-                      )}
-                      {item.size && (
-                        <p className="text-sm text-[#151875]">Size: {item.size}</p>
-                      )}
-                      {item.colors && item.colors.length > 0 && (
-                        <p className="text-sm text-[#151875]">
-                          Colors: {item.colors.join(", ")}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-  
-                  {/* Price */}
-                  <p className="text-lg">${item.price}</p>
-  
-                  {/* Quantity Controls */}
-                  <div className="flex items-center justify-center sm:justify-start">
-                    <button
-                      onClick={() =>
-                        dispatch({ type: "cart/decreaseQuantity", payload: item.id })
-                      }
-                      className="border px-2"
-                    >
-                      -
-                    </button>
-                    <span className="mx-2">{item.quantity}</span>
-                    <button
-                      onClick={() =>
-                        dispatch({ type: "cart/increaseQuantity", payload: item.id })
-                      }
-                      className="border px-2"
-                    >
-                      +
-                    </button>
-                  </div>
-  
-                  {/* Total Price */}
-                  <p className="text-lg">${(item.quantity * item.price).toFixed(2)}</p>
-                </div>
-              ))}
-  
-              {/* Cart Actions */}
-              <div className="flex justify-between mt-4">
-                  {/* <p>{product.name}</p> */}
-      {/* <p>Quantity: {product.quantity}</p> */}
-  <button className='bg-pink-500 text-white px-4 py-2 rounded-lg'
-     onClick={handleClick} // Handle click to show toast
-    
-  >
-    Update Cart
-    </button>
+         <div className="p-4 mt-10 py-10">
+      {/* Conditionally render headings based on screen size */}
+      {!isSmallScreen && (
+        <div className="grid grid-cols-4 gap-4 mb-4 text-center sm:text-left">
+          <h2 className="text-xl font-bold text-[#151875]">Product</h2>
+          <h4 className="text-lg font-semibold text-[#151875] sm:ml-16 xl:ml-10 ">Price</h4>
+          <h4 className="text-lg font-semibold text-[#151875]">Quantity</h4>
+          <h4 className="text-lg font-semibold text-[#151875]">Total</h4>
+        </div>
+      )}
 
-                <button
-                  onClick={() => dispatch(clearCart())}
-                  className="bg-pink-500 text-white px-4 py-2 rounded-lg"
-                  >
-                  Clear Cart
-                </button>
-                  </div>
-              </div>
+      {/* Cart Items */}
+      {cart.items.map((item:any) => (
+        <div
+          key={item.id}
+          className="border p-4 mb-4 grid grid-cols-1 sm:grid-cols-4 md:gap-4 items-center text-center sm:text-left"
+        >
+          {/* Product Info */}
+          <div className="flex items-center">
+            <img
+              src={item.imageUrl}
+              alt={item.name}
+              className="w-20 h-20 mr-4"
+            />
+            <div>
+              <h3 className="text-[17px] text-[#151875] font-semibold">
+                {item.title || item.name}
+              </h3>
+              {item.size && (
+                <p className="text-sm text-[#151875]">Size: {item.size}</p>
+              )}
+              {item.colors && item.colors.length > 0 && (
+                <p className="text-sm text-[#151875]">
+                  Colors: {item.colors.join(", ")}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Price */}
+          <p className="text-lg sm:ml-16 xl:ml-10 ">${item.price}</p>
+
+          {/* Quantity Controls */}
+          <div className="flex items-center justify-center sm:justify-start ">
+            <button
+              onClick={() => dispatch({ type: "cart/decreaseQuantity", payload: item.id })}
+              className="border px-2"
+            >
+              –
+            </button>
+            <span className="mx-2">{item.quantity}</span>
+            <button
+              onClick={() => dispatch({ type: "cart/increaseQuantity", payload: item.id })}
+              className="border px-2"
+            >
+              +
+            </button>
+          </div>
+
+          {/* Total Price */}
+          <p className="text-lg">${(item.quantity * item.price).toFixed(2)}</p>
+        </div>
+      ))}
+
+      {/* Cart Actions */}
+      <div className="flex flex-col sm:flex-row justify-between mt-4">
+        <button className='bg-pink-500 text-white px-4 py-2 rounded-lg mb-2 sm:mb-0'>
+          Update Cart
+        </button>
+
+        <button
+          onClick={() => dispatch(clearCart())}
+          className="bg-pink-500 text-white px-4 py-2 rounded-lg"
+        >
+          Clear Cart
+        </button>
+      </div>
+    </div>
             {/* </div> */}
           </>
         )}

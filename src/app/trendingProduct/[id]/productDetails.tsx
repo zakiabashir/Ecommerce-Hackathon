@@ -8,6 +8,7 @@ import Link from "next/link";
 import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
 import AddToCartButton from "@/app/components/Cart/AddToCartButton";
 import Breadcrumb from "@/app/components/BreadCrumb";
+import WishlistButton from "@/app/components/wishlist/wishListButton";
 
 interface ProductDetailsProps {
   product: {
@@ -142,9 +143,23 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
     />
     
       {/* <button className="text-[#0d0f43] font-[600] px-4 py-2 rounded-md">Add to Cart</button> */}
-      <button className="p-2 rounded-full">
-        <FontAwesomeIcon icon={faHeart} className="text-[#151875]" />
-      </button>
+     
+   <div className="p-1 hover:scale-110  text-[#151875] transition-colors duration-300 ease-linear w-10 h-10 flex justify-center items-center">
+  {/* WishlistButton Component */}
+  <WishlistButton
+    showText={true}
+    product={{
+      id: product.id.toString(),
+      title: product.title,
+      price: product.price,
+      imageUrl: product.images[selectedColor],
+      name: product.title,
+      colors: product.colors,
+      size: product.size,
+    }}
+      selectedColor={product.id.toString()}
+  />
+</div>
     </div>
 
     {/* Categories */}

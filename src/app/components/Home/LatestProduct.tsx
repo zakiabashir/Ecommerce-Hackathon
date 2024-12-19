@@ -8,6 +8,7 @@ import { IoCartOutline, IoHeartOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import ZoomModal from './ZoomModal';
 import AddToCartButton from '../Cart/AddToCartButton';
+import WishlistButton from '../wishlist/wishListButton';
 
 const product = [
   // Sample product data
@@ -192,9 +193,22 @@ const LatestProduct = () => {
     />
     </div>
               {/* </button> */}
-              <button className="text-[#3F509E] bg-transparent px-2 py-2 h-11 w-11 flex items-center justify-center">
-                <IoHeartOutline className='w-6 h-6 mb-1' />
-              </button>
+              <div className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white text-[#2F1AC4] transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
+  {/* WishlistButton Component */}
+  <WishlistButton
+    showText={false}
+    product={{
+      id: product.id.toString(),
+      title: product.title,
+      price: product.price,
+      imageUrl: product.image,
+      name: product.title,
+      colors: product.colors,
+      size: product.size,
+    }}
+      selectedColor={product.id}
+  />
+</div>
               <button className="text-[#3F509E] hover:text-white hover:bg-[#3F509E] hover:rounded-full hover:scale-110 transition-all duration-300 bg-transparent px-2 py-2 h-11 w-11 flex items-center justify-center">
                 <FontAwesomeIcon icon={faSearch} className='w-5 h-5' onClick={() => handleZoomClick(product)} /> 
               </button>

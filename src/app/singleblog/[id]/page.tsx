@@ -173,7 +173,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
             </div>
 
             {/* Meta Information */}
-            <div className="flex gap-6">
+            <div className="flex flex-col sm:flex-row gap-6">
               <div className="flex items-center gap-2">
                 <div className="text-red-500">
                   <PencilIcon size={24} />
@@ -298,12 +298,11 @@ export default function SingleBlog({ params }: SingleBlogProps) {
             </div>
 
            
-{/* Navigation */}
-<div className="w-full bg-[#F7F8FB] text-gray-500 p-4 rounded-lg flex justify-between items-center">
+{/* Navigation */}<div className="w-full bg-[#F7F8FB] text-gray-500 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
   {/* Previous Button */}
   <Button 
     variant="outline" 
-    className="flex items-center  bg-[#F7F8FB] gap-2 w-full justify-start border-none rounded-md py-2 px-4"
+    className="flex items-center bg-[#F7F8FB] gap-2 w-full sm:w-auto justify-start border-none rounded-md py-2 px-4"
   >
     <span className="text-lg">←</span>
     <span className="text-sm font-semibold">Previous Post</span>
@@ -312,7 +311,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
   {/* Next Button */}
   <Button 
     variant="outline" 
-    className="flex items-center  bg-[#F7F8FB]  gap-2 w-full justify-end border-none rounded-md py-2 px-4"
+    className="flex items-center bg-[#F7F8FB] gap-2 w-full sm:w-auto justify-end border-none rounded-md py-2 px-4"
   >
     <span className="text-sm font-semibold">Next Post</span>
     <span className="text-lg">→</span> 
@@ -322,101 +321,100 @@ export default function SingleBlog({ params }: SingleBlogProps) {
             <div className="pl-10 p-7 py-24">
             <div className="space-y-8">
       {/* Recent Posts Cards */}
-      <div className="space-y-4 ">
-        <div className="flex gap-4 p-4 border rounded-lg bg-[#F7F8FB] shadow-xl shadow-gray-500">
-          <div className="relative w-28 h-28">
-            <Image
-              src="/blogsm1.png"
-              alt="Recent post"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex-1">
-
-            <div className='flex gap-11 items-center mt-5'>
-            <h3 className="font-semibold text-[#151875]  mb-1">Sapien ac </h3>
-            <p className="text-sm text-gray-500 mb-2">Jan 09 2023</p>
-            </div>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-
-        <div className="flex gap-4 p-4  border rounded-lg bg-[#F7F8FB] shadow-md shadow-gray-500">
-          <div className="relative w-28 h-28">
-            <Image
-              src="/blogsm2.png"
-              alt="Recent post"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex-1 mt-5">
-            <h3 className="font-semibold text-[#151875] mb-1">Augue cenas</h3>
-            <p className="text-sm text-gray-500 mb-2">Aug 18 2020</p>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
+      <div className="space-y-4">
+  {/* Card 1 */}
+  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] shadow-xl shadow-gray-500">
+    <div className="relative w-full sm:w-28 h-28 mx-auto sm:mx-0">
+      <Image
+        src="/blogsm1.png"
+        alt="Recent post"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="flex-1 text-center sm:text-left">
+      <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start mt-3 sm:mt-5">
+        <h3 className="font-semibold text-[#151875] mb-1">Sapien ac</h3>
+        <p className="text-sm text-gray-500 mb-2 sm:mb-0">Jan 09 2023</p>
       </div>
+      <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
 
-      {/* Comment Form */}
-      <form className="space-y-6 py-20">
-  <div className="grid grid-cols-2 gap-4">
+  {/* Card 2 */}
+  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] shadow-md shadow-gray-500">
+    <div className="relative w-full sm:w-28 h-28 mx-auto sm:mx-0">
+      <Image
+        src="/blogsm2.png"
+        alt="Recent post"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="flex-1 text-center sm:text-left">
+      <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start mt-3 sm:mt-5">
+        <h3 className="font-semibold text-[#151875] mb-1">Augue cenas</h3>
+        <p className="text-sm text-gray-500 mb-2 sm:mb-0">Aug 18 2020</p>
+      </div>
+      <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+</div>
+
+
+    {/* Comment Form */}
+<form className="space-y-6 py-20 px-4 sm:px-0">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
     {/* Name Input with Icon */}
-    <div className="flex items-center p-3 border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
-      <span className="text-[#151875] mr-2">
+    <div className="flex items-center p-3 w-auto border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
+      <span className="text-[#151875]  mr-2">
         <IoPersonOutline size={20} /> {/* Name Icon */}
       </span>
       <input
         type="text"
         placeholder="Your Name*"
-        className="flex-1 focus:outline-none focus:ring-0"
+        className="flex-1 focus:outline-none focus:ring-0 text-xs sm:text-base"
         required
       />
     </div>
 
     {/* Email Input with Icon */}
-    <div className="flex items-center p-3 border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
+    <div className="flex items-center p-3 border-[1px] w-auto border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
       <span className="text-[#151875] mr-2">
         <IoMail size={16} /> {/* Email Icon */}
       </span>
       <input
         type="email"
         placeholder="Write Your Email*"
-        className="flex-1 focus:outline-none focus:ring-0"
+        className="flex-1 focus:outline-none focus:ring-0 text-xs sm:text-base"
         required
       />
     </div>
-  </div>{/* Comment Textarea with Icon */}
-  
-  <div className="flex items-start p-3 border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
-  <span className="text-[#151875] mr-2">
-    <FaRegComment size={16} className="mt-1"/> {/* Comment Icon */}
-  </span>
-  <textarea
-    placeholder="Write your comment*"
-    rows={6}
-    className="flex-1 focus:outline-none resize-none"
-    required
-  />
-</div>
+  </div>
 
-
+  {/* Comment Textarea with Icon */}
+  <div className="flex items-start p-3 w-auto border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
+    <span className="text-[#151875] mr-2">
+      <FaRegComment size={16} className="mt-1" /> {/* Comment Icon */}
+    </span>
+    <textarea
+      placeholder="Write your comment*"
+      rows={6}
+      className="flex-1 focus:outline-none resize-none text-xs sm:text-base"
+      required
+    />
+  </div>
 
   {/* Checkbox */}
   <div className="flex items-start gap-2">
-    <input
-      type="checkbox"
-      id="saveInfo"
-      className="mt-1"
-    />
+    <input type="checkbox" id="saveInfo" className="mt-1" />
     <label htmlFor="saveInfo" className="text-sm text-gray-400">
       Save my name, email, and website in this browser for the next time I comment.
     </label>
   </div>
 
   {/* Continue Shopping Button */}
-  <Button className="w-full bg-[#FB2E86] hover:bg-pink-600">
+  <Button className="w-full bg-[#FB2E86] hover:bg-pink-600 ">
     Continue Shopping
   </Button>
 </form>

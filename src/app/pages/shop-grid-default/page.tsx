@@ -241,7 +241,7 @@ export default function ShopGrid() {
   {/* Grid View Icon */}
   View:
   <button
-    className="p-2 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors"
+    className="p-2 m-3 sm:m-2 md:m-1 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors"
     aria-label="Grid View"
     >
     <svg

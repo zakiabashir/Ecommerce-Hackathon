@@ -46,6 +46,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 - `@reduxjs/toolkit react-redux`
 - `react-toastify`
 - `locomotive-scroll`
+- `next-auth`
 
 ## How to Run Locally
 

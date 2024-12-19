@@ -54,14 +54,14 @@ const HeroCarousel = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselData.length);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
     <>
-    <div className="bg-[#F2F0FF] h-auto lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
+    <div className="bg-[#F2F0FF] h-[1000px] md:h-auto lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
     <div className="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center px-4 lg:px-8 contrast-125">
       {/* Left Section */}
       <div className="w-full lg:w-[60%] relative z-10 space-y-3 space-x-16 text-center lg:text-left lg:ml-11">
@@ -114,7 +114,7 @@ const HeroCarousel = () => {
     </div>
   
     {/* Carousel Navigation */}
-    <div className="absolute bottom-10 left-1/2  -mb-6  pt-7 transform -translate-x-1/2 flex gap-4 lg:p-5 z-[999]">
+    <div className="absolute bottom-10 left-1/2  -mb-6  pt-7 transform -translate-x-1/2 flex gap-4 lg:p-5 z-[9]">
       {carouselData.map((_, index) => (
         <button
           key={index}

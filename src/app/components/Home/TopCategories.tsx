@@ -48,7 +48,7 @@ const TopCategories = () => {
         Top Categories
       </h2>
       {/* Product Container */}
-      <div className="flex justify-center overflow-x-auto scrollbar-hide px-4 py-4">
+      <div className="flex justify-center overflow-x-auto scrollbar-hide px-4 py-4 smooth-scroll">
         {products
           .slice(activeIndex * itemsPerPage, (activeIndex + 1) * itemsPerPage)
           .map((product) => (
