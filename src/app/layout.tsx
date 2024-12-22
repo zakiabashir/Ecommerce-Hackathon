@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 import Providers from "./redux/Providers";
 import { ThemeProvider } from "./components/Theme/ThemeToggler";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+       <head>
+        {/* Chatbot Configuration Script */}
+        <Script
+          id="chatbot-config"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.embeddedChatbotConfig = {
+                chatbotId: "wHot_OHfV5x8xwwbA8mZy",
+                domain: "www.chatbase.co"
+              };
+            `,
+          }}
+        />
+        {/* Chatbot Embed Script */}
+        <Script
+          src="https://www.chatbase.co/embed.min.js"
+          data-chatbot-id="wHot_OHfV5x8xwwbA8mZy"
+          data-domain="www.chatbase.co"
+          defer
+        />
+      </head>
       <body className={inter.className}>
         <Providers>
         <ThemeProvider

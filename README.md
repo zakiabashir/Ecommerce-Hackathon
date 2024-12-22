@@ -84,3 +84,5 @@ On the homepage, each product card displays three colors and three images as sel
   - Once items are added, the cart will automatically update the **total price** and **item count** based on the selections made. The cart will reflect the **specific image and color** of each product added.
 
 This system ensures that the correct product variations (color and image) are consistently shown across all stages of the purchase process, from product selection to checkout.
+ - dark theme toggle effect 
+ 

@@ -1,24 +1,30 @@
-'use client'
-
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
 
   // Function to toggle theme between light and dark
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+    setTheme(theme === "light" ? "dark" : "light")
   }
+
+  // Set default theme to light if it's the first visit
+  useEffect(() => {
+    if (!theme) {
+      setTheme("light")
+    }
+  }, [theme, setTheme])
 
   return (
     <Button
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="relative flex items-center justify-center"  // Flexbox for centering
+      className="relative flex items-center justify-center"
     >
       {/* Sun icon (visible when dark theme is active) */}
       <Sun 

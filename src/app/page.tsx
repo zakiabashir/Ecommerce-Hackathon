@@ -33,7 +33,7 @@ export default function Home({Component, pageProps , products}:any) {
         <NewsLetter />
         <Brands />
         <BlogComponent />
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
       </main>
     // </Provider>
   );
