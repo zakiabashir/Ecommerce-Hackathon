@@ -44,7 +44,7 @@ const TopCategories = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 mb-9 mt-20">
-      <h2 className="text-center text-[#151875] text-5xl font-bold mb-8">
+      <h2 className="text-center text-[#151875] dark:text-white text-5xl font-bold mb-8">
         Top Categories
       </h2>
       {/* Product Container */}
@@ -57,12 +57,13 @@ const TopCategories = () => {
               className="relative mx-4 flex-shrink-0 w-[50%] sm:w-[50%] md:w-[22%] md:pl-8 lg:w-[22%] group"
             >
               {/* Product Image */}
-              <div className="bg-[#F6F7FB] rounded-full p-6 hover:shadow-7xl hover:shadow-indigo-500 shadow-[-19px_26px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
+              <div className="bg-[#F6F7FB] dark:bg-[#484848] rounded-full p-6 hover:shadow-7xl hover:shadow-indigo-500 dark:hover:shadow-indigo-950/50 shadow-[-19px_26px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
                 <Link href={`/topCategories/${product.slug}`}>
                 <img
                   src={product.image}
                   alt={product.title}
                   className="rounded-2xl w-full h-auto object-cover"
+                  
                   />
                   </Link>
                 {/* Add to Cart Button - Visible on hover */}

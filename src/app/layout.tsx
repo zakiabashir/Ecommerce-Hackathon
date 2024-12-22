@@ -5,6 +5,7 @@ import TopAnnouncement from "@/app/components/Navbar/TopAnnouncement";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 import Providers from "./redux/Providers";
+import { ThemeProvider } from "./components/Theme/ThemeToggler";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,10 +23,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
+        <ThemeProvider
+            attribute="class"
+            // defaultTheme="system"
+            // enableSystem
+            // disableTransiti  onOnChange
+          >
           <TopAnnouncement />
           <Navbar />
           {children}
           <Footer />
+        </ThemeProvider>
         </Providers>
       </body>
     </html>

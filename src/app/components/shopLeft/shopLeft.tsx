@@ -8,6 +8,7 @@ import { CgShoppingCart } from 'react-icons/cg'
 import { HiCheck } from 'react-icons/hi'
 import { BiSearch } from 'react-icons/bi'
 import Breadcrumb from '../BreadCrumb'
+import Brands from '../Home/brands'
 
 
 const shopLeftData = [
@@ -215,24 +216,32 @@ const ShopLeft = () => {
     <div className='max-w-[1650px] mx-auto px-4 lg:px-8 gap-11 lg:gap-16'>
       <div className="md:container md:px-[1.3rem] px-[.8rem] md:pt-[98px] pt-12 flex items-center justify-between flex-wrap">
         <div className='flex flex-col'>
-          <h2 className='text-[#151875] text-xl lg:text-3xl font-bold'>Ecommerce Accessories & Fashion Items</h2>
-          <h4 className='text-gray-500'>About 9,620 results (0.62 seconds)</h4>
+          <h2 className='text-[#151875] text-xl lg:text-3xl font-bold dark:text-white'>Ecommerce Accessories & Fashion Items</h2>
+          <h4 className='text-gray-500 dark:text-white/70'>About 9,620 results (0.62 seconds)</h4>
         </div>
         <div className='hidden lg:flex gap-9'>
           <div className='flex gap-2'>
-            <h3 className='text-[#151875] text-base font-normal'>Per Page: </h3>
-            <h3 className='border rounded-sm border-indigo-400 py-4 px-8'></h3>
+            <h3 className='text-[#151875] text-base font-normal mt-2  dark:text-white/70'>Per Page: </h3>
+            <h3 className='border rounded-sm border-indigo-400 dark:border-white/70 py-4 px-8'></h3>
           </div>
           <div className='flex gap-2'>
-            <h3 className='text-[#151875] text-base font-normal'>Sort By: </h3>
-            <h4 className='text-[#151875] border rounded-sm border-primary py-1 px-3 flex items-center gap-1'>
-              Best Match <span><BsChevronDown /></span>
-            </h4>
+            <h3 className='text-[#151875] text-base font-normal mt-2 dark:text-white/70'>Sort By: </h3>
+            {/* <h4 className='text-[#151875] border rounded-sm border-indigo-400 dark:border-white/70 py-1 px-3 flex items-center gap-1'> */}
+            <select
+                id="sort-by"
+                className="rounded-sm border border-gray-300 px-2 py-1 text-sm text-[#151875] dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white cursor-pointer"
+              >
+                <option>Best Match</option>
+                <option>Price Low to High</option>
+                <option>Price High to Low</option>
+                <option>Newest First</option>
+              </select>
+            {/* </h4> */}
           </div>
           <div className='flex gap-8 items-center'>
-            <h3 className='text-[#151875] text-base font-normal'>View:</h3>
-            <FaListUl className='text-[#151875]' />
-            <BsFillGridFill className='text-[#151875]' />
+            <h3 className='text-[#151875] text-base font-normal dark:text-white/70'>View:</h3>
+            <FaListUl className='text-[#151875] dark:text-white/70' />
+            <BsFillGridFill className='text-[#151875] dark:text-white/70' />
           </div>
         </div>
       </div>
@@ -241,12 +250,12 @@ const ShopLeft = () => {
         <div className='w-full md:w-[350px]'>
           {/* Product Brand */}
           <div>
-            <h3 className='text-[#151875] underline underline-offset-4 font-semibold pb-4 text-xl'>Product Brand</h3>
+            <h3 className='text-[#151875] underline underline-offset-4 font-semibold pb-4 text-xl dark:text-white/70'>Product Brand</h3>
             <div>
               {filterData.map((item, index) => (
                 <div key={index} className='flex items-center gap-3 py-1'>
                   <input className='bg-[#2f2fd3] text-indigo-500 border-none' type="checkbox" />
-                  <h4 className='text-[#4649a3] font-medium'>{item.title}</h4>
+                  <h4 className='text-[#4649a3] font-medium dark:text-white/70'>{item.title}</h4>
                 </div>
               ))}
             </div>
@@ -254,12 +263,12 @@ const ShopLeft = () => {
   
           {/* Discount Offer */}
           <div className='mt-12'>
-            <h3 className='text-[#151875] underline underline-offset-4 pb-4 text-xl font-bold'>Discount Offer</h3>
+            <h3 className='text-[#151875] dark:text-white/70 underline underline-offset-4 pb-4 text-xl font-bold'>Discount Offer</h3>
             <div>
               {discountData.map((item, index) => (
                 <div key={index} className='flex items-center gap-3 py-1'>
                   <input className='bg-pink-300 text-pink-500 border-none' type="checkbox" />
-                  <h4 className='text-[#4649a3] font-medium'>{item.title}</h4>
+                  <h4 className='text-[#4649a3] font-medium dark:text-white/70'>{item.title}</h4>
                 </div>
               ))}
             </div>
@@ -267,7 +276,7 @@ const ShopLeft = () => {
   
           {/* Rating Item */}
           <div className=' mt-12'>
-            <h3 className='text-[#151875] underline underline-offset-4 pb-4 text-xl font-bold'>Rating Item</h3>
+            <h3 className='text-[#151875] dark:text-white underline underline-offset-4 pb-4 text-xl font-bold'>Rating Item</h3>
             <div>
               {reviewData.map((item, index) => (
                 <div key={index} className='flex items-center gap-3 py-1'>
@@ -280,7 +289,7 @@ const ShopLeft = () => {
                       />
                     ))}
                   </div>
-                  <h5 className='text-[#4649a3] font-medium'>{item.count}</h5>
+                  <h5 className='text-[#4649a3] font-medium dark:text-white/70'>{item.count}</h5>
                 </div>
               ))}
             </div>
@@ -288,12 +297,12 @@ const ShopLeft = () => {
   
           {/* Categories */}
           <div className='mt-12'>
-            <h3 className='text-[#151875] underline underline-offset-4 pb-4 text-xl font-bold'>Categories</h3>
+            <h3 className='text-[#151875] dark:text-white underline underline-offset-4 pb-4 text-xl font-bold'>Categories</h3>
             <div>
               {categoriesData.map((item, index) => (
                 <div key={index} className='flex items-center gap-3 py-1'>
-                  <input className='bg-pink-500 text-pink-500 border-none' type="checkbox" />
-                  <h4 className='text-[#4649a3] font-medium'>{item.title}</h4>
+                  <input className='bg-pink-500 text-pink-500 border-none dark:bg-white/70 dark:text-pink-500' type="checkbox" />
+                  <h4 className='text-[#4649a3] font-medium dark:text-white/70'>{item.title}</h4>
                 </div>
               ))}
             </div>
@@ -301,50 +310,50 @@ const ShopLeft = () => {
   
           {/* Price Filter */}
           <div className='mt-12'>
-            <h3 className='text-[#151875] underline underline-offset-4 pb-4 text-xl font-bold'>Price Filter</h3>
+            <h3 className='text-[#151875] dark:text-white/70 underline underline-offset-4 pb-4 text-xl font-bold'>Price Filter</h3>
             <div>
               {priceData.map((item, index) => (
                 <div key={index} className='flex items-center gap-3 py-1'>
-                  <input className='bg-pink-500 text-pink-500 border-none' type="checkbox" />
-                  <h4 className='text-[#4649a3] font-medium'>{item.title}</h4>
+                  <input className='bg-pink-500 text-pink-500 border-none dark:bg-white/70 dark:text-pink-500' type="checkbox" />
+                  <h4 className='text-[#4649a3] font-medium dark:text-white/70'>{item.title}</h4>
                 </div>
               ))}
             </div>
             <div className='relative flex items-center mt-6'>
-              <input className="border-2 border-gray-300 bg-white h-10 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="$10.00 - $200.00" />
+              <input className="border-2 border-gray-300 bg-white dark:bg-white/30 dark:border-gray-800 h-10 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="$10.00 - $200.00" />
               <div className='absolute right-2'>
-                <BiSearch className='text-gray-400' />
+                <BiSearch className='text-gray-400 dark:text-white/70' />
               </div>
             </div>
           </div>
   
           {/* Filter by Color */}
           <div className='mt-12 mb-12'>
-            <h3 className='text-[#151875] underline underline-offset-4 pb-4 text-xl font-bold'>Filter By Color</h3>
+            <h3 className='text-[#151875] dark:text-white/70 underline underline-offset-4 pb-4 text-xl font-bold'>Filter By Color</h3>
             <div className='grid grid-cols-3 gap-4'>
   <div className='flex items-center gap-2'>
     <div className='w-4 h-4 rounded-full bg-red-500'></div>
-    <span className='text-gray-700'>Red</span>
+    <span className='text-gray-700 dark:text-white/70'>Red</span>
   </div>
   <div className='flex items-center gap-2'>
     <div className='w-4 h-4 rounded-full bg-blue-500'></div>
-    <span className='text-gray-700'>Blue</span>
+    <span className='text-gray-700 dark:text-white/70'>Blue</span>
   </div>
   <div className='flex items-center gap-2'>
     <div className='w-4 h-4 rounded-full bg-green-500'></div>
-    <span className='text-gray-700'>Green</span>
+    <span className='text-gray-700 dark:text-white/70 '>Green</span>
   </div>
   <div className='flex items-center gap-2'>
     <div className='w-4 h-4 rounded-full bg-yellow-500'></div>
-    <span className='text-gray-700'>Yellow</span>
+        <span className='text-gray-700 dark:text-white/70'>Yellow</span>
   </div>
   <div className='flex items-center gap-2'>
     <div className='w-4 h-4 rounded-full bg-purple-500'></div>
-    <span className='text-gray-700'>Purple</span>
+    <span className='text-gray-700 dark:text-white/70'>Purple</span>
   </div>
-  <div className='flex items-center gap-2'>
-    <div className='w-4 h-4 rounded-full bg-orange-500'></div>
-    <span className='text-gray-700'>Orange</span>
+  <div className='flex items-center '>
+    <div className='w-4 h-4 rounded-full  bg-orange-500'></div>
+    <span className='text-gray-700  dark:text-white/70'>Orange</span>
   </div>
 </div>
 
@@ -361,7 +370,7 @@ const ShopLeft = () => {
                 </div>
                 <div>
                   <div className='flex items-center gap-4'>
-                    <h3 className='text-[#151875] text-lg font-bold'>{item.title}</h3>
+                    <h3 className='text-[#151875] dark:text-white/70 text-lg font-bold'>{item.title}</h3>
                     <div className='my-3 flex justify-center'>
                       <div className="flex h-3 w-[80px] gap-2">
                         <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
@@ -371,8 +380,8 @@ const ShopLeft = () => {
                     </div>
                   </div>
                   <div className='flex items-center gap-3'>
-                    <h4 className='text-[#151875]'>{item.discountPrice}</h4>
-                    <h4 className='text-pink-500 line-through'>{item.originalPrice}</h4>
+                    <h4 className='text-[#151875] dark:text-white/70'>{item.discountPrice}</h4>
+                    <h4 className='text-pink-500 line-through '>{item.originalPrice}</h4>
                     <div className='hidden sm:flex   gap-1'>
   {[...Array(5)].map((_, i) => (
     <FaStar key={i} className="text-yellow-500" />
@@ -384,8 +393,8 @@ const ShopLeft = () => {
                   <p className='mt-3 md:w-[70%] text-gray-500'>{item.des}</p>
                   <div className='flex items-center gap-4'>
                     {icon.map((item, index) => (
-                      <div key={index} className='flex justify-center mt-6 bg-white rounded-full p-4 shadow-2xl'>
-                        <Link href='' className='text-xl text-[#3438a4]'>
+                      <div key={index} className='flex justify-center mt-6 bg-white dark:bg-white/30 rounded-full p-4 shadow-2xl'>
+                        <Link href='' className='text-xl text-[#3438a4] dark:text-white/70'>
                           {item.icon}
                         </Link>
                       </div>
@@ -397,11 +406,8 @@ const ShopLeft = () => {
           ))}
         </div>
       </div>
-  
-      <div className='container px-[1.3rem] flex justify-center my-20'>
-        <img src="/brand1.png" alt="" />
-      </div>
     </div>
+  <Brands/>
   </>
   )
 }

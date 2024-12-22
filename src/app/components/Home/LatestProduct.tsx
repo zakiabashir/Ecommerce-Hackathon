@@ -142,14 +142,14 @@ const LatestProduct = () => {
 
   return (
     <div className="py-10 max-w-[1440px] mx-auto px-4 sm:px-10 overflow-hidden">
-    <h2 className="text-center text-[#151875] text-5xl font-bold mb-5">Latest Products</h2>
+    <h2 className="text-center text-[#151875] dark:text-[#EAEAEA] text-5xl font-bold mb-5">Latest Products</h2>
     
     <div className="flex justify-center -space-x-4 sm:space-x-4 md:space-x-6 mb-5 ">
       {filters.map((filter) => (
         <button
           key={filter}
           onClick={() => handleFilterChange(filter)}
-          className={`px-4 py-2 rounded ${activeFilter === filter ? 'text-red-500 underline' : 'text-black'}`}
+          className={`px-4 py-2 rounded ${activeFilter === filter ? 'text-red-500 underline underline-offset-2 dark:text-red-500' : 'text-black dark:text-white'}`}
         >
           {filter}
         </button>
@@ -163,7 +163,7 @@ const LatestProduct = () => {
           className="rounded-lg shadow-md w-full h-[356px] relative overflow-hidden group" // 'group' class to handle hover effects
         >
           {/* Main Product Image */}
-          <div className="w-full h-[269px] mx-auto relative bg-[#F7F7F7] hover:cursor-pointer">
+          <div className="w-full h-[269px] mx-auto relative bg-[#F7F7F7] dark:bg-[#484848] hover:cursor-pointer">
            <Link href={`/latestProduct/${product.slug}`}>
             <img
               src={product.image}
@@ -234,7 +234,7 @@ const LatestProduct = () => {
           <div className="p-4 py-7 flex justify-between items-center space-x-3">
             <h3 className="text-left text-lg font-semibold">{product.miniTitle}</h3>
             <div className="flex items-baseline gap-3">
-              <span className="text-[#151875] font-bold">
+              <span className="text-[#151875] dark:text-white/80 font-bold">
                 ${product.discountedPrice}
               </span>
               <span className="text-[#FB2448] line-through text-sm">

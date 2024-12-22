@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const NewsLetter = () => {
+const   NewsLetter = () => {
   return (
 <>
     <div className="w-full max-w-[1920px] h-[462px] relative m-11 mx-auto">
@@ -10,7 +10,7 @@ const NewsLetter = () => {
       <img
         src="/news.png" 
         alt="Promo Banner"
-        className="w-full h-full object-cover brightness-125"
+        className="w-full h-full object-cover brightness-125 dark:brightness-90"
       />
       
       {/* Overlay Content */}

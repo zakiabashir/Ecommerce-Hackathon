@@ -8,6 +8,7 @@ import Link from "next/link";
 import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
 import AddToCartButton from "@/app/components/Cart/AddToCartButton";
 import WishlistButton from "@/app/components/wishlist/wishListButton";
+import Breadcrumb from '@/app/components/BreadCrumb';
 
 interface ProductDetailsProps {
   product: {
@@ -46,25 +47,13 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
   return (
     <div className="max-w-[1700px] mx-auto p-4">
       {/* Breadcrumb Navbar */}
-      <div className="bg-[#F6F5FF] h-[286px] w-full p-9 pl-40 pt-16 ">
-        <h2 className="text-left text-[#151875] text-5xl font-bold mb-8">
-          Product Details
-        </h2>
-        <nav className="flex pl-4 items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900 font-semibold">
-            Home
-          </Link>
-          <span>.</span>
-          <Link href="/pages" className="hover:text-gray-900 font-semibold">
-            Pages
-          </Link>
-          <span>.</span>
-          <span className="text-[#F24E1E] font-semibold">Product Details</span>
-        </nav>
-      </div>
+   <Breadcrumb
+   mainHeading="Product Details"
+   miniHeadings={["Home","Pages","Product Details"]}
+   />
 
       {/* Product Details Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 py-11 max-w-6xl mx-auto shadow-lg shadow-gray-300 rounded-lg bg-[#F6F5FF]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 py-11 max-w-6xl mx-auto shadow-lg shadow-gray-300 rounded-lg bg-[#F6F5FF] dark:bg-[#212020] dark:shadow-gray-700">
   
   {/* Left Section */}
   <div className="flex flex-col items-center md:flex-row md:items-start">
@@ -74,7 +63,7 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
         <div
           key={index}
           onClick={() => setMainImage(color)}
-          className={`w-24 h-24 md:w-32 md:h-32 rounded-md bg-cover bg-center cursor-pointer border ${mainImage === color ? "" : "border-gray-300"}`}
+          className={`w-24 h-24 md:w-32 md:h-32 rounded-md bg-cover bg-center cursor-pointer border ${mainImage === color ? "border-2 border-indigo-500" : "border-gray-300"}`}
           style={{ backgroundImage: `url(${images[color]})` }}
         ></div>
       ))}
@@ -95,7 +84,7 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
   {/* Right Section */}
   <div className="space-y-3 mt-9 px-4 md:px-0">
     {/* Title */}
-    <h1 className="text-2xl md:text-3xl font-bold text-[#0c0c0c]">{title}</h1>
+    <h1 className="text-2xl md:text-3xl font-bold text-[#0c0c0c] dark:text-white">{title}</h1>
 
     {/* Ratings */}
     <div className="flex items-center space-x-2 text-lg">
@@ -109,18 +98,18 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
 
     {/* Price */}
     <div className="flex items-center space-x-2">
-      <span className="text-lg font-bold text-[#151875]">${price.toFixed(2)}</span>
+      <span className="text-lg font-bold text-[#151875] dark:text-white">${price.toFixed(2)}</span>
       <span className="text-sm line-through text-[#F24E1E]">${(price + 10).toFixed(2)}</span>
     </div>
 
     {/* Colors */}
     <div className="space-y-1 flex items-center gap-5">
-      <p className="text-sm font-medium text-[#151875]">Colors</p>
+      <p className="text-sm font-medium text-[#151875] dark:text-[#6f72ce]">Colors</p>
       <div className="flex space-x-2">
         {colors.map((color, index) => (
           <button
             key={index}
-            className={`h-6 w-6 rounded-full border ${mainImage === color ? "ring-2 ring-black/70" : ""}`}
+            className={`h-6 w-6 rounded-full border ${mainImage === color ? "ring-2 ring-black/70 dark:ring-white/70" : ""}`}
             style={{ backgroundColor: color }}
             onClick={() => setMainImage(color)}
           ></button>
@@ -153,7 +142,7 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
     
     />
      
-   <div className="p-1 hover:scale-110  text-[#151875] transition-colors duration-300 ease-linear w-10 h-10 flex justify-center items-center">
+   <div className="p-1 hover:scale-110  text-[#151875] dark:text-[#6f72ce] transition-colors duration-300 ease-linear w-10 h-10 flex justify-center items-center">
   {/* WishlistButton Component */}
   <WishlistButton
     showText={true}
@@ -173,26 +162,26 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
 
     {/* Categories */}
     <p className="text-sm">
-      <span className="text-[#0d0f43] text-base font-[600]">Categories:</span> Chairs, Modern
+      <span className="text-[#0d0f43] dark:text-[#6f72ce] text-base font-[600]">Categories:</span> Chairs, Modern
     </p>
 
     {/* Tags */}
     <p className="text-sm">
-      <span className="font-[600] text-base text-[#0d0f43]">Tags:</span> Comfort, Stylish
+      <span className="font-[600] text-base text-[#0d0f43] dark:text-[#6f72ce]">Tags:</span> Comfort, Stylish
     </p>
 
     {/* Social Share */}
     <div className="space-y-1 flex items-center gap-5">
-      <p className="text-base font-[600] text-[#0d0f43]">Share:</p>
+      <p className="text-base font-[600] text-[#0d0f43] dark:text-[#6f72ce]">Share:</p>
       <div className="flex space-x-4">
         <button className="text-blue-500 z-[999]">
-          <FontAwesomeIcon icon={faFacebook} className="text-2xl hover:scale-105 hover:text-[#0d0f43]"/>
+          <FontAwesomeIcon icon={faFacebook} className="text-2xl hover:scale-105 hover:text-[#0d0f43] dark:hover:text-[#6f72ce]"/>
         </button>
         <button className="text-red-500 z-[999]">
-          <FontAwesomeIcon icon={faInstagram} className="text-2xl hover:scale-105 hover:text-[#0d0f43]"/>
+          <FontAwesomeIcon icon={faInstagram} className="text-2xl hover:scale-105 hover:text-[#0d0f43] dark:hover:text-[#6f72ce]"/>
         </button>
         <button className="text-blue-500 z-[999]">
-          <FontAwesomeIcon icon={faTwitter} className="text-2xl hover:scale-105 hover:text-[#0d0f43]"/>
+          <FontAwesomeIcon icon={faTwitter} className="text-2xl hover:scale-105 hover:text-[#0d0f43] dark:hover:text-[#6f72ce]"/>
         </button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 // app/singleblog/[id]/page.tsx
 'use client';
-
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 // import { PencilIcon, CalendarIcon } from 'lucide-react';
 import Image from 'next/image';
@@ -150,13 +150,13 @@ export default function SingleBlog({ params }: SingleBlogProps) {
   }
 
   return (
- 
-    <div className="container max-w-[1920px] mx-auto p- sm:p-0 sm:pl-11 md:pl-20  sm:py-8 ">
+ <>
 {/* Breadcrumb */}
 <Breadcrumb
         mainHeading="Single Blog"
         miniHeadings={['Home', 'pages', 'Single Blog']}
       />
+    <div className="container max-w-[1920px] mx-auto p- sm:p-0 sm:pl-11 md:pl-20  sm:py-8 ">
 
       <div className="lg:flex gap-8 w-full">
         {/* Left Section - Main Content */}
@@ -195,7 +195,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
 
             {/* Blog Content */}
             <div className="space-y-6">
-              <h1 className="text-3xl font-semibold text-[#151875]">
+              <h1 className="text-3xl font-semibold text-[#151875] dark:text-white">
                 {blogData.title}
               </h1>
               <p className="text-[#8A8FB9] text-[15px]">
@@ -205,9 +205,9 @@ export default function SingleBlog({ params }: SingleBlogProps) {
                 {blogData.content}
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ea. Numquam cumque placeat expedita eligendi quod? Expedita nobis odit similique laboriosam, ipsa praesentium iure in eius exercitationem reprehenderit saepe numquam.
               </p>
-              <div className="flex items-start gap-4 bg-[#F7F8FB] p-6 rounded-lg">
+              <div className="flex items-start gap-4 bg-[#F7F8FB] dark:bg-white/10 p-6 rounded-lg">
                 <div className="w-1 bg-red-500 h-full min-h-[100px] rounded-full" />
-                <p className="text-[#8A8FB9] text-[16px]">
+                <p className="text-[#8A8FB9] text-[16px] ">
                   &quot;{blogData.content} dhsdhsidu dsusi asdiusaid asdioa &quot;
                 </p>
               </div>
@@ -226,7 +226,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
   >
     Your browser does not support the video tag.
   </video>
-                {/* Video play button overlay can be added here */}
+                {/* Video play button */}
               </div>
               <div className="aspect-video relative">
                 <Image 
@@ -298,11 +298,11 @@ export default function SingleBlog({ params }: SingleBlogProps) {
             </div>
 
            
-{/* Navigation */}<div className="w-full bg-[#F7F8FB] text-gray-500 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+{/* Navigation */}<div className="w-full bg-[#F7F8FB] dark:bg-white/10 text-gray-500 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
   {/* Previous Button */}
   <Button 
     variant="outline" 
-    className="flex items-center bg-[#F7F8FB] gap-2 w-full sm:w-auto justify-start border-none rounded-md py-2 px-4"
+    className="flex items-center bg-[#F7F8FB] dark:bg-white/10 gap-2 w-full sm:w-auto justify-start border-none rounded-md py-2 px-4"
   >
     <span className="text-lg">←</span>
     <span className="text-sm font-semibold">Previous Post</span>
@@ -311,7 +311,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
   {/* Next Button */}
   <Button 
     variant="outline" 
-    className="flex items-center bg-[#F7F8FB] gap-2 w-full sm:w-auto justify-end border-none rounded-md py-2 px-4"
+    className="flex items-center bg-[#F7F8FB] dark:bg-white/10 gap-2 w-full sm:w-auto justify-end border-none rounded-md py-2 px-4"
   >
     <span className="text-sm font-semibold">Next Post</span>
     <span className="text-lg">→</span> 
@@ -323,7 +323,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
       {/* Recent Posts Cards */}
       <div className="space-y-4">
   {/* Card 1 */}
-  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] shadow-xl shadow-gray-500">
+  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] dark:bg-white/10 shadow-xl shadow-gray-500 dark:shadow-white/10">
     <div className="relative w-full sm:w-28 h-28 mx-auto sm:mx-0">
       <Image
         src="/blogsm1.png"
@@ -334,15 +334,15 @@ export default function SingleBlog({ params }: SingleBlogProps) {
     </div>
     <div className="flex-1 text-center sm:text-left">
       <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start mt-3 sm:mt-5">
-        <h3 className="font-semibold text-[#151875] mb-1">Sapien ac</h3>
-        <p className="text-sm text-gray-500 mb-2 sm:mb-0">Jan 09 2023</p>
+        <h3 className="font-semibold text-[#151875] dark:text-white mb-1">Sapien ac</h3>
+        <p className="text-sm text-gray-500 dark:text-white/70 mb-2 sm:mb-0">Jan 09 2023</p>
       </div>
-      <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p className="text-sm text-gray-600 dark:text-white/70">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   {/* Card 2 */}
-  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] shadow-md shadow-gray-500">
+  <div className="flex flex-col sm:flex-row gap-4 p-4 border rounded-lg bg-[#F7F8FB] dark:bg-white/10 shadow-md shadow-gray-500 dark:shadow-white/10">
     <div className="relative w-full sm:w-28 h-28 mx-auto sm:mx-0">
       <Image
         src="/blogsm2.png"
@@ -353,10 +353,10 @@ export default function SingleBlog({ params }: SingleBlogProps) {
     </div>
     <div className="flex-1 text-center sm:text-left">
       <div className="flex flex-col sm:flex-row sm:justify-between items-center sm:items-start mt-3 sm:mt-5">
-        <h3 className="font-semibold text-[#151875] mb-1">Augue cenas</h3>
-        <p className="text-sm text-gray-500 mb-2 sm:mb-0">Aug 18 2020</p>
+        <h3 className="font-semibold text-[#151875] dark:text-white mb-1">Augue cenas</h3>
+        <p className="text-sm text-gray-500 dark:text-white/70 mb-2 sm:mb-0">Aug 18 2020</p>
       </div>
-      <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p className="text-sm text-gray-600 dark:text-white/70">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 </div>
@@ -366,27 +366,27 @@ export default function SingleBlog({ params }: SingleBlogProps) {
 <form className="space-y-6 py-20 px-4 sm:px-0">
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
     {/* Name Input with Icon */}
-    <div className="flex items-center p-3 w-auto border-[1px] border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
+    <div className="flex items-center p-3 w-auto border-[1px] border-[#151875]  rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
       <span className="text-[#151875]  mr-2">
         <IoPersonOutline size={20} /> {/* Name Icon */}
       </span>
       <input
         type="text"
         placeholder="Your Name*"
-        className="flex-1 focus:outline-none focus:ring-0 text-xs sm:text-base"
+        className="flex-1 focus:outline-none focus:ring-0 text-xs sm:text-base dark:bg-[#09090b]"
         required
       />
     </div>
 
     {/* Email Input with Icon */}
-    <div className="flex items-center p-3 border-[1px] w-auto border-[#151875] rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
-      <span className="text-[#151875] mr-2">
+    <div className="flex items-center p-3 border-[1px] w-auto border-[#151875]  rounded-md focus-within:ring-2 focus-within:ring-[#151875]">
+      <span className="text-[#151875]  mr-2">
         <IoMail size={16} /> {/* Email Icon */}
       </span>
       <input
         type="email"
         placeholder="Write Your Email*"
-        className="flex-1 focus:outline-none focus:ring-0 text-xs sm:text-base"
+        className="flex-1 focus:outline-none focus:ring-0 text-xs dark:bg-[#09090b] sm:text-base dark:text-white/70"
         required
       />
     </div>
@@ -400,7 +400,7 @@ export default function SingleBlog({ params }: SingleBlogProps) {
     <textarea
       placeholder="Write your comment*"
       rows={6}
-      className="flex-1 focus:outline-none resize-none text-xs sm:text-base"
+      className="flex-1 focus:outline-none resize-none text-xs sm:text-base dark:bg-[#09090b]"
       required
     />
   </div>
@@ -432,7 +432,8 @@ export default function SingleBlog({ params }: SingleBlogProps) {
          <RightBlog />
         </div>
       </div>
-      <Brands/>
     </div>
+      <Brands/>
+ </>
   );
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Breadcrumb from './components/BreadCrumb';
+import Brands from './components/Home/brands';
 
 export default function NotFoundPage() {
   return (
@@ -29,11 +30,7 @@ export default function NotFoundPage() {
         </Link>
 
         {/* Bottom Image */}
-        <img
-          src="/brand1.png" // Replace with your actual image path
-          alt="404 Bottom"
-          className="w-[full  h-auto"
-        />
+       <Brands/>
       </div>
     </div>
   );

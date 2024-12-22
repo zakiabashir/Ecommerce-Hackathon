@@ -43,7 +43,7 @@ const demoProductData = [
           {demoProductData.map((item, index) => {
             return (
               <div key={index}>
-                <div className='flex flex-col md:flex-row gap-4 mb-4 items-center'>
+                <div className='flex flex-col md:flex-row gap-4 mb-4 items-center '>
                   <div className='w-[120px] md:w-[150px] lg:w-[180px]'>
                     <img src={item.pic} alt="" className='w-full h-auto object-cover' />
                   </div>
@@ -66,9 +66,9 @@ const demoProductData = [
         </div>
   
         {/* Subtotals and Totals Section */}
-        <div className="bg-gray-100 py-9 px-6 mt-16 mb-12">
+        <div className="bg-gray-100 dark:bg-[#1a1a1a] py-9 px-6 mt-16 mb-12">
           <div>
-            <div className='text-[#151875] font-semibold text-xl flex items-center justify-between'>
+            <div className='text-[#151875] dark:text-white font-semibold text-xl flex items-center justify-between'>
               <h3>Subtotals:</h3>
               <h4>£219.00</h4>
             </div>
@@ -76,7 +76,7 @@ const demoProductData = [
           </div>
   
           <div className='mt-9'>
-            <div className='text-[#151875] font-semibold text-xl flex items-center justify-between'>
+            <div className='text-[#151875] dark:text-white font-semibold text-xl flex items-center justify-between'>
               <h3>Totals:</h3>
               <h4>£325.00</h4>
             </div>
@@ -86,7 +86,7 @@ const demoProductData = [
           {/* Shipping and Taxes Section */}
           <div className='flex items-center mt-7 gap-1 text-indigo-300'>
             <input className='bg-green-500 text-[#63d048] w-[8px] h-[8px]' type="checkbox" name="" id="" />
-            <h6 className='text-[12px] text-gray-400'>Shipping & taxes calculated at checkout</h6>
+            <h6 className='text-[12px] text-gray-400 dark:text-white/70'>Shipping & taxes calculated at checkout</h6>
           </div>
   
           <button className='w-full mt-11 bg-green-500 hover:bg-green-600 text-white px-4 py-2'>

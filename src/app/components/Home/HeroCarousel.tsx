@@ -61,7 +61,7 @@ const HeroCarousel = () => {
 
   return (
     <>
-    <div className="bg-[#F2F0FF] h-[1000px] md:h-auto lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
+    <div className="gradient-bg-class bg-[#F2F0FF] dark:bg-[#0F0F0F] h-[1000px] md:h-auto lg:h-auto relative max-w-[1920px] mx-auto overflow-hidden py- ">
     <div className="container mx-auto h-full flex flex-col lg:flex-row items-center justify-center px-4 lg:px-8 contrast-125">
       {/* Left Section */}
       <div className="w-full lg:w-[60%] relative z-10 space-y-3 space-x-16 text-center lg:text-left lg:ml-11">
@@ -81,7 +81,7 @@ const HeroCarousel = () => {
           <p className="text-[#fb2e86] text-base lg:text-lg font-bold">
             {carouselData[currentSlide].miniHeading}
           </p>
-          <h1 className="text-3xl lg:text-5xl font-bold text-[#1A0B5B] leading-tight">
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#1A0B5B] dark:text-[#F2F0FF] leading-tight">
             {carouselData[currentSlide].mainHeading}
           </h1>
           <p className="text-[#8A8FB9] max-w-md">

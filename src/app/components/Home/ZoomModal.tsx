@@ -31,11 +31,11 @@ const ZoomModal = ({ product, onClose }: { product: any; onClose: () => void }) 
       <div
         id="overlay"
         onClick={handleModalClose}
-        className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 backdrop-blur-sm transition-opacity duration-300"
+        className="fixed inset-0 bg-black dark:bg-[#5c5b5b] bg-opacity-60 flex items-center justify-center z-50 backdrop-blur-sm transition-opacity duration-300"
       >
-        <div className="relative bg-white/50 rounded-lg shadow-lg h-[70vh] w-[90vw] md:h-auto md:w-[80vw] sm:w-[95vw] sm:h-auto flex flex-col sm:flex-row overflow-hidden animate-scale-up overflow-y-auto sm:overflow-auto">
+        <div className="relative bg-white/50 dark:bg-[#0F0F0F] rounded-lg shadow-lg h-[70vh] w-[90vw] md:h-auto md:w-[80vw] sm:w-[95vw] sm:h-auto flex flex-col sm:flex-row overflow-hidden animate-scale-up overflow-y-auto sm:overflow-auto">
           {/* Left Section - Image (Top on small screens) */}
-          <div className="w-full md:w-1/2 p-6 flex items-center justify-center bg-white/50">
+          <div className="w-full md:w-1/2 p-6 flex items-center justify-center bg-white/50 dark:bg-white/10">
             <img
               src={selectedImage} // Use the selected image passed from FeaturedProduct
               alt={product.title}
@@ -44,9 +44,9 @@ const ZoomModal = ({ product, onClose }: { product: any; onClose: () => void }) 
           </div>
   
           {/* Right Section - Details (Bottom on small screens) */}
-          <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center gap-6 bg-white/50">
+          <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center gap-6 bg-white/50 dark:bg-white/10">
             {/* Title */}
-            <h2 className="text-3xl font-extrabold text-gray-800 mb-4 text-center">{product.title}</h2>
+            <h2 className="text-3xl font-extrabold text-gray-800 dark:text-white mb-4 text-center">{product.title}</h2>
   
             {/* Price Section */}
             <div className="flex flex-col items-center mb-6">

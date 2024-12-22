@@ -52,7 +52,7 @@ const DiscountItem = () => {
     <div className="relative flex flex-col md:flex-row items-start justify-between max-w-[1340px] mt-20 py-7 mx-auto px-4">
     {/* Heading Section */}
     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center mb-10 px-4">
-      <h2 className="text-3xl  sm:text-4xl md:text-5xl lg:text-6xl py-4 font-bold text-[#151875] mb-4">
+      <h2 className="text-3xl  sm:text-4xl md:text-5xl lg:text-6xl py-4 font-bold text-[#151875] dark:text-white mb-4">
         Discount Item
       </h2>
       <div className="space-x-4 sm:space-x-6 flex items-center justify-center z-[999] pb-9">
@@ -62,8 +62,8 @@ const DiscountItem = () => {
             onClick={() => setActiveSlide(index)}
             className={`text-sm sm:text-base z-[999] md:text-lg lg:text-xl font- relative ${
               activeSlide === index
-                ? 'text-[#FB2E86] underline'
-                : 'text-black/60'
+                ? 'text-[#FB2E86] underline dark:text-red-500'
+                : 'text-black/60 dark:text-white/60'
             }`}
           >
             {index === 0 ? 'Wood Chair' : index === 1 ? 'Plastic Chair' : 'Sofa Collection'}
@@ -90,7 +90,7 @@ const DiscountItem = () => {
       >
         {slides.map((slide, index) => (
           <div key={index} className="flex flex-col items-center md:items-start text-center md:text-left mt-16">
-            <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#151875] mb-2 capitalize">
+            <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#151875] dark:text-white mb-2 capitalize">
               {slide.heading}
             </h3>
             <p className="text-[#FB2E86] text-lg sm:text-xl md:text-2xl font-semibold py-2 mb-4">

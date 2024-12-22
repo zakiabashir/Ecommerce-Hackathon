@@ -139,7 +139,7 @@ function ProductCard({ product }: { product: Product }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 hover:bg-[#d7d6db]">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 dark:bg-[#1a1a1a] hover:bg-[#d7d6db]">
         <Image
           src={product.images[getImageKeyForColor(selectedColor)]}
           alt={product.name}
@@ -162,7 +162,7 @@ function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="mt-4 flex flex-col items-center space-y-2">
   {/* Product Title */}
-  <h3 className="text-lg font-medium text-[#151875] text-center">{product.name}</h3>
+  <h3 className="text-lg font-medium text-[#151875] dark:text-white text-center">{product.name}</h3>
 
   {/* Color Options */}
   <div className="flex justify-center space-x-2">
@@ -180,7 +180,7 @@ function ProductCard({ product }: { product: Product }) {
 
   {/* Price Section */}
   <div className="flex items-center space-x-2">
-    <span className="text-base font-medium text-[#151875]">
+    <span className="text-base font-medium text-[#151875] dark:text-white/70">
       ${product.discountedPrice?.toFixed(2) ?? product.price.toFixed(2)}
     </span>
     {product.discountedPrice && (
@@ -210,25 +210,25 @@ export default function ShopGrid() {
       <div className="container mx-auto px-4 py-8 md:px-6 lg:px-8 md:py-36">
         <div className="mb-8 flex flex-wrap items-center justify-between  pb-4">
           <div className="mb-4 md:mb-0">
-            <h2 className="text-3xl  font-bold text-[#151875]">Ecommerce Accessories & Fashion Store</h2>
-            <p className="text-sm text-[#454acb]">About 9,620 results (0.62 seconds)</p>
+            <h2 className="text-3xl  font-bold text-[#151875] dark:text-white">Ecommerce Accessories & Fashion Store</h2>
+            <p className="text-sm text-[#454acb] dark:text-white/80">About 9,620 results (0.62 seconds)</p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center space-x-2">
-              <label htmlFor="per-page" className="text-sm text-[#151875]">Per Page:</label>
+              <label htmlFor="per-page" className="text-sm text-[#151875] dark:text-white">Per Page:</label>
               <input
                 id="per-page"
                 type="number"
                 defaultValue={15}
                 min={1}
-                className="w-16 rounded-sm border border-gray-300 px-2 py-1 text-sm text-[#151875]"
+                className="w-16 rounded-sm border border-gray-300 px-2 py-1 text-sm text-[#151875] dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
                 />
             </div>
             <div className="flex items-center space-x-2">
-              <label htmlFor="sort-by" className="text-sm text-[#151875]">Sort By:</label>
+              <label htmlFor="sort-by" className="text-sm text-[#151875] dark:text-white">Sort By:</label>
               <select
                 id="sort-by"
-                className="rounded-sm border border-gray-300 px-2 py-1 text-sm text-[#151875]"
+                className="rounded-sm border border-gray-300 px-2 py-1 text-sm text-[#151875] dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white cursor-pointer"
               >
                 <option>Best Match</option>
                 <option>Price Low to High</option>
@@ -236,17 +236,17 @@ export default function ShopGrid() {
                 <option>Newest First</option>
               </select>
             </div>
-            <div className="flex items-center space-x-2 text-[#151875]">
+            <div className="flex items-center space-x-2 text-[#151875] dark:text-white">
             {/* <div className="mt-4 flex items-center space-x-4"> */}
   {/* Grid View Icon */}
   View:
   <button
-    className="p-2 m-3 sm:m-2 md:m-1 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors"
+    className="p-2 m-3 sm:m-2 md:m-1 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
     aria-label="Grid View"
     >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 text-white"
+      className="h-5 w-5 text-white dark:text-white"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -260,12 +260,12 @@ export default function ShopGrid() {
 
   {/* List View Icon */}
   <button
-    className="p-2 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors"
+    className="p-2 rounded-md bg-[#151875] hover:bg-[#0d0339] transition-colors dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
     aria-label="List View"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 text-white"
+      className="h-5 w-5 text-white dark:text-white"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -278,14 +278,14 @@ export default function ShopGrid() {
 
   {/* Input Field */}
   <div className="flex items-center space-x-2">
-    <label htmlFor="" className="text-sm text-[#151875]">
+    <label htmlFor="" className="text-sm text-[#151875] dark:text-white">
     
     </label>
     <input
       id=""
       type="text"
       placeholder=""
-      className="rounded-md border border-gray-300 px-3 py-2 text-sm w-20"
+      className="rounded-md border border-gray-300 px-3 py-2 text-sm w-20 dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white  "
     />
   {/* </div> */}
 </div>

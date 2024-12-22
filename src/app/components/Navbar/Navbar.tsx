@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import NavbarClient from './NavbarClient'; // Assuming NavbarClient is a component you are importing
+import { ModeToggle } from "../Theme/ModeToggle";
 
 export default function Navbar() {
   const [showHomeDropdown, setShowHomeDropdown] = useState(false);
@@ -22,12 +23,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-md xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+    <nav className="bg-white dark:bg-[#0F0F0F] dark:text-[#EAEAEA] shadow-md xl:max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
       <div className="flex justify-between items-center h-16 max-w-[1177px] mx-auto w-full">
         {/* Logo Section */}
         <div className="flex justify-start">
           <Link href="/" className="font-bold text-xl tracking-tight">
-            <h1 className="text-[#0D0E43] text-2xl font-bold">HEKTO</h1>
+            <h1 className="text-[#0D0E43] dark:text-[#EAEAEA] text-2xl font-bold">HEKTO</h1>
           </Link>
         </div>
 
@@ -37,7 +38,7 @@ export default function Navbar() {
             link.dropdown ? (
               <div key={index} className="relative">
                 <button
-                  className="text-[#0D0E43] hover:text-[#fb2e86] px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1"
+                  className="text-[#0D0E43] dark:text-[#EAEAEA] hover:text-[#fb2e86] dark:hover:text-[#fb2e86] px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1"
                   onClick={toggleHomeDropdown}
                 >
                   {link.label}
@@ -46,45 +47,45 @@ export default function Navbar() {
                   />
                 </button>
                 {showHomeDropdown && (
-                  <div className="absolute z-50 mt-2 w-48 rounded-md shadow-lg py-1 bg-[#e0e0e2] ring-1 ring-black ring-opacity-5">
+                  <div className="absolute z-50 mt-2 w-48 rounded-md shadow-lg py-1 bg-[#e0e0e2] dark:bg-[#121212] ring-1 ring-black ring-opacity-5">
                     <Link
                       href="/"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       Home Page
                     </Link>
                     <Link
                       href="/about"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       About Us
                     </Link>
                     <Link
                       href="/pages/sign-up"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       Sign Up
                     </Link>
                     <Link
                       href="/pages/sign-in"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       Sign In
                     </Link>
                     <Link
                       href="/pages/faq"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       FAQ
                     </Link>
                     <Link
                       href="/pages/shop-grid-default"
-                      className="block px-4 py-2 text-sm text-[#0D0E43] hover:bg-gray-100"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
                       Shop Grid Default
@@ -96,7 +97,7 @@ export default function Navbar() {
               <Link
                 key={index}
                 href={link.href}
-                className="text-gray-500 hover:text-[#fb2e86] px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-500 dark:text-[#EAEAEA] hover:text-[#fb2e86] px-3 py-2 rounded-md text-sm font-medium"
               >
                 {link.label}
               </Link>
@@ -119,8 +120,9 @@ export default function Navbar() {
           </div>
 
           {/* Hamburger Menu for Small Screens */}
+<ModeToggle />
           <div className="lg:hidden">
-            <NavbarClient /> {/* Assuming NavbarClient is your hamburger menu component */}
+            <NavbarClient /> 
           </div>
         </div>
       </div>

@@ -5,13 +5,13 @@ import { Facebook, Twitter, Instagram } from 'lucide-react'
 
 export default function Footer() {
   return (
-      <footer className="max-w-[1920px] mx-auto bg-[#eeeef1] pl-4 md:pl-8 lg:pl-12 pt-6 lg:pt-12">
+      <footer className="max-w-[1920px] mx-auto bg-[#eeeef1] dark:bg-[#1a1a1a] pl-4 md:pl-8 lg:pl-12 pt-6 lg:pt-12">
       <div className="container ">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 lg:pl-20 gap-2 max-w-[1300px] mx-auto md:grid-cols-2 lg:grid-cols-4 text-center md:text-left">
           {/* Brand and Newsletter Section */}
           <div className="space-y-4 mt-6">
-            <Link href="/" className="text-2xl font-bold">
+            <Link href="/" className="text-2xl font-bold dark:text-white">
               Hekto
             </Link>
             <form className="flex flex-col sm:flex-row gap-2 justify-center md:justify-start">
@@ -29,7 +29,7 @@ export default function Footer() {
     
           {/* Categories */}
           <div className="lg:pl-20">
-            <h3 className="mb-4  text-lg font-semibold mt-6 text-[#1A0B5B]">Categories</h3>
+            <h3 className="mb-4  text-lg font-semibold mt-6 text-[#1A0B5B] dark:text-white">Categories</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/laptops-computers" className="text-muted-foreground hover:text-primary">
@@ -61,7 +61,7 @@ export default function Footer() {
     
           {/* Customer Care */}
           <div className="lg:pl-8">
-            <h3 className="mb-4 text-lg font-semibold mt-6 text-[#1A0B5B]">Customer Care</h3>
+            <h3 className="mb-4 text-lg font-semibold mt-6 text-[#1A0B5B] dark:text-white">Customer Care</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/my-account" className="text-muted-foreground hover:text-primary">
@@ -93,7 +93,7 @@ export default function Footer() {
     
           {/* Pages */}
           <div className="lg:-ml-8">
-            <h3 className="mb-4 text-lg font-semibold mt-6 text-[#1A0B5B]">Pages</h3>
+            <h3 className="mb-4 text-lg font-semibold mt-6 text-[#1A0B5B] dark:text-white">Pages</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/blog" className="text-muted-foreground hover:text-primary">
@@ -131,7 +131,7 @@ export default function Footer() {
     
         {/* Bottom Bar */}
       </div>
-        <div className="mt-16 bg-[#e0dfe2] max-w-[1930px] bottom-0 -ml-9"> {/* Changed max-w to w-full */}
+        <div className="mt-16 bg-[#e0dfe2] dark:bg-[#1a1a1a] max-w-[1930px] bottom-0 -ml-9"> {/* Changed max-w to w-full */}
           <div className="flex flex-col items-center justify-evenly gap-6 lg:gap-56 border-t  py-7 md:flex-row">
             <p className="text-sm text-muted-foreground text-center">
               ©2024 - All Rights Reserved

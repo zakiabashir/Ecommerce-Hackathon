@@ -47,6 +47,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 - `react-toastify`
 - `locomotive-scroll`
 - `next-auth`
+-  `framer-motion`
 
 ## How to Run Locally
 

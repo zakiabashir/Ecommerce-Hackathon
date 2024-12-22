@@ -16,7 +16,7 @@ const Contact = () => {
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mt-8 sm:mt-10">
     {/* Left Section */}
     <div className="max-w-xs sm:max-w-md mx-auto text-center p-2 sm:p-4 md:p-8">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-[#151875]">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-[#151875] dark:text-white/70">
         Information About Us
       </h2>
       <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
@@ -34,7 +34,7 @@ const Contact = () => {
 
     {/* Right Section */}
     <div className="max-w-xs sm:max-w-md mx-auto text-center p-2 sm:p-4 md:text-left md:p-8">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-[#151875]">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-[#151875] dark:text-white/70">
         Contact Way
       </h2>
       <div className="grid grid-cols-1 gap-4 sm:gap-6">
@@ -62,7 +62,7 @@ const Contact = () => {
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-6 sm:mt-8 max-w-6xl mx-auto">
     {/* Left Side */}
     <div className="p-2 sm:p-4">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-[#151875]">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-[#151875] dark:text-white/70">
         Get in Touch
       </h2>
       <p className="text-gray-600 text-sm sm:text-base mb-4">

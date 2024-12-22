@@ -5,6 +5,7 @@ import { BsFillGridFill } from 'react-icons/bs'
 import { CgShoppingCart } from 'react-icons/cg'
 import Link from 'next/link'
 import Breadcrumb from '../BreadCrumb'
+import Brands from '../Home/brands'
 
 const shopListData = [
     {
@@ -98,27 +99,27 @@ const ShopList = () => {
 
         <div className="md:container md:px-[1.3rem] px-[.8rem] pt-12 md:pt-[98px] flex items-center justify-between mx-auto  ">
           <div className=''>
-              <h2 className='text-indigo-500 font-bold mt-2 text-xl lg:text-3xl'>Ecommerce Acceories & Fashion item</h2>
-              <h4 className='text-gray-600'>About 9,620 results (0.62 seconds)</h4>
+              <h2 className='text-indigo-500 dark:text-white font-bold mt-2 text-xl lg:text-3xl'>Ecommerce Acceories & Fashion item</h2>
+              <h4 className='text-gray-600 dark:text-white/70'>About 9,620 results (0.62 seconds)</h4>
           </div>
           <div className='hidden lg:block'>
                 <div className='flex gap-9 '>
                     <div className='flex gap-2'>
-                        <h3 className='text-indigo-500 font-normal'>Per Page: </h3>
-                        <h3 className='border rounded-sm border-indigo-400 py-4 px-8' ></h3>
+                        <h3 className='text-indigo-500 dark:text-white/70 font-normal'>Per Page: </h3>
+                        <h3 className='border rounded-sm border-indigo-400 dark:border-white/70 py-4 px-8' ></h3>
                     </div>
                     <div className='flex gap-2'>
-                        <h3 className='text-indigo-500 font-normal'>Sort By: </h3>
-                        <h4 className='text-gray-500   border rounded-sm border-primary py-1 px-3  flex items-center gap-1'>Best Match <span><BsChevronDown/></span></h4>
+                        <h3 className='text-indigo-500 dark:text-white/70 font-normal'>Sort By: </h3>
+                        <h4 className='text-gray-500 dark:text-white/70   border rounded-sm border-primary py-1 px-3  flex items-center gap-1'>Best Match <span><BsChevronDown/></span></h4>
                     </div>
                     <div className='flex gap-8'>
                     <div className='flex items-center gap-2'>
-                        <h3 className='text-indigo-500 font-normal'>View:</h3>
-                        <FaListUl className='text-indigo-500'/>
-                        <BsFillGridFill className='text-indigo-500'/>
+                        <h3 className='text-indigo-500 dark:text-white/70 font-normal'>View:</h3>
+                        <FaListUl className='text-indigo-500 dark:text-white/70'/>
+                        <BsFillGridFill className='text-indigo-500 dark:text-white/70'/>
                     </div> 
                     <div>
-                        <h3 className='border rounded-sm border-indigo-400 py-4 px-8' ></h3>
+                        <h3 className='border rounded-sm border-indigo-400 dark:border-white/70 py-4 px-8' ></h3>
                     </div>
                     </div>
 
@@ -136,7 +137,7 @@ const ShopList = () => {
 
                         <div>
                             <div className='flex items-center gap-4'>
-                                <h3 className='text-indigo-600 text-xl'>{item.title}</h3>
+                                <h3 className='text-indigo-600 dark:text-white/70 text-xl'>{item.title}</h3>
                                 <div className='my-3 flex justify-center '>
                                     <div className="flex h-3 md:w-[80px]  gap-2">
                                         <div className="h-3 w-3 rounded-full bg-yellow"></div>
@@ -147,11 +148,11 @@ const ShopList = () => {
                             </div>
 
                             <div className='flex items-center gap-3'>
-                                <h4 className='text-indigo-500'>{item.offerPrice}</h4>
-                                <h4 className='text-pink-500 line-through'>{item.regularPrice}</h4>
+                                <h4 className='text-indigo-500 dark:text-white/70'>{item.offerPrice}</h4>
+                                <h4 className='text-pink-500 dark:text-white/70 line-through'>{item.regularPrice}</h4>
                                 <img src={item.review} alt="" />
                             </div>
-                            <p className='mt-3 md:w-[70%] text-indigo-300'>{item.des}</p>
+                            <p className='mt-3 md:w-[70%] text-indigo-300 dark:text-white/70    '>{item.des}</p>
                             <div className='flex items-center gap-4 '>
                                 {listIcon.map((item, index) => {
                                     return <div key={index} className='flext justify-center mt-6 bg-white rounded-full p-4 shadow-2xl '>
@@ -169,11 +170,7 @@ const ShopList = () => {
             })}
         </div>
 
-
-    <div className='container px-[1.3rem] flex justify-center mt-44 mb-20'>
-        <img src="/brand1.png" alt="" />
-    </div>
-
+<Brands/>   
 
     </div>
     </>

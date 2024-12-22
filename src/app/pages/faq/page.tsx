@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Breadcrumb from '@/app/components/BreadCrumb';
+import Brands from '@/app/components/Home/brands';
 const FaqPage = () => {
   const [openAccordion, setOpenAccordion] = useState<number[]>([]);
 
@@ -45,17 +46,17 @@ const FaqPage = () => {
 
 {/* General Information Section */}
 <div className="w-full md:w-1/2">
-  <h2 className="text-3xl font-bold mb-4 text-[#151875]">General Information</h2>
+  <h2 className="text-3xl font-bold mb-4 text-[#151875] dark:text-white">General Information</h2>
   {questions.map((item, index) => (
     <div key={index} className="mb-2 py-3">
       <button
-        className="w-full text-left p-2 rounded text-[#151875]"
+        className="w-full text-left p-2 rounded text-[#151875] dark:text-white"
         onClick={() => handleAccordionClick(index)}
       >
         {item.question}
       </button>
       {openAccordion.includes(index) && (
-        <div className="p-2 bg-gray-100 border-l-4 border-blue-500">
+        <div className="p-2 bg-gray-100 border-l-4 border-blue-500 dark:bg-[#1a1a1a] dark:border-blue-500">
           {item.answer}
         </div>
       )}
@@ -64,22 +65,22 @@ const FaqPage = () => {
 </div>
 
 {/* Ask a Question Section */}
-<div className="w-full md:w-1/2 bg-gray-100 p-9 rounded-lg">
-  <h2 className="text-3xl font-bold mb-4 text-[#151875] py-7">Ask a Question</h2>
+<div className="w-full md:w-1/2 bg-gray-100 p-9 rounded-lg dark:bg-[#1a1a1a]">
+  <h2 className="text-3xl font-bold mb-4 text-[#151875] py-7 dark:text-white">Ask a Question</h2>
   <input
     type="text"
     placeholder="Your Name*"
-    className="w-full mb-2 p-2 border border-gray-300 rounded py-3"
+    className="w-full mb-2 p-2 border border-gray-300 rounded py-3 dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
   />
   <input
     type="email"
     placeholder="Your Email*"
-    className="w-full mb-2 p-2 border border-gray-300 rounded py-3"
+    className="w-full mb-2 p-2 border border-gray-300 rounded py-3 dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
   />
   <input
     type="text"
     placeholder="Your Question*"
-    className="w-full mb-2 p-2 border border-gray-300 rounded py-11"
+    className="w-full mb-2 p-2 border border-gray-300 rounded py-11 dark:bg-[#1a1a1a] dark:border-gray-800 dark:text-white"
   />
   <button className="w-full md:w-1/3 bg-[#151875] text-white p-2 ml-1 rounded">
     Submit
@@ -87,10 +88,7 @@ const FaqPage = () => {
 </div>
 
 </div>
-
-    <div className="flex justify-center items-center max-w-[1540px] mx-auto py-11">
-            <img src="/brand1.png" alt="brand1" />
-        </div>
+<Brands/>
     </>
   );
 };

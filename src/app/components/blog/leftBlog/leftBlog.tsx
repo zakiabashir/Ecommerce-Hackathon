@@ -48,7 +48,9 @@ const BlogPage = () => {
             return <div key={index}>
                 <div>
                     <div>
-                        <img src={item.img} alt="" />
+                        <img src={item.img} alt="" 
+                         loading="lazy"
+                        />
                     </div>
     <div className="flex flex-col sm:flex-row gap-6 mt-7">
       {/* Red Pencil Icon with Text */}
@@ -60,7 +62,7 @@ const BlogPage = () => {
         {/* Text */}
         <h6 className="bg-red-200 px-6 rounded-sm text-black font-medium">
           Surf Auxion
-        </h6>
+        </h6> 
       </div>
 
       {/* Yellow Calendar Icon with Text */}
@@ -79,10 +81,10 @@ const BlogPage = () => {
 
 
                     <div className='mt-11'>
-                        <a className='font-semibold text-[#151875] font-josefin text-[30px] ' href={item.href}>{item.title}</a>
+                        <a className='font-semibold text-[#151875] dark:text-white font-josefin text-[30px] ' href={item.href}>{item.title}</a>
                         <p className='text-gray-500 lg:w-[78%] mt-5 '>{item.des}</p>
                         <div className="flex items-center gap-2">
-                        <h6 className='font-semibold text-[#151875] mt-7 mb-6'>
+                        <h6 className='font-semibold text-[#151875] dark:text-[#494fff] mt-7 mb-6'>
                         <Link href={`/singleblog/${item.id}`}>      {item.footer}
                           </Link>
                            </h6>

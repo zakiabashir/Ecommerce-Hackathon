@@ -7,7 +7,7 @@ import TopAnnouncementClient from './TopAnnouncementClient';
 
 const TopAnnouncement = () => {
   return (
-    <div className="bg-[#7E33E0] text-white py-2 md:py-4 px-4 md:px-8 max-w-[1920px] mx-auto">
+    <div className="bg-[#7E33E0] dark:bg-[#29015d] text-white py-2 md:py-4 px-4 md:px-8 max-w-[1920px] mx-auto">
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-between items-center">
           {/* Left Section */}

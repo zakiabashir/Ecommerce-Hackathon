@@ -4,7 +4,7 @@ export default function RelatedProducts() {
         {/* Product 1 */}
         <div className="flex flex-col">
           <div
-            className="w-full h-[340px] bg-cover bg-center rounded-md"
+            className="w-full h-[340px] bg-cover bg-center rounded-md dark:bg-gray-700"
             style={{ backgroundImage: `url('/rp1.png')` }}
           ></div>
           <div className="flex justify-between items-center mt-3">
@@ -20,14 +20,14 @@ export default function RelatedProducts() {
           </div>
           {/* Price */}
           <div className="mt-2">
-            <span className="text-lg font-bold text-[#151875]">$199.99</span>
+            <span className="text-lg font-bold text-[#151875] dark:text-white/70">$199.99</span>
           </div>
         </div>
       
         {/* Product 2 */}
         <div className="flex flex-col">
           <div
-            className="w-full h-[340px] bg-cover bg-center rounded-md"
+            className="w-full h-[340px] bg-cover bg-center rounded-md dark:bg-gray-700"
             style={{ backgroundImage: `url('/rp4.png')` }}
           ></div>
           <div className="flex justify-between items-center mt-3">
@@ -43,14 +43,14 @@ export default function RelatedProducts() {
           </div>
           {/* Price */}
           <div className="mt-2">
-            <span className="text-lg font-bold text-[#151875]">$499.99</span>
+            <span className="text-lg font-bold text-[#151875] dark:text-white/70">$499.99</span>
           </div>
         </div>
       
         {/* Product 3 */}
         <div className="flex flex-col">
           <div
-            className="w-full h-[340px] bg-cover bg-center rounded-md"
+            className="w-full h-[340px] bg-cover bg-center rounded-md dark:bg-gray-700"
             style={{ backgroundImage: `url('/rp3.png')` }}
           ></div>
           <div className="flex justify-between items-center mt-3">
@@ -66,14 +66,14 @@ export default function RelatedProducts() {
           </div>
           {/* Price */}
           <div className="mt-2">
-            <span className="text-lg font-bold text-[#151875]">$19.99</span>
+            <span className="text-lg font-bold text-[#151875] dark:text-white/70">$19.99</span>
           </div>
         </div>
       
         {/* Product 4 */}
         <div className="flex flex-col">
           <div
-            className="w-full h-[340px] bg-cover bg-center rounded-md"
+            className="w-full h-[340px] bg-cover bg-center rounded-md dark:bg-gray-700"
             style={{ backgroundImage: `url('/rp2.png')` }}
           ></div>
           <div className="flex justify-between items-center mt-3">
@@ -89,7 +89,7 @@ export default function RelatedProducts() {
           </div>
           {/* Price */}
           <div className="mt-2">
-            <span className="text-lg font-bold text-[#151875]">$19.99</span>
+            <span className="text-lg font-bold text-[#151875] dark:text-white/70">$19.99</span>
           </div>
         </div>
       </div>

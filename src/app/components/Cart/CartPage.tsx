@@ -93,7 +93,7 @@ const handleClick = () => {
         {cart.items.length === 0 ? (
           <div className="h-[70vh] flex flex-col justify-center items-center text-center space-y-4">
             <FaShoppingCart className="text-7xl text-gray-400 mb-4 animate-bounce" />
-            <p className="text-2xl text-gray-600 font-bold">
+            <p className="text-2xl text-gray-600 dark:text-white font-bold">
               Oops! Your cart is empty. <span className="text-yellow-500">😢</span>
             </p>
             <p className="text-gray-500 text-lg">
@@ -114,10 +114,10 @@ const handleClick = () => {
       {/* Conditionally render headings based on screen size */}
       {!isSmallScreen && (
         <div className="grid grid-cols-4 gap-4 mb-4 text-center sm:text-left">
-          <h2 className="text-xl font-bold text-[#151875]">Product</h2>
-          <h4 className="text-lg font-semibold text-[#151875] sm:ml-16 xl:ml-10 ">Price</h4>
-          <h4 className="text-lg font-semibold text-[#151875]">Quantity</h4>
-          <h4 className="text-lg font-semibold text-[#151875]">Total</h4>
+          <h2 className="text-xl font-bold text-[#151875] dark:text-white">Product</h2>
+          <h4 className="text-lg font-semibold text-[#151875] sm:ml-16 xl:ml-10 dark:text-white">Price</h4>
+          <h4 className="text-lg font-semibold text-[#151875] dark:text-white">Quantity</h4>
+          <h4 className="text-lg font-semibold text-[#151875] dark:text-white">Total</h4>
         </div>
       )}
 
@@ -135,14 +135,14 @@ const handleClick = () => {
               className="w-20 h-20 mr-4"
             />
             <div>
-              <h3 className="text-[17px] text-[#151875] font-semibold">
+              <h3 className="text-[17px] text-[#151875] dark:text-white/70 font-semibold">
                 {item.title || item.name}
               </h3>
               {item.size && (
-                <p className="text-sm text-[#151875]">Size: {item.size}</p>
+                <p className="text-sm text-[#151875] dark:text-white/50">Size: {item.size}</p>
               )}
               {item.colors && item.colors.length > 0 && (
-                <p className="text-sm text-[#151875]">
+                <p className="text-sm text-[#151875] dark:text-white/50">
                   Colors: {item.colors.join(", ")}
                 </p>
               )}
@@ -182,7 +182,7 @@ const handleClick = () => {
 
         <button
           onClick={() => dispatch(clearCart())}
-          className="bg-pink-500 text-white px-4 py-2 rounded-lg"
+          className="bg-pink-500 text-white  px-4 py-2 rounded-lg"
         >
           Clear Cart
         </button>
@@ -197,8 +197,8 @@ const handleClick = () => {
       { hydrated && cart.items.length > 0 && (
         <div className="flex flex-col lg:w-1/3 p-4 mt-10 lg:mt-0 py-10 lg:py-8 gap-16 ">
           {/* Cart Total */}
-          <h2 className="text-2xl text-center font-semibold text-[#242896] -mb-9 mt-8 ">Cart Total</h2>
-          <div className="border p-4 flex flex-col gap-4 rounded-lg w-full -mb-5 bg-[#E8E6F1]">
+          <h2 className="text-2xl text-center font-semibold text-[#242896] dark:text-white/70 -mb-9 mt-8 ">Cart Total</h2>
+          <div className="border p-4 flex flex-col gap-4 rounded-lg w-full -mb-5 bg-[#E8E6F1] dark:bg-white/10">
             <div className="flex justify-between">
               <span>Subtotal:</span>
               <span>${totalAmount.toFixed(2)}</span>
@@ -219,18 +219,18 @@ const handleClick = () => {
           </div>
   
           {/* Shipping Info */}
-            <h2 className="text-xl text-center font-semibold text-[#1A0B5B] -mb-10">Calculate Shipping </h2>
-          <div className="border p-4 flex flex-col gap-4 bg-[#E8E6F1] rounded-lg w-full">
+            <h2 className="text-xl text-center font-semibold text-[#1A0B5B] dark:text-white/70 -mb-10">Calculate Shipping </h2>
+          <div className="border p-4 flex flex-col gap-4 bg-[#E8E6F1] dark:bg-white/10 rounded-lg w-full">
             <div className="flex justify-between">
-              <input type="text" placeholder='Country' className='bg-[#E8E6F1] p-2 w-full' />
+              <input type="text" placeholder='Country' className='bg-[#E8E6F1] dark:bg-[#222224] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex justify-between">
-              <input type="text" placeholder='Address' className='bg-[#E8E6F1] p-2 w-full' />
+              <input type="text" placeholder='Address' className='bg-[#E8E6F1] dark:bg-[#222224] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex justify-between">
-              <input type="text" placeholder='Postal Code' className='bg-[#E8E6F1] p-2 w-full' />
+              <input type="text" placeholder='Postal Code' className='bg-[#E8E6F1] dark:bg-[#222224] p-2 w-full' />
             </div>
             <div className='h-px w-full bg-gray-300' />
             <div className="flex items-center">
