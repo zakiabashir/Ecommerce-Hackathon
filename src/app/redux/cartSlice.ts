@@ -34,7 +34,15 @@ const cartSlice = createSlice({
     addToCart(state, action: PayloadAction<CartItem>) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item._id === newItem._id);
-      
+      if (state.stock[newItem._id] === undefined) {
+        state.stock[newItem._id] = newItem.stock - 1; // Initialize stock for new item
+      } else {
+        state.stock[newItem._id] -= 1; // Decrease stock for existing item
+      }
+      console.log('Adding to cart:', newItem);
+      console.log('Stock before adding:', state.stock);
+      console.log('Stock before adding:', JSON.parse(JSON.stringify(state.stock)));
+                  
       if (existingItem) {
         if (state.stock[newItem._id] > 0) {
           existingItem.quantity += 1;

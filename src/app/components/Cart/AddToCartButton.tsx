@@ -22,6 +22,10 @@ const AddToCartButton = ({ showText, product, selectedColor }: AddToCartButtonPr
   const dispatch = useDispatch();
   const [currentStock, setCurrentStock] = useState(product.stock ?? 0);
 
+if (product.stock === undefined) {
+  console.warn('Stock information is missing for product:', product);
+}
+
   const isOutOfStock = currentStock <= 0;
 
   const handleAddToCart = () => {
