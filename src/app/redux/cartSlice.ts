@@ -20,7 +20,7 @@ interface CartState {
   originalStock: Record<string, number>;
 }
 
-const initialState: CartState = loadCartFromLocalStorage() || {
+const initialState: CartState = {
   items: [],
   totalQuantity: 0,
   stock: {},
@@ -34,12 +34,7 @@ const cartSlice = createSlice({
     addToCart(state, action: PayloadAction<CartItem>) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item._id === newItem._id);
-    
-      // Ensure originalStock is initialized
-      if (!state.originalStock) {
-        state.originalStock = {};  // Initialize if not present
-      }
-    
+      
       if (existingItem) {
         if (state.stock[newItem._id] > 0) {
           existingItem.quantity += 1;
@@ -50,46 +45,30 @@ const cartSlice = createSlice({
         state.items.push({ ...newItem, quantity: 1 });
         state.totalQuantity += 1;
         state.stock[newItem._id] = newItem.stock - 1;
-    
-        // Initialize the original stock if it's undefined
+
         if (state.originalStock[newItem._id] === undefined) {
           state.originalStock[newItem._id] = newItem.stock;
         }
       }
-    }
-    ,    
+    },
+
     increaseQuantity(state, action: PayloadAction<string>) {
       const _id = action.payload;
       const existingItem = state.items.find((item) => item._id === _id);
       const availableStock = state.stock[_id] ?? 0;
-    
-      // Ensure originalStock is initialized
-      if (!state.originalStock) {
-        state.originalStock = {};  // Initialize if not present
-      }
-    
       const originalStock = state.originalStock[_id];
-    
-      if (originalStock === undefined) {
-        console.error(`Original stock not found for product ID: ${_id}`);
-        return;  // Early return to avoid further processing
-      }
-    
+
       if (existingItem && availableStock > 0) {
         existingItem.quantity += 1;
         state.totalQuantity += 1;
         state.stock[_id] -= 1;
-    
-        // Double stock logic
+
         if (!existingItem.isStockDoubled && availableStock === Math.floor(originalStock / 2)) {
-          // state.stock[_id] *= 2; // Double the remaining stock
-          existingItem.isStockDoubled = true; // Mark as doubled
+          existingItem.isStockDoubled = true;
         }
       }
-    }
-    
+    },
 
-,
     decreaseQuantity(state, action: PayloadAction<string>) {
       const _id = action.payload;
       const existingItem = state.items.find((item) => item._id === _id);
@@ -97,14 +76,15 @@ const cartSlice = createSlice({
         if (existingItem.quantity > 1) {
           existingItem.quantity -= 1;
           state.totalQuantity -= 1;
-          state.stock[_id] += 1; // Restore stock when item is removed
+          state.stock[_id] += 1;
         } else {
           state.totalQuantity -= existingItem.quantity;
           state.items = state.items.filter((item) => item._id !== _id);
-          delete state.stock[_id]; // Remove stock record for item if it's removed from cart
+          delete state.stock[_id];
         }
       }
     },
+
     removeFromCart(state, action: PayloadAction<string>) {
       const id = action.payload;
       const existingItem = state.items.find((item) => item._id === id);
@@ -115,15 +95,34 @@ const cartSlice = createSlice({
         delete state.originalStock[id];
       }
     },
+
     clearCart(state) {
       state.items = [];
       state.totalQuantity = 0;
       state.stock = {};
       state.originalStock = {};
     },
+
+    // Set cart from localStorage (only on the client-side)
+    setCartFromLocalStorage(state) {
+      const cartData = loadCartFromLocalStorage();
+      if (cartData) {
+        state.items = cartData.items;
+        state.totalQuantity = cartData.totalQuantity;
+        state.stock = cartData.stock;
+        state.originalStock = cartData.originalStock;
+      }
+    },
   },
 });
 
-export const { addToCart, increaseQuantity , decreaseQuantity, removeFromCart, clearCart } =
-  cartSlice.actions;
+export const { 
+  addToCart, 
+  increaseQuantity, 
+  decreaseQuantity, 
+  removeFromCart, 
+  clearCart, 
+  setCartFromLocalStorage 
+} = cartSlice.actions;
+
 export default cartSlice.reducer;
