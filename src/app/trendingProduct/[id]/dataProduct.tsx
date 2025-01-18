@@ -7,6 +7,7 @@ export type Product = {
     price: number;
     colors: string[];
     images: {[key: string]: string};
+   stock: number,
     slug: string;
   };
 
@@ -23,6 +24,7 @@ const products: Product[] = [
             'blue': '/t2.png',
             'green': '/t3.png'
         },
+       stock: 30,
         slug: '1',
       },
       {
@@ -37,6 +39,7 @@ const products: Product[] = [
             'blue': '/t1.png',
             'green': '/t3.png'
         },
+       stock: 30,
         slug: '2',
         },
       {
@@ -51,6 +54,7 @@ const products: Product[] = [
             'blue': '/t2.png',
             'green': '/t4.png'
         },
+       stock: 30,
         slug: '3',
       },
       {
@@ -65,6 +69,7 @@ const products: Product[] = [
             'blue': '/t3.png',
             'green': '/t2.png'
         },
+       stock: 30,
         slug: '4',
       },
     ];

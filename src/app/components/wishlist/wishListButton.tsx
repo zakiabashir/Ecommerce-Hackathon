@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface WishlistButtonProps {
   showText?: boolean;
   product: {
-    id?: string;
-    title?: string;
+    _id?: string;
+    productName?: string;
     price?: number;
-    imageUrl?: string;
+    ProductImage?: string;
     size?: string;
     name?: string;
     colors?: string[];
@@ -25,11 +25,11 @@ const WishlistButton = ({ showText, product, selectedColor, products }: Wishlist
   const handleAddToWishlist = () => {
     const productWithWishlistDetails = {
       ...product,
-      imageUrl: product.imageUrl || '',
+      imageUrl: product.ProductImage || '',
       colors: selectedColor ? [selectedColor] : [],
       size: product.size || '',
-      id: product.id || '',
-      title: product.title || '',
+      id: product._id || '',
+      title: product.productName || '',
       price: Number(product.price) || 0,
       name: product.name || '',
     };
@@ -44,7 +44,7 @@ const WishlistButton = ({ showText, product, selectedColor, products }: Wishlist
           <div>
             <h4 className="font-semibold text-lg text-red-500">Added to Wishlist! ❤️</h4>
             <p className="text-sm text-gray-200">
-              Yay! You added <strong className='text-[#FB2E86] text-lg'>{product.title || products.title}</strong> to your wishlist. <span className="text-[#FB2E86]">❤️</span>
+              Yay! You added <strong className='text-[#FB2E86] text-lg'>{product.productName || products.title}</strong> to your wishlist. <span className="text-[#FB2E86]">❤️</span>
             </p>
             <p className="text-xs text-gray-300">Keep adding your favorite items! 💖</p>
           </div>

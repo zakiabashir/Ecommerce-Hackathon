@@ -1,90 +1,100 @@
-
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/app/redux/cartSlice';
-import { IoCartOutline } from 'react-icons/io5';
-import { toast } from 'react-toastify'; // Ensure toast is imported
-import { FaYahoo } from 'react-icons/fa'; // Import the Yahoo icon
+import { toast } from 'react-toastify';
+import { FaYahoo, FaShoppingCart } from 'react-icons/fa';
 
 interface AddToCartButtonProps {
   showText?: boolean;
   product: {
-    id?: string;
-    title?: string;
+    _id?: string;
+    productName?: string;
     price?: number;
-    imageUrl?: string;
+    productImage?: string;
     size?: string;
-    name?: string;
     colors?: string[];
-    // title?: string;
+    stock?: number;
   };
-  selectedColor?: string; // Ensure this is included
-  products?: any;
+  selectedColor?: string;
 }
 
-const AddToCartButton = ({showText , product, selectedColor, products }: AddToCartButtonProps) => {
+const AddToCartButton = ({ showText, product, selectedColor }: AddToCartButtonProps) => {
   const dispatch = useDispatch();
+  const [currentStock, setCurrentStock] = useState(product.stock ?? 0);
+
+  const isOutOfStock = currentStock <= 0;
 
   const handleAddToCart = () => {
-    const productWithQuantity = { 
-        ...product, 
-        quantity: 1, 
-        imageUrl: product.imageUrl || '', // Ensure imageUrl is a string
-        colors: selectedColor ? [selectedColor] : [], // Only add the selected color
-     
-        size: product.size || '', // Provide a default value if size is undefined
-        items: [], // Initialize items as an empty array
-        totalQuantity: 1, // Set totalQuantity to 1 for the new item
-         id: product.id || '',
-         title: product.title || '',
-         price: product.price || 0,
-         name: product.name || '',
-    }; 
-    dispatch(addToCart(productWithQuantity)); // Dispatch the product with quantity
-    
-    // Show success toast notification
+    if (isOutOfStock) {
+      toast.error('Sorry, this product is out of stock!');
+      return;
+    }
+
+    const productWithQuantity = {
+      ...product,
+      quantity: 1,
+      productImage: product.productImage || '',
+      colors: selectedColor ? [selectedColor] : [],
+      size: product.size || '',
+      productName: product.productName || '',
+      price: product.price || 0,
+      stock: currentStock,
+      _id: product._id || '',
+      totalQuantity: 1,
+    };
+
+    dispatch(addToCart(productWithQuantity));
+    setCurrentStock((prevStock) => prevStock - 1); // Reduce stock dynamically
 
     toast.success(
-      <div className="flex items-center space-x-4 relative">
-        <div className="flex items-center space-x-3">
-          <FaYahoo size={24} className="text-[#FB2E86]" /> {/* Yahoo Icon with custom color */}
-          <div>
-            <h4 className="font-semibold text-lg text-green-500">Success! 🎉</h4>
-            <p className="text-sm text-gray-200">
-              Yay! You added <strong>{product.title || products.title}</strong> to your cart. <span className="text-[#FB2E86]">🛒</span>
-            </p>
-            <p className="text-xs text-gray-300">Keep shopping and grab more amazing deals! 💥</p>
-          </div>
+      <div className="flex items-center space-x-4">
+        <FaYahoo size={24} className="text-[#FB2E86]" />
+        <div>
+          <h4 className="font-semibold text-lg text-green-500">Success! 🎉</h4>
+          <p className="text-sm text-gray-200">
+            You added <strong>{product.productName}</strong> to your cart! 🛒
+          </p>
         </div>
-        
-        {/* Loading bar at the bottom of the toast */}
-        {/* <div className="absolute bottom-0 left-0 w-full h-[2px] pb-0 bg-gradient-to-r from-[#FB2E86] via-[#F79C42] to-[#FB2E86] animate-progress"></div> */}
       </div>,
       {
-        autoClose: 2000,  // Automatically close toast after 2 seconds
-        position: "bottom-right",  // Toast position
-        className: 'bg-gray-900 text-white rounded-lg p-4 shadow-lg relative',  // Dark theme for the toast background
-        bodyClassName: 'text-white', // Ensuring body text stays white
-        icon: false,  // We will add our custom icon inside the toast
-        // hideProgressBar: true,  // Hide progress bar to keep it clean
-        draggable: false,  // Disable dragging
-        pauseOnHover: false,  // Do not pause when hovered
-        theme: 'dark',  // Dark theme for the toast
+        autoClose: 2000,
+        position: 'bottom-right',
+        className: 'bg-gray-900 text-white rounded-lg shadow-lg',
+        theme: 'dark',
       }
     );
-    
   };
 
   return (
-    <button 
-    className="p-2 rounded-full"
-    onClick={handleAddToCart}
-  >
-    {showText ? (
-      'Add to Cart'  // Show text only if showText is true
-    ) : (
-      <IoCartOutline size={20} />  // Otherwise show the icon
-    )}
-  </button>
+    <div className="flex items-center justify-between p-4 ">
+      {/* Add to Cart Button */}
+      <button
+        onClick={handleAddToCart}
+        disabled={isOutOfStock}
+        className={`px-4 py-2 rounded-md transition-colors duration-200 ${
+          isOutOfStock
+            ? 'text-gray-600 cursor-not-allowed'
+            : 'text-indigo-500 hover:text-white'
+        }`}
+      >
+        {showText ? (
+          'Add to Cart'
+        ) : (
+          <FaShoppingCart size={20} className="" />
+        )}
+      </button>
+
+      {/* Stock Information (shown only if showText is true) */}
+      {showText && (
+        <span
+          className={`ml-4 text-sm font-semibold ${
+            currentStock > 0 ? 'text-green-600' : 'text-red-800'
+          }`}
+        >
+          {currentStock > 0 ? `In Stock: ${currentStock}` : 'Out of Stock'}
+        </span>
+      )}
+    </div>
   );
 };
 

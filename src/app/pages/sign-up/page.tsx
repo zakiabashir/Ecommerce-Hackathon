@@ -150,3 +150,4 @@ miniHeadings={['Home', 'pages', 'Sign Up']}
     </>
   )
 }
+

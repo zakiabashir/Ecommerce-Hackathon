@@ -47,10 +47,10 @@ const SecondHero = () => {
     <AddToCartButton  
       key={1}  
       product={{ 
-        id: '1',
-        title: 'B&B Italian Sofa', 
+        _id: '1',
+        productName: 'B&B Italian Sofa', 
         price: 32.00, 
-        imageUrl: '/secondhero.png',
+        productImage: '/secondhero.png',
       }} 
       showText={true}  // Pass prop to show text
     />

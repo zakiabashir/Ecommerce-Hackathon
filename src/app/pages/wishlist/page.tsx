@@ -10,6 +10,7 @@ import { GiSofa } from 'react-icons/gi';
 import Breadcrumb from '@/app/components/BreadCrumb';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import AddToCartButton from '@/app/components/Cart/AddToCartButton';
+
 const WishlistPage = () => {
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
@@ -79,8 +80,8 @@ const WishlistPage = () => {
               {/* Product Image */}
                <div className="relative bg-gray-100 dark:bg-white/10">
   <img
-    src={item.imageUrl}
-    alt={item.title}
+    src={item.productImage}
+    alt={item.productName}
     className="w-auto h-auto object-cover"
   />
   <div className="absolute top-2 right-2 flex flex-col items-center space-y-4">
@@ -103,10 +104,10 @@ const WishlistPage = () => {
     key={item.id}  
     product={{ 
       ...item, 
-      id: item.id.toString(), 
-      name: item.title, 
+      _id: item.id.toString(), 
+      productName: item.productName, 
       price: item.price, 
-      imageUrl: item.imageUrl, 
+      productImage: item.productImage, 
     //   colors: item.colors, 
     //   size: item.size 
     }} 
@@ -122,7 +123,7 @@ const WishlistPage = () => {
               {/* Product Details */}
               <div className="p-4 flex flex-col items-center">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 text-center">
-                  {item.title}
+                  {item.productName}
                 </h3>
                 <p className="text-gray-500 text-sm mb-4 text-center">
                   ${Number(item.price).toFixed(2)}

@@ -1,24 +1,27 @@
-'use client';
+'use client'; // Ensures this component runs only on the client
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import RootState from '../../wishlistRedux/wishlistSlice';
-import { IoHeartOutline } from 'react-icons/io5';
-import { RootState } from '@/app/redux/store';
+import { RootState } from '../../redux/store';
+import { IoCartOutline, IoHeartOutline } from 'react-icons/io5';
+// import Link from 'next/link';
 
-const WishlistIcon = () => {
-  const totalQuantity = useSelector((state: RootState) => state.wishlist.totalQuantity);
-  const [clientQuantity, setClientQuantity] = useState(0);
+const CartIcon = () => {
+    const totalQuantity = useSelector((state: RootState) => state.cart.totalQuantity);
+  const [clientQuantity, setClientQuantity] = useState(0); // State to avoid SSR issues
 
   useEffect(() => {
+    // Ensure totalQuantity is set only on the client
     setClientQuantity(totalQuantity);
   }, [totalQuantity]);
 
   return (
     <div style={{ position: 'relative' }}>
-      <span className="flex items-center gap-1 hover:text-gray-200 -ml-2 z-[999]">
-        <IoHeartOutline className="w-5 h-5" />
+      {/* <Link href="/pages/cart/wishlistpage"> */}
+      <span className='flex items-center gap-1 hover:text-gray-200 -ml-2 z-[999]'>
+        <IoHeartOutline className='w-5 h-5' />
       </span>
+      {/* </Link> */}
       {clientQuantity > 0 && (
         <span
           style={{
@@ -43,4 +46,4 @@ const WishlistIcon = () => {
   );
 };
 
-export default WishlistIcon;
+export default CartIcon;

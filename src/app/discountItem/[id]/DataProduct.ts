@@ -8,6 +8,7 @@ export type Product = {
     colors: string[];
     images: {[key: string]: string};
     slug: string;
+    stock: number;
   };
 
 const products: Product[] = [
@@ -24,6 +25,7 @@ const products: Product[] = [
             'green': '/s17.jpeg'
         },
         slug: '1',
+      stock: 30,
       },
       {
         id: 2,
@@ -38,7 +40,8 @@ const products: Product[] = [
             'green': '/s17.jpeg'
         },
         slug: '2',
-        },
+      stock: 60,  
+      },
       {
         id: 3,
         title: 'Sofa Collection',
@@ -52,6 +55,7 @@ const products: Product[] = [
             'green': '/secondhero.png'
         },
         slug: '3',
+      stock: 20,
       },
       {
         id: 4,
@@ -65,6 +69,7 @@ const products: Product[] = [
             'blue': '/s16.jpeg',
             'green': '/secondhero.png'
         },
+        stock: 40,
         slug: '4',
       },
     ];

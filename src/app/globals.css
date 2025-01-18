@@ -251,35 +251,55 @@ button {
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-/* for save  */
+.button:disabled {
 
-/* const items = ["Item 1", "Item 2", "Item 3"];
-
-export default function ScrollAnimationList() {
-  return (
-    <div>
-      {items.map((item, index) => (
-        <ScrollAnimation key={index}>
-          <h2>{item}</h2>
-        </ScrollAnimation>
-      ))}
-    </div>
-  );
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-function ScrollAnimation({ children }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+.button:hover:disabled {
 
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={variants}
-      transition={{ duration: 0.5 }}
-    >
-      {children}
-    </motion.div>
+ transform: none; /* Disable hover effects */
+}
+
+
+/* for loader */
+
+.skeleton-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #c0c0c0 25%,
+    #e0e0e0 50%,
+    #c0c0c0 75%
   );
-} */
+  background-size: 200% 100%;
+  border-radius: 4px;
+  margin: 10px 0;
+  animation: shimmer 1s infinite linear;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 60%;
+}
+
+.skeleton-paragraph {
+  height: 15px;
+  width: 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+

@@ -1,42 +1,80 @@
-'use client'
+'use client';
+
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import AddToCartButton from '../Cart/AddToCartButton';
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
+
+// Sanity client setup
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || '',
+  useCdn: true,
+});
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source: any) {
+  return builder.image(source);
+}
+
+interface ProductType {
+  _id: string;
+  productName: string;
+  productDescription: string;
+  price: number;
+  prevPrice: string;
+  stock: number;
+  productImage: any;
+  tag: string;
+}
 
 const TopCategories = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(4); // Initially set to 4
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
+    // Update items per page based on screen width
     const updateItemsPerPage = () => {
       const width = window.innerWidth;
-      if (width < 640) {
-        setItemsPerPage(2); // Set 2 items per page for smaller screens
-      } else {
-        setItemsPerPage(4); // Set 4 items per page for larger screens
-      }
+      setItemsPerPage(width < 640 ? 2 : 4);
     };
 
-    updateItemsPerPage(); // Set initial value
+    updateItemsPerPage();
     window.addEventListener('resize', updateItemsPerPage);
 
     return () => {
       window.removeEventListener('resize', updateItemsPerPage);
     };
-  }, []); // Empty dependency array ensures this runs only once after initial render
+  }, []);
 
-  const products = [
-    { id: 1, image: '/cat1.png', title: 'Wood Chair', price: 19.99, slug: '1' },
-    { id: 2, image: '/cat2.png', title: 'Plastic Chair', price: 29.99, slug: '2' },
-    { id: 3, image: '/s8.jpeg', title: 'Luxury Sofa', price: 19.99, slug: '3' },
-    { id: 4, image: '/s9.jpeg', title: 'Luxurious Sofa', price: 29.99, slug: '4' },
-    { id: 5, image: '/s14.jpeg', title: 'Modern Sofa', price: 19.99, slug: '5' },
-    { id: 6, image: '/s4.jpeg', title: 'Arm Sofa', price: 29.99, slug: '6' },
-    { id: 7, image: '/s9.jpeg', title: 'Wood Sofa', price: 39.99, slug: '7' },
-    { id: 8, image: '/s6.jpeg', title: 'Kids Sofa', price: 49.99, slug: '8' },
-    { id: 9, image: '/s7.jpeg', title: 'Expensive Sofa', price: 59.99, slug: '9' },
-    { id: 10, image: '/s10.jpeg', title: 'Demanded Sofa', price: 59.99, slug: '10' },
-  ];
+  useEffect(() => {
+    // Fetch products from Sanity
+    const fetchProducts = async () => {
+      const query = `*[_type == "products"  && tag == "Top Categories"]{
+        _id,
+        productName,
+        productDescription,
+        price,
+        prevPrice,
+        stock,
+        productImage,
+        tag
+      }`;
+
+      const sanityProducts = await client.fetch(query);
+      setProducts(
+        sanityProducts.map((product: any) => ({
+          ...product,
+          productImage: urlFor(product.productImage),
+        }))
+      );
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleNavigationClick = (index: number) => {
     setActiveIndex(index);
@@ -53,46 +91,52 @@ const TopCategories = () => {
           .slice(activeIndex * itemsPerPage, (activeIndex + 1) * itemsPerPage)
           .map((product) => (
             <div
-              key={product.id}
-              className="relative mx-4 flex-shrink-0 w-[50%] sm:w-[50%] md:w-[22%] md:pl-8 lg:w-[22%] group"
+              key={product._id}
+              className="relative mx-4 md:mx-1 flex-shrink-0 w-[50%] sm:w-[50%] md:w-[22%] md:pl-8 lg:w-[22%] group"
             >
               {/* Product Image */}
-              <div className="bg-[#F6F7FB] dark:bg-[#484848] rounded-full p-6 hover:shadow-7xl hover:shadow-indigo-500 dark:hover:shadow-indigo-950/50 shadow-[-19px_26px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
-                <Link href={`/topCategories/${product.slug}`}>
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="rounded-2xl w-full h-auto object-cover"
-                  
+              <div className="bg-[#F6F7FB] dark:bg-[#484848] h-[70%] w-[90%] rounded-full p-6 hover:shadow-7xl hover:shadow-indigo-500 dark:hover:shadow-indigo-950/50 shadow-[-19px_26px_10px_rgba(10,0,0,0.3)] transition-shadow duration-300 overflow-hidden group-hover:relative">
+                <Link href={`/topCategories/${product._id}`}>
+                  <img
+                    src={product.productImage}
+                    alt={product.productName}
+                    className="rounded-full w-full h-auto object-cover"
                   />
-                  </Link>
+                </Link>
                 {/* Add to Cart Button - Visible on hover */}
-                {/* <button "
-                > */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white  rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[999]">
-
-                <AddToCartButton
-                product={{
-                  id: product.id.toString(),
-                  title: product.title,
-                  price: product.price,
-                  imageUrl: product.image,
-                }}
-                showText={true}
-                />
-                </div>
+                {/* <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-14 w-20 p-3 z-[999]"> */}
+                <Link href={`/topCategories/${product._id}`}>
+          <button
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#08D15F] hover:rounded-md hover:bg-[#439f6b] mb-2 hover:text-white text-white px-3 py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10"
+          >
+            View Details
+          </button>
+        </Link>
+   
+                  {/* View Details */}
+                  {/* <AddToCartButton
+                    product={{
+                      _id: product._id,
+                      productName: product.productName,
+                      price: product.price,
+                      productImage: product.productImage,
+                      stock: product.stock,
+                      
+                    }}
+                    showText={true}
+                  /> */}
+                {/* </div> */}
               </div>
-                  {/* Add to Cart */}
-                {/* </button> */}
-              {/* Title and Price outside the card */}
-              <div className="mt-4 text-center">
-                <h3 className="text-lg font-semibold text-[#151875]">{product.title}</h3>
-                <p className="text-[#151875]">${product.price}</p>
+              {/* Titl                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                e and Price outside the card */}
+              <div className="mt-4 text-c                        enter">
+                <h3 className="text-lg font-semibold text-[#151875] dark:text-white">
+                  {product.productName}
+                </h3>
+                <p className="text-[#151875] dark:text-white/70 ">${product.price}</p>
               </div>
             </div>
           ))}
       </div>
-
       {/* Navigation Dots */}
       <div className="flex justify-center mt-16 space-x-2">
         {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map(

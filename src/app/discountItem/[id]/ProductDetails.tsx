@@ -130,10 +130,10 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
       key={product.id}
       product={{
         ...product,
-        id: product.id.toString(),
-        name: product.title,
+        _id: product.id.toString(),
+        productName: product.title,
         price: product.price,
-        imageUrl: product.images[selectedColor],
+        productImage: product.images[selectedColor],
         colors: product.colors,
         size: selectedSize, // Pass selected size
       }}
@@ -147,10 +147,10 @@ const [selectedSize, setSelectedSize] = useState(product.size || ""); // Default
   <WishlistButton
     showText={true}
     product={{
-      id: product.id.toString(),
-      title: product.title,
+      _id: product.id.toString(),
+      productName: product.title,
       price: product.price,
-      imageUrl: product.images[selectedColor],
+      ProductImage: product.images[selectedColor],
       name: product.title,
       colors: product.colors,
       size: product.size,

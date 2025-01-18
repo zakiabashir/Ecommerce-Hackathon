@@ -16,6 +16,7 @@ interface ProductDetailsProps {
   title: string;
   code: string;
   price: number;
+  stock: number;
   discountedPrice?: number;
   colors: string[];
   images: { [key: string]: string };
@@ -135,10 +136,10 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       key={product.id}
       product={{
         ...product,
-        id: product.id.toString(),
-        name: product.title,
+        _id: product.id.toString(),
+        productName: product.title,
         price: product.price,
-        imageUrl: product.images[selectedColor],
+        productImage: product.images[selectedColor],
         colors: product.colors,
         // size: selectedSize, // Pass selected size
       }}
@@ -152,10 +153,10 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   <WishlistButton
     showText={true}
     product={{
-      id: product.id.toString(),
-      title: product.title,
+      _id: product.id.toString(),
+      productName: product.title,
       price: product.price,
-      imageUrl: product.images[selectedColor],
+      ProductImage: product.images[selectedColor],
       name: product.title,
       colors: product.colors,
       size: product.size,

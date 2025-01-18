@@ -13,26 +13,29 @@ import NewsLetter from "./components/Home/NewsLetter";
 import Brands from "./components/Home/brands";
 import BlogComponent from "./components/Home/BlogComponent";
 import ScrollToTop from "./components/Home/ScrollToTop";
-import products from "./components/Home/DataFeatureProduct";
+// import products from "./components/Home/DataFeatureProduct";
 import { Provider } from 'react-redux';
 import store from "./redux/store"
+import Ex from "./components/Home/ex";
 
 export default function Home({Component, pageProps , products}:any) {
   return (
     // <Provider store={store}>
       <main>
         <HeroCarousel />
-           <FeaturedProducts product={products} />
-          <LatestProduct />
+           <FeaturedProducts/>
+           <LatestProduct />
+         {/* <Ex/> */}
          <ShopexOffers />
         <SecondHero />
         <TrendingProduct />
+         
         <PreDiscount />
         <DiscountItem />
         <TopCategories />
         <NewsLetter />
         <Brands />
-        <BlogComponent />
+        <BlogComponent /> 
         {/* <ScrollToTop /> */}
       </main>
     // </Provider>
