@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en"  suppressHydrationWarning>
        <head className="md:p-8 lg:p-11 `">
         {/* Chatbot Configuration Script */}
         <Script
@@ -30,6 +30,7 @@ export default function RootLayout({
   strategy="afterInteractive"
   dangerouslySetInnerHTML={{
     __html: `
+
       window.embeddedChatbotConfig = {
         chatbotId: "jbDpS42hjEjLrkFpbr468",
         domain: "www.chatbase.co"

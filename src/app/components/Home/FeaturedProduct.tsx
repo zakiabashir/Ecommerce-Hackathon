@@ -17,10 +17,11 @@ const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   useCdn: true,
+  apiVersion: '2021-08-31'
 });
 
 const builder = imageUrlBuilder(client);
-// Function to generate a random color
+
 const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -30,7 +31,7 @@ const getRandomColor = () => {
   return color;
 };
 
-function urlFor(source : any) {
+function urlFor(source: any) {
   return builder.image(source);
 }
 
@@ -43,7 +44,7 @@ interface ProductType {
   _id: string;
   productName: string;
   productDescription: string;
-  price: any ;
+  price: any;
   prevPrice: string;
   stock: number;
   productImage: any;
@@ -59,7 +60,7 @@ interface ZoomedProductType extends ProductType {
   image: ImageType;
   selectedColor: string;
 }
-// 
+
 const query = `*[_type == "products"]{
   _id,
   productName,
@@ -73,9 +74,9 @@ const query = `*[_type == "products"]{
     trackingId,
     deliveryStatus,
     estimatedDeliveryDate
-    }
-    }`;
-    
+  }
+}`;
+
 const fetchProducts = async (): Promise<ProductType[]> => {
   const data = await client.fetch(query);
   return data;
@@ -83,30 +84,26 @@ const fetchProducts = async (): Promise<ProductType[]> => {
 
 const FeaturedProduct = () => {
   const [wishlist, setWishlist] = useState([]);
-
   const [selectedColors, setSelectedColors] = useState<{ [key: string]: string }>({});
   const [zoomedProduct, setZoomedProduct] = useState<ZoomedProductType | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [products, setProducts] = useState<ProductType[]>([]);
   const dispatch = useDispatch();
+  const addToCartButtonRef = useRef(null); // Reference for the "Add to Cart" button container
 
   useEffect(() => {
     const getProducts = async () => {
       const fetchedProducts = await fetchProducts();
-      // Ensure the _id comparison is done as a string
       const filteredProducts = fetchedProducts.filter(product => String(product.productName) !== '');
       setProducts(filteredProducts);
       setSelectedColors(filteredProducts.reduce((acc, product) => ({ ...acc, [product.productName]: '' }), {}));
-      console.log(filteredProducts.map(product => product.productName)); // Check the _id values of all products
     };
-    
     getProducts();
   }, []);
-  
+
   const handleAddToWishlist = (product: ProductType) => {
     if (!product) return;
-    console.log('Adding to wishlist:', product);
     dispatch(addToWishlist({
       id: product._id,
       title: product.productName,
@@ -114,22 +111,21 @@ const FeaturedProduct = () => {
       imageUrl: urlFor(product.productImage).url(),
     }));
   };
-  
+
   const handleZoomClick = (product: ProductType) => {
     const selectedColor = selectedColors[product._id];
     const imageToZoom = product.productImage;
     const price = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
-  
+
     if (imageToZoom) {
       setZoomedProduct({ ...product, image: imageToZoom, selectedColor, price });
     }
   };
-  
-  
+
   const handleColorSelect = (productId: string, color: string) => {
     setSelectedColors((prev) => ({ ...prev, [productId]: color }));
   };
-  
+
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = direction === 'left' ? -scrollContainerRef.current.clientWidth : scrollContainerRef.current.clientWidth;
@@ -161,9 +157,9 @@ const FeaturedProduct = () => {
       }
     };
   }, []);
-  
+
   return (
-    <div className="py-16  px-4 max-w-[1920px] mx-auto">
+    <div className="py-16 px-4 max-w-[1920px] mx-auto">
       <h2 className="text-5xl font-bold text-center mb-12 text-[#1A0B5B] dark:text-[#EAEAEA]">Featured Products</h2>
 
       <div className="relative xl:w-[1250px] mx-auto">
@@ -173,116 +169,103 @@ const FeaturedProduct = () => {
           style={{ scrollBehavior: 'smooth' }}
         >
           {products.map((product) => {
-            const selectedImage = product.productImage; // Assuming this field is the image for the product
+            const selectedImage = product.productImage;
             return (
               <div key={product._id} className="min-w-[250px] sm:min-w-[290px] snap-start group relative">
                 <div className="relative bg-[#e6e6e8] dark:bg-[#484848] h-[300px] md:w-[] rounded-t-lg">
                   {selectedImage && (
                     <Image
-                    src={urlFor(selectedImage).url()}
-                    alt={product.productName}
-                    fill
-                    className="object-contain p-4"
+                      src={urlFor(selectedImage).url()}
+                      alt={product.productName}
+                      fill
+                      className="object-contain p-4"
                     />
                   )}
-                 <div className="absolute left-4 top-4 flex flex-row gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-  {/* Add to Cart Button Container */}
-  <div className="bg-white rounded-full hover:bg-[#fb2e86] text-violet-500  hover:text-white transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
-    <AddToCartButton
-      key={product._id}
-      product={{
-        _id: product._id,
-        productName: product.productName,
-        price: parseFloat(product.price),
-        productImage: urlFor(product.productImage).url(),
-        stock: product.stock,
-      }}
-      showText={false}
-      selectedColor={selectedColors[product._id]}
-    />
-  </div>
 
-  {/* Wishlist Button Container */}
-  <div className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white text-[#2F1AC4] transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
-    <WishlistButton
-      showText={false}
-      product={{
-        _id: product._id,
-        productName: product.productName,
-        price: parseFloat(product.price),
-        ProductImage: urlFor(product.productImage).url(),
-      }}
-      selectedColor={selectedColors[product._id]}
-    />
-  </div>
+                  <div className="absolute left-4 top-4 flex flex-row gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div ref={addToCartButtonRef} className="bg-white rounded-full hover:bg-[#fb2e86] text-violet-500 hover:text-white transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
+                      <AddToCartButton
+                        key={product._id}
+                        product={{
+                          _id: product._id,
+                          productName: product.productName,
+                          price: parseFloat(product.price),
+                          productImage: urlFor(product.productImage).url(),
+                          stock: product.stock,
+                        }}
+                        showText={false}
+                        selectedColor={selectedColors[product._id]}
+                      />
+                    </div>
 
-  {/* Zoom Button */}
-  <button
-    className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center"
-    onClick={() => handleZoomClick(product)}
-  >
-    <AiOutlineZoomIn size={20} className="text-[#2F1AC4] hover:text-white" />
-  </button>
-</div>
+                    <div className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white text-[#2F1AC4] transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center">
+                      <WishlistButton
+                        showText={false}
+                        product={{
+                          _id: product._id,
+                          productName: product.productName,
+                          price: parseFloat(product.price),
+                          ProductImage: urlFor(product.productImage).url(),
+                        }}
+                        selectedColor={selectedColors[product._id]}
+                      />
+                    </div>
 
+                    <button
+                      className="p-2 bg-white rounded-full hover:bg-[#2F1AC4] hover:text-white transition-colors duration-100 ease-linear w-10 h-10 flex justify-center items-center"
+                      onClick={() => handleZoomClick(product)}
+                    >
+                      <AiOutlineZoomIn size={20} className="text-[#2F1AC4] hover:text-white" />
+                    </button>
+                  </div>
 
                   <Link href={`/featuredProduct/${product._id}`}>
                     <button
                       className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#08D15F] hover:rounded-md hover:bg-[#439f6b] mb-2 hover:text-white text-white px-6 py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
+                    >
                       View Details
                     </button>
                   </Link>
                 </div>
 
                 <div className="bg-[#FFFFFF] dark:bg-[#708090] p-4 rounded-b-lg group-hover:bg-[#2f1ac4] transition-colors text-center">
-                <h3 className="text-[#FB2E86] dark:text-[#EAEAEA] group-hover:text-white text-lg font-medium mb-1 ">
-                  {product.productName}
-                </h3>
-               
-            <p className="text-[#2F1AC4] font-[550] dark:text-[#EAEAEA] group-hover:text-gray-200 mb-0 ">
-  Code: {Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000)).join(', ')}
-</p>
+                  <h3 className="text-[#FB2E86] dark:text-[#EAEAEA] group-hover:text-white text-lg font-medium mb-1 ">
+                    {product.productName}
+                  </h3>
+                  <p className="text-[#2F1AC4] font-[550] dark:text-[#EAEAEA] group-hover:text-gray-200 mb-0 ">
+                    Code: {Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000)).join(', ')}
+                  </p>
 
-                <p className="text-[#2F1AC4] font-[550] dark:text-[#EAEAEA] group-hover:text-white ">${product.prevPrice}</p>
+                  <p className="text-[#2F1AC4] font-[550] dark:text-[#EAEAEA] group-hover:text-white ">${product.prevPrice}</p>
+                </div>
               </div>
-            </div>
-          )
-        })
-      }
-        </div>
-
-
-
-
-
-          
+            );
+          })}
         </div>
 
         <div className="flex justify-center gap-2 mt-6">
           {[0, 1, 2, 3].map((dot) => (
             <button
-            key={dot}
-            onClick={() => {
-              if (scrollContainerRef.current) {
-                const scrollWidth = scrollContainerRef.current.scrollWidth;
-                const containerWidth = scrollContainerRef.current.clientWidth;
-                const maxScroll = scrollWidth - containerWidth;
-                const scrollPosition = (maxScroll * dot) / 3;
-                scrollContainerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-              }
-              setActiveSlide(dot);
-            }}
-            className={`h-2 transition-all duration-300 rounded-lg ${
-              activeSlide === dot ? 'w-20 bg-[#FB2E86]' : 'w-10 bg-gray-300'
-            }`}
+              key={dot}
+              onClick={() => {
+                if (scrollContainerRef.current) {
+                  const scrollWidth = scrollContainerRef.current.scrollWidth;
+                  const containerWidth = scrollContainerRef.current.clientWidth;
+                  const maxScroll = scrollWidth - containerWidth;
+                  const scrollPosition = (maxScroll * dot) / 3;
+                  scrollContainerRef.current.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                }
+                setActiveSlide(dot);
+              }}
+              className={`h-2 transition-all duration-300 rounded-lg ${activeSlide === dot ? 'w-20 bg-[#FB2E86]' : 'w-10 bg-gray-300'}`}
             />
           ))}
         </div>
 
         {zoomedProduct && <ZoomModal product={zoomedProduct} onClose={() => setZoomedProduct(null)} />}
       </div>
-    //  </div>
-  );}
+    </div>
+  );
+};
 
 export default FeaturedProduct;

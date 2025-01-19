@@ -1,41 +1,44 @@
+"use client"
+
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
-import { useEffect } from "react"
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
-  // Function to toggle theme between light and dark
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
-  }
+  // Mount component effect
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
-  // Set default theme to light if it's the first visit
-  useEffect(() => {
+  // Set default theme effect
+  React.useEffect(() => {
     if (!theme) {
       setTheme("light")
     }
   }, [theme, setTheme])
 
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return <Button variant="outline" size="icon" />
+  }
+
   return (
     <Button
       variant="outline"
       size="icon"
-      onClick={toggleTheme}
-      className="relative flex items-center justify-center"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="relative h-9 w-9"
     >
-      {/* Sun icon (visible when dark theme is active) */}
       <Sun 
-        className={`h-[1.2rem] w-[1.2rem] transition-transform duration-300 absolute ${theme === "dark" ? "rotate-0 scale-100" : "rotate-90 scale-0"}`} 
+        className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" 
       />
-      
-      {/* Moon icon (visible when light theme is active) */}
       <Moon 
-        className={`h-[1.2rem] w-[1.2rem] transition-transform duration-300 absolute ${theme === "dark" ? "rotate-90 scale-0" : "rotate-0 scale-100"}`} 
+        className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
       />
-
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
