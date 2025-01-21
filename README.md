@@ -5,12 +5,14 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 ## Features
 - **Dynamic Navbar**: A multi-layered navbar with announcement bar, logo, search functionality, and navigation links.
 - **Hero Carousel**: Auto-sliding product showcase with manual navigation controls , which is dynamic .
+- **theme**: Custom theme toggle button to switch theme from black to white and vice versa
 - **Product Grids**: Multiple sections showcasing featured, latest, discounted, and categorized products with hover effects and shadow animations and all products are dynamic .
 - **Dynamic Pages**: Includes detailed product pages, blog lists, shop grids, cart and checkout pages, and more , by clicking on the product you can see the details of the product which has multiple images and colors and sizes and you can add to cart and checkout.
 - **Zoom Functionality**: Zoom in on product images on hover and open a detailed modal view of the product for a closer look.
 - **Add-to-Cart Functionality**: Add products to the cart, and dynamically display the cart items. When the cart is empty, a message like "Your cart is empty" will be shown.
 - **Redux for State Management**: Centralized cart management using Redux to handle actions like adding, removing, and clearing items from the cart.
-- **Newsletter Section**: Showcase the brands you're working with, such as Mestonix, Pure, etc.
+- **Newsletter Section**: Showcase the brands we're working with, such as Mestonix, Pure, etc.
+- **ai chatbot** : implemented personalized ai chatbot to help customers through out the whole shopping journey
 - **Footer**: Organized links to pages, customer care, categories, and social media.
 
 ## Components Overview
@@ -34,6 +36,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 - **Shop Pages**: Various layouts like grid, list, sidebar, and detailed views.
 - **FAQ Page**: Accordion-style Q&A sections.
 - **Cart and Checkout Pages**: Interactive and responsive forms for the purchase process, including live updates for cart totals and item counts.
+- **Blog page**: Interactive and responsive Blog page and all blogs are dynamic 
 
 ## Libraries & Packages Used
 - `react-icons`
@@ -45,25 +48,7 @@ This is a fully responsive, feature-rich e-commerce website built during a hacka
 - `tailwindcss`
 - `@reduxjs/toolkit react-redux`
 - `react-toastify`
-- `locomotive-scroll`
-- `next-auth`
 -  `framer-motion`
-
-## How to Run Locally
-
-### Prerequisites
-Ensure you have the following installed:
-- **Node.js** (v18 or later)
-- **npm** or **yarn**
-
-### Installation Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mazz-Ather/Ecommerce-Hackathon
-   cd Ecommerce-Hackathon
-   npm install
-   npm run dev
-   ```
 
 ## Additional Details
 
@@ -84,5 +69,20 @@ On the homepage, each product card displays three colors and three images as sel
   - Once items are added, the cart will automatically update the **total price** and **item count** based on the selections made. The cart will reflect the **specific image and color** of each product added.
 
 This system ensures that the correct product variations (color and image) are consistently shown across all stages of the purchase process, from product selection to checkout.
- - dark theme toggle effect 
+ 
+## How to Run Locally
+
+### Prerequisites
+Ensure you have the following installed:
+- **Node.js** (v18 or later)
+- **npm** or **yarn**
+
+### Installation Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Mazz-Ather/Ecommerce-Hackathon
+   cd Ecommerce-Hackathon
+   npm install
+   npm run dev
+   ```
  
