@@ -38,7 +38,7 @@ const carouselData: CarouselSlide[] = [
   },
   {
     id: 3,
-    mainImage: '/s10r.png',
+    mainImage: '/ss11.png',
     lampImage: '/lampreal.png',
     miniHeading: 'Limited Time Deal',
     mainHeading: 'Exclusive Designer Collection',

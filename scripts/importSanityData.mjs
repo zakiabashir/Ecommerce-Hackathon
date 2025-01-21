@@ -37,7 +37,7 @@ async function uploadImageToSanity(imageUrl) {
 async function importData() {
   try {
     console.log('Fetching products from API...');
-    const response = await axios.get('https://mocki.io/v1/8df2c13f-3c35-4825-a95e-d67c46b66b8d'); // i made this request to mocki.io to get the data in json format for hackathon 
+    // const response = await axios.get('https://mocki.io/v1/8df2c13f-3c35-4825-a95e-d67c46b66b8d'); // i made this request to mocki.io to get the data in json format for hackathon 
     const products = response.data;
     console.log(`Fetched ${products.length} products`);
 

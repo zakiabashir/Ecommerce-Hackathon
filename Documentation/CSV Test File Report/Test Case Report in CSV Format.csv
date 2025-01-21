@@ -1,0 +1,14 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status,Remarks
+TC001,Validate product listing,Open product page on homepage & Dynamically > Verify products,Products displayed,Products displayed,Passed,No issues
+TC002,Test API error handling,Disconnect API > Refresh page,Show fallback message,"Data is stored in the CMS, ensuring it persists even after a page refresh. If, in rare cases, the data is not displayed, the fallback message is triggered and shown.",Passed,Handled gracefully
+TC003,Check cart  functionality,Add item to cart > Verify cart >Refresh Page > Products still there,Cart updates correctly,Cart updates correctly,Passed,Works as expected
+TC004,Test responsiveness,Resize browser window > Check layout,Layout adjusts properly,Layout adjusts properly even in  280 px screen size,Passed,Responsive verified
+TC005,Dynamic Products,Click on Any Product,Dynamic Product is shwon with unique id,Dynamic Product is shwon with unique id,Passed,Works as expected
+TC006,Handle Stock of the products which i fetch from sanity,whenever cliked on add to cart button stock becomes less until zero then add to cart button disabled ,Stock Handle,Stock Handle,passed,Works as expected
+TC007,Notification Toast,Whenever add to cart button is clicked or wishlist icon toast message is shown to confirm the user that your product is added successfully,toast notification is shown ,toast notification is shown,passed,Works as expected
+TC008,Personalized AI Chatbot,Intergrated Personalized ai chatbot to help users through out thier shopping journey ,answers all queries regarding hekto ecommerce ,answers all queries regarding hekto ecommerce ,Passed,Works as expected
+TC009,theme toggle,theme toggle feature for light and dark modes,Theme toggles smoothly switch between light and dark modes,Theme toggles smoothly between light and dark modes,Passed,Works as expected
+TC010,Zoom icon while hover on products,zoom functionality on product images for detailed viewing without opening a new page ,Zoom feature works correctly on product images,Zoom feature works correctly on product images,Passed,Works as expected
+TC011,Deployment ,Deployed on vercel & add environment Variables,successfully deployed ,successfully deployed ,Passed,Works as expected
+TC012,Performance Testing,Performance Testing by using light house  and GTMETRIX ,Performance should be great,Performance 93%,Passed,Works as expected
+TC013,Project Structure,Project structure and organization,"well-organized with folders like src/, public/, and documents/","well-organized with folders like src/, public/, and documents/ as well as Reusable Components",Passed,Works as expected

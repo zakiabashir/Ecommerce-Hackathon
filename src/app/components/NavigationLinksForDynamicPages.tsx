@@ -206,9 +206,9 @@ const scrollToSection = (ref:any) => {
 
         </div>
     <h1 className="text-3xl mt-16 font-bold text-[#151875] dark:text-white mb-7 py-3 max-w-[1100px] mx-auto">Related Product</h1>
-  <RelatedProducts/>
 
      {/* Related Product Section */}
+  <RelatedProducts/>
     <Brands/> 
     </>
   );

@@ -103,9 +103,6 @@ function urlFor(source:any) {
   transition={{ duration: 0.7 }}
   className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0"
 >
-  {/* Left Column with 3 Vertical Images */}
- 
-
   {/* Right Column with Main Image */}
   <div
     className="relative w-full cursor-pointer md:w-[475px] h-[350px] md:h-[487px] bg-contain bg-no-repeat rounded-md"
