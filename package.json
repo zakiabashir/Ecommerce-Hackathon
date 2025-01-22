@@ -1,6 +1,6 @@
 {
-  "name": "ecommerce-hackathon",
-  "version": "0.1.0",
+  "name": "E-commerce-web-hackathon#3",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
