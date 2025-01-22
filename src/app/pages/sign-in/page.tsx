@@ -46,20 +46,20 @@ export default function SignIn() {
     return isValid
   }
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-  //   e.preventDefault();
-  //   if (validateForm()) {
-  //     const { data: users } = await axios.get('/api/users');
-  //     const user = users.find((user: User) => user.email === formData.email && user.password === formData.password);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    if (validateForm()) {
+      const { data: users } = await axios.get('/api/users');
+      const user = users.find((user: User) => user.email === formData.email && user.password === formData.password);
   
-  //     if (user) {
-  //       toast.success('Signed in successfully!');
-  //       router.push('/');
-  //     } else {
-  //       toast.error('Invalid credentials. Please try again.');
-  //     }
-  //   }
-  // };
+      if (user) {
+        toast.success('Signed in successfully!');
+        router.push('/');
+      } else {
+        toast.error('Invalid credentials. Please try again.');
+      }
+    }
+  };
   return (
     <>
     <Breadcrumb

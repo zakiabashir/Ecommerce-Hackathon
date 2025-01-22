@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { faArrowRight, faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import Link from "next/link";
 import AddToCartButton from "@/app/components/Cart/AddToCartButton";
 import NavigationLinksForDynamicPages from "@/app/components/NavigationLinksForDynamicPages";
 import WishlistButton from "@/app/components/wishlist/wishListButton";

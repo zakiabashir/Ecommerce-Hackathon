@@ -1,12 +1,11 @@
 // app/singleblog/[id]/page.tsx
 'use client';
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 // import { PencilIcon, CalendarIcon } from 'lucide-react';
 import Image from 'next/image';
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { PencilIcon, CalendarIcon, Facebook, Twitter, Instagram, ChevronLeft, ChevronRight, Video } from 'lucide-react'
+import { PencilIcon, CalendarIcon } from 'lucide-react'
 import { Star } from 'lucide-react'
 import RightBlog from '@/app/components/blog/rightBlog/rightBlog';
 import { IoMail } from 'react-icons/io5';
@@ -16,7 +15,6 @@ import { GrFacebookOption } from 'react-icons/gr';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import Brands from '@/app/components/Home/brands';
-import Link from 'next/link';
 import Breadcrumb from '@/app/components/BreadCrumb';
 
 interface SingleBlogProps {

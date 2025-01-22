@@ -11,11 +11,12 @@ dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
 // Create Sanity client
 const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: "ibcc1aeo", 
+  dataset: "production", 
+  token: "skXWzBLLtyktwYi5rSJ9cJhLaNQ5oo5o4mgjbmqC58A78zwGHrYrul1SzucNGvNwF8L8boNJDkglA8uG3HW2BKkiuRoKGJtPjNUvQNQ7frgqggCG0hX29l13WfdJzvAw8d8KV5tSYE1buJ0qaGsVNVAbsNOPVJkI008myKDKOQ6IcbsWsRw9"
+  ,
+  apiVersion: '2025-01-15',
   useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-  apiVersion: '2021-08-31',
 });
 
 async function uploadImageToSanity(imageUrl) {
@@ -37,7 +38,7 @@ async function uploadImageToSanity(imageUrl) {
 async function importData() {
   try {
     console.log('Fetching products from API...');
-    // const response = await axios.get('https://mocki.io/v1/8df2c13f-3c35-4825-a95e-d67c46b66b8d'); // i made this request to mocki.io to get the data in json format for hackathon 
+    const response = await axios.get('https://mocki.io/v1/8df2c13f-3c35-4825-a95e-d67c46b66b8d'); // i made this request to mocki.io to get the data in json format for hackathon 
     const products = response.data;
     console.log(`Fetched ${products.length} products`);
 

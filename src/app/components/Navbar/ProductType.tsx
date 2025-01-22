@@ -12,6 +12,7 @@ export interface ProductType {
       trackingId: string;
       deliveryStatus: string;
       estimatedDeliveryDate: string;
+      id: string;
     }[];
   }
   

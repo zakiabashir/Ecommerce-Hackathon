@@ -63,10 +63,18 @@ export default function Navbar() {
                       About Us
                     </Link>
                     <Link
+                      href="/creatorpage"
+                      className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
+                      onClick={closeHomeDropdown}
+                    >
+                    About Creator
+                    </Link>
+                    <Link
                       href="/pages/sign-up"
                       className="block px-4 py-2 text-sm text-[#0D0E43] dark:text-[#EAEAEA] hover:bg-gray-100 dark:hover:bg-gray-900"
                       onClick={closeHomeDropdown}
                     >
+                      
                       Sign Up
                     </Link>
                     <Link
